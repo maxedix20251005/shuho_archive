@@ -1,0 +1,115 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2860" viewBox="0 0 1440 2860">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .frame { fill: #ffffff; stroke: #222; stroke-width: 2; }
+      .sec { fill: #fafafa; stroke: #555; stroke-width: 1.5; }
+      .label { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 22px; fill: #111; font-weight: 700; }
+      .sub { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 16px; fill: #444; }
+      .tiny { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 14px; fill: #666; }
+      .card { fill: #fff; stroke: #777; stroke-width: 1.2; }
+      .thumb { fill: #f0f0f0; stroke: #999; stroke-dasharray: 6 4; }
+      .line { stroke: #999; stroke-width: 1.2; }
+      .chip { fill: #f1f1f1; stroke: #999; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="2860" />
+  <rect class="frame" x="120" y="40" width="1200" height="2780" rx="8" />
+
+  <text x="140" y="28" class="sub">Sub Page Wireframe (PC) - Portfolio Page</text>
+
+  <!-- Header -->
+  <rect class="sec" x="140" y="70" width="1160" height="90" />
+  <text x="165" y="124" class="label">1. Header (Logo / Global Navigation)</text>
+  <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
+  <text x="183" y="121" class="sub">LOGO</text>
+  <rect class="card" x="470" y="92" width="800" height="46" rx="4" />
+  <text x="490" y="121" class="sub">NAV: Home | About | Masters | Courses | Portfolio | FAQ | Access | Contact</text>
+
+  <!-- Hero -->
+  <rect class="sec" x="140" y="180" width="1160" height="230" />
+  <text x="165" y="222" class="label">2. Page Hero (Portfolio)</text>
+  <rect class="thumb" x="170" y="248" width="1100" height="130" />
+  <text x="720" y="318" class="sub" text-anchor="middle">Student Works and Progress Showcase</text>
+
+  <!-- Filter Bar -->
+  <rect class="sec" x="140" y="430" width="1160" height="170" />
+  <text x="165" y="472" class="label">3. Category Filters</text>
+  <rect class="chip" x="170" y="510" width="120" height="42" rx="21" />
+  <rect class="chip" x="300" y="510" width="120" height="42" rx="21" />
+  <rect class="chip" x="430" y="510" width="120" height="42" rx="21" />
+  <rect class="chip" x="560" y="510" width="120" height="42" rx="21" />
+  <rect class="chip" x="690" y="510" width="120" height="42" rx="21" />
+  <rect class="chip" x="820" y="510" width="120" height="42" rx="21" />
+  <text x="230" y="536" class="tiny" text-anchor="middle">All</text>
+  <text x="360" y="536" class="tiny" text-anchor="middle">Kids</text>
+  <text x="490" y="536" class="tiny" text-anchor="middle">Adults</text>
+  <text x="620" y="536" class="tiny" text-anchor="middle">Certification</text>
+  <text x="750" y="536" class="tiny" text-anchor="middle">Theme</text>
+  <text x="880" y="536" class="tiny" text-anchor="middle">Recent</text>
+
+  <!-- Works Grid 1 -->
+  <rect class="sec" x="140" y="620" width="1160" height="470" />
+  <text x="165" y="662" class="label">4. Works Grid (Row 1)</text>
+  <rect class="thumb" x="170" y="692" width="255" height="360" />
+  <rect class="thumb" x="445" y="692" width="255" height="360" />
+  <rect class="thumb" x="720" y="692" width="255" height="360" />
+  <rect class="thumb" x="995" y="692" width="275" height="360" />
+  <text x="297" y="1068" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="572" y="1068" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="847" y="1068" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="1132" y="1068" class="tiny" text-anchor="middle">Title / Category / Level</text>
+
+  <!-- Works Grid 2 -->
+  <rect class="sec" x="140" y="1110" width="1160" height="470" />
+  <text x="165" y="1152" class="label">5. Works Grid (Row 2)</text>
+  <rect class="thumb" x="170" y="1182" width="255" height="360" />
+  <rect class="thumb" x="445" y="1182" width="255" height="360" />
+  <rect class="thumb" x="720" y="1182" width="255" height="360" />
+  <rect class="thumb" x="995" y="1182" width="275" height="360" />
+  <text x="297" y="1558" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="572" y="1558" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="847" y="1558" class="tiny" text-anchor="middle">Title / Category / Level</text>
+  <text x="1132" y="1558" class="tiny" text-anchor="middle">Title / Category / Level</text>
+
+  <!-- Detail Preview -->
+  <rect class="sec" x="140" y="1600" width="1160" height="320" />
+  <text x="165" y="1642" class="label">6. Selected Work Detail Preview</text>
+  <rect class="thumb" x="170" y="1672" width="420" height="220" />
+  <rect class="card" x="610" y="1672" width="660" height="220" />
+  <text x="630" y="1710" class="sub">Work Title / Student Stage</text>
+  <text x="630" y="1740" class="tiny">Background, learning point, and instructor feedback summary.</text>
+
+  <!-- Pagination -->
+  <rect class="sec" x="140" y="1940" width="1160" height="130" />
+  <text x="165" y="1982" class="label">7. Pagination</text>
+  <rect class="chip" x="510" y="2002" width="60" height="34" rx="17" />
+  <rect class="chip" x="580" y="2002" width="60" height="34" rx="17" />
+  <rect class="chip" x="650" y="2002" width="60" height="34" rx="17" />
+  <rect class="chip" x="720" y="2002" width="60" height="34" rx="17" />
+  <text x="540" y="2024" class="tiny" text-anchor="middle">1</text>
+  <text x="610" y="2024" class="tiny" text-anchor="middle">2</text>
+  <text x="680" y="2024" class="tiny" text-anchor="middle">3</text>
+  <text x="750" y="2024" class="tiny" text-anchor="middle">Next</text>
+
+  <!-- Contact Strip -->
+  <rect class="sec" x="140" y="2090" width="1160" height="160" />
+  <text x="165" y="2132" class="label">8. Contact Strip</text>
+  <rect class="card" x="170" y="2152" width="1100" height="78" />
+  <text x="190" y="2198" class="tiny">Want to learn from these examples? Contact form / phone</text>
+
+  <!-- Footer -->
+  <rect class="sec" x="140" y="2270" width="1160" height="170" />
+  <text x="165" y="2312" class="label">9. Footer</text>
+  <line class="line" x1="170" y1="2330" x2="1270" y2="2330" />
+  <text x="170" y="2372" class="tiny">Contact | Phone | Privacy Policy | Sitemap</text>
+
+  <!-- Notes -->
+  <rect class="card" x="140" y="2460" width="1160" height="340" />
+  <text x="165" y="2500" class="label">Layout Notes</text>
+  <text x="165" y="2532" class="tiny">- Lead with visual proof of instruction quality.</text>
+  <text x="165" y="2560" class="tiny">- Make filtering and scan behavior obvious on first visit.</text>
+  <text x="165" y="2588" class="tiny">- Keep detail preview close to grid to maintain browsing momentum.</text>
+  <text x="165" y="2616" class="tiny">- Keep conversion pathway as contact, not trial CTA, by scope.</text>
+</svg>

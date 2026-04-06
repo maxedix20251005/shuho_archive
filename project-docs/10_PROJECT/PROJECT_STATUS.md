@@ -5,95 +5,69 @@
 - 現在の状態、優先事項、確定方針を記録する。
 
 ## 2. Current Focus / 現在の主対象
-- The admin UI HTML/JS work is ready to move from preparation into implementation.
-- 管理画面 HTML/JS 実装は開始準備が整っており、実装フェーズへ移行する。
-- The public landing page has been synchronized with the latest website structure and documented in bilingual form.
-- 公開ランディングページは最新のサイト構成に合わせて文書へ反映済みである。
-- The planning/design documents `docs/04` through `docs/06` have been aligned with the current `shuho-srchive` sitemap, wireframes, and theme palette.
-- planning/design 文書 `docs/04` から `docs/06` は、現在の `shuho-srchive` のサイトマップ、ワイヤーフレーム、テーマ配色に整合した。
+- This project is currently in planning and requirements definition for a new shodo school website launch.
+- 本プロジェクトは書道塾サイト新規立ち上げに向けた企画・要件定義フェーズにある。
+- Core planning documents are being filled into the existing `docs/` templates without changing the template structure.
+- 既存の `docs/` テンプレート構成を維持しながら、各文書へ具体内容を埋める方針で進行している。
 
 ## 3. Confirmed Policies / 確定方針
-- Adopt `GitHub Pages + HTML/CSS/JavaScript + Supabase`.
-- 採用構成は `GitHub Pages + HTML/CSS/JavaScript + Supabase` とする。
-- Use only the `anon key` on the frontend; do not use `service_role`.
-- フロントでは `anon key` のみを使用し、`service_role` は使用しない。
-- Manage permissions with `roles` and `user_role_assignments`, and implement on the premise of RLS.
-- 権限は `roles` / `user_role_assignments` で管理し、RLS 前提で実装する。
-- Anonymous inquiry submission is allowed; `customer_profile_id` may be `NULL`.
-- 問い合わせは匿名受付を許容し、`customer_profile_id` は `NULL` を許容する。
+- Target business: shodo school in Shinagawa, Tokyo.
+- 対象事業は東京都品川区の書道塾である。
+- Main target audience includes all ages and beginners.
+- 主対象は老若男女で、初心者を含む。
+- Documentation rule: `project-docs/*` must remain bilingual, while `docs/*` may remain Japanese-only.
+- 文書ルールとして、`project-docs/*` は日英併記を維持し、`docs/*` は日本語のみで運用可とする。
+- Design direction reference: composition style inspired by `https://maruoka-castle.jp/`.
+- デザイン方向性は `https://maruoka-castle.jp/` の構成感を参照する。
 
 ## 4. Completed / 実施済み
-- Specification, DB design, and admin mockup organization completed.
-- 仕様・DB 設計・管理画面モックの整理を完了した。
+- Proposal document for the shodo school website has been concretely filled.
+- 書道塾サイト向けの企画提案内容を具体値で整理し、提案書テンプレートへ反映した。
+  - `docs/01-proposal.html`
+- Functional and non-functional requirements were defined in the specification template.
+- 仕様書テンプレートに機能要件・非機能要件を反映した。
   - `docs/07-specification.html`
-  - `docs/08-db-design.html`
-  - `docs/11-admin-mockup.html`
-- Test-report coverage for the actual public/admin site was expanded in `docs/09-test-report.html` section 2.
-- 実サイト構成に合わせたテスト報告書のケース範囲を `docs/09-test-report.html` の section 2 で拡張した。
-  - Added `TC-073` to `TC-102`
-  - Covered booking completion, search hubs, account/auth support, admin access mode, and shell regressions
-- Test-report sections 3 to 5 were completed with summary metrics, issue table linkage, and verified browser/device matrix.
-- テスト報告書の section 3 から 5 は、サマリー指標、Issue連携表、検証済みブラウザ/デバイス一覧で更新完了した。
-  - sec3: `件数 102`, `OK率 85.29%`, `NG率 14.71%`, `保留 0`, `再試験 N/A`
-  - sec4: sec2 に紐づく Issue のみを `ISSUE_LIST.md` から要約
-  - sec5: Win11/Chrome・Win11/Edge・macOS/Safari・macOS/Chrome・Android/Chrome・iPadOS/Chrome・iPadOS/Safari
-  - sec2 issue ID correction: `2026-03-26-24` -> `2026-03-27-24`
-- Test case artifacts were refreshed and synchronized to the latest authoritative range in section 2.
-- テストケース成果物は section 2 の最新正本範囲へ更新・同期した。
-  - `project-docs/60_TEST/test_cases_shuho-srchive.xlsx`
-  - `project-docs/60_TEST/shuho-srchive_test_plan_refined.xlsx`
-  - Marked `TC-001` to `TC-100` as complete (`完了`) and reflected linked issue IDs
-- Public homepage structure reflected in the planning/design documents.
-- 公開ホームページの構成を planning/design 文書へ反映した。
-  - Hero / booking shortcut / experience banner / journey / pickup / new arrivals
-- Current sitemap, wireframe references, and design-guide palette samples synchronized with the local `shuho-srchive` source.
-- 現在のサイトマップ、ワイヤーフレーム参照、デザインガイドの配色サンプルをローカル `shuho-srchive` ソースと同期した。
+- Sitemap and wireframe templates were updated with concrete information architecture, user flows, and layout intent.
+- サイトマップとワイヤーフレームのテンプレートに、具体的な情報設計・導線・配置意図を反映した。
   - `docs/04-sitemap.html`
   - `docs/05-wireframe.html`
-  - `docs/06-design-guide.html`
-  - `references/05-wireframe/*.svg`
-  - `references/06-design-guide/colour-comparison-40.html`
-- Supabase SQL execution and verification completed.
-- Supabase SQL の実行と検証を完了した。
-  - `00-1_create_app_schema.sql`
-  - `00-2_promote_existing_user_to_admin.sql`
-  - `01a_register_sample_members.sql`
-  - `01_seed_core_data.sql`
-  - `02_verify_seed_data.sql`
-  - `03_rls_policies.sql`
-- Rename migration from `reservations/inquiries` to `bookings/enquiries` completed.
-- `reservations/inquiries` 系から `bookings/enquiries` 系への rename migration を完了した。
 
 ## 5. Next Priorities / 次の優先事項
-1. Implement the admin authentication and session foundation, including Supabase connection, login detection, and role retrieval.
-1. 管理画面の認証/セッション基盤を実装する（Supabase 接続、ログイン判定、ロール取得）。
-2. Implement CRUD for `top_hero_items` and `journey_steps`.
-2. `top_hero_items` と `journey_steps` の CRUD を実装する。
-3. Implement list and update operations for `bookings` and `enquiries`.
-3. `bookings` / `enquiries` の一覧・更新を実装する。
+1. Complete `docs/06-design-guide.html` with final visual rules aligned to the approved reference direction.
+1. `docs/06-design-guide.html` を参照方向性に合わせて具体化し、デザインルールを確定する。
+2. Validate consistency across `docs/01`, `docs/02`, `docs/03`, and `docs/07`, and resolve wording overlaps.
+2. `docs/01`、`docs/02`、`docs/03`、`docs/07` の整合性を確認し、表現重複を調整する。
+3. Confirm implementation scope and hand off the finalized documentation set for production design and development.
+3. 実装対象範囲を確定し、制作フェーズへ引き渡せる文書セットへ整備する。
 
 ## 6. Risks / リスク
-- RLS assumptions and page implementation conditions may diverge.
-- RLS の想定と画面実装の参照条件が一致しないリスクがある。
-- Supabase environment drift, such as missing reapplication of users, seeds, or RLS, may reduce reproducibility.
-- Supabase 環境差分（ユーザー/seed/RLS 再適用漏れ）により再現性が低下するリスクがある。
+- If page goals and CTA placement are not kept consistent across docs, conversion design may become fragmented.
+- ページ目的とCTA配置の記述が文書間でずれると、CV導線設計が分断されるリスクがある。
+- If target personas are expanded without priority control, messaging may become too broad and less persuasive.
+- ターゲットを広げすぎると訴求がぼやけ、説得力が下がるリスクがある。
 - Japanese document updates may introduce encoding corruption.
 - 日本語文書更新時のエンコーディング破損リスクがある。
 
-## 7. Update Log / 更新履歴
-- 2026-04-05: Expanded `docs/09-test-report.html` section 2 with additional cases (`TC-073` to `TC-102`) based on the implemented site flows; verified UTF-8/no mojibake.
-- 2026-04-05: 実装済みサイト導線に基づき `docs/09-test-report.html` section 2 の追加ケース（`TC-073`〜`TC-102`）を反映し、UTF-8/文字化けなしを確認した。
-- 2026-04-05: Refreshed `test_cases_shuho-srchive.xlsx` and created/synchronized `shuho-srchive_test_plan_refined.xlsx` using `docs/09-test-report.html` section 2 as source; set `TC-001` to `TC-100` to `完了` and reflected issue IDs.
-- 2026-04-05: `docs/09-test-report.html` section 2 を正本として `test_cases_shuho-srchive.xlsx` を更新し、`shuho-srchive_test_plan_refined.xlsx` を作成・同期した。`TC-001` から `TC-100` を `完了` に設定し、不具合 ID を反映した。
-- 2026-04-05: Updated `docs/09-test-report.html` sections 3 to 5 with computed summary values, issue summary table linked to `ISSUE_LIST.md`, and verified browser/device matrix (including iPadOS). Corrected sec2 issue ID from `2026-03-26-24` to `2026-03-27-24`.
-- 2026-04-05: `docs/09-test-report.html` の section 3 から 5 を、算出済みサマリー値、`ISSUE_LIST.md` 連携のIssue要約表、検証済みブラウザ/デバイス一覧（iPadOS含む）で更新した。あわせて sec2 の不具合IDを `2026-03-26-24` から `2026-03-27-24` へ修正した。
-- 2026-04-05: Updated `docs/04` to `docs/06` and related reference assets to match the current sitemap, cleaned wireframes, and `P44 / Apricot Mist` theme palette; verified UTF-8/no mojibake.
-- 2026-04-05: `docs/04` から `docs/06` と関連参照アセットを、現行サイトマップ、整理済みワイヤーフレーム、`P44 / Apricot Mist` 配色に合わせて更新し、UTF-8/文字化けなしを確認した。
-- 2026-04-05: Synchronized the public homepage structure and corrected the site path reference in governance docs.
-- 2026-04-05: 公開ホームページ構成を同期し、ガバナンス文書のサイト参照を実地に合わせて修正した。
-- 2026-03-25: Integrated the `instructions` set into the new governance-aligned format.
-- 2026-03-22: Verified the SQL rename migration results successfully.
-- 2026-03-13: Updated the mojibake inspection procedure and confirmed no issues.
+## 7. Update Log / 更新履歴`r`n- 2026-04-06: Completed subpage wireframe SVG set under `images/wireframe/` (`about`, `masters`, `courses`, `portfolio`, `recruitment`, `faq`, `access`, `contact`) and admin scope file (`admin-works`) with naming convention `wireframe-<page-name>.svg`.`r`n- 2026-04-06: `images/wireframe/` 配下にサブページSVG一式（`about`、`masters`、`courses`、`portfolio`、`recruitment`、`faq`、`access`、`contact`）と管理画面対象（`admin-works`）を作成し、命名規則 `wireframe-<page-name>.svg` に統一した。`r`n- 2026-04-06: Updated top-page wireframe hero to full-bleed image layout with right-edge disabled trial CTA and removed supplementary sub-route elements.
+- 2026-04-06: Top PageワイヤーフレームのHEROを全面image化し、右端の体験申込CTAをDisabled表示へ変更、補助動線を削除した。
+- 2026-04-06: Explicitly documented `https://maruoka-castle.jp/` as the Top Page design reference in `docs/05-wireframe.html` and `docs/06-design-guide.html`.
+- 2026-04-06: Top Pageデザイン参照先として `https://maruoka-castle.jp/` を `docs/05-wireframe.html` と `docs/06-design-guide.html` に明記した。
+- 2026-04-06: Updated top-page wireframe artifacts to indicate trial application is currently suspended and all related CTAs are displayed as disabled.
+- 2026-04-06: 体験申込停止中の方針を反映し、Top Pageワイヤーフレーム関連のCTAをすべてDisabled表示へ更新した。
+- 2026-04-06: Created and saved a top page wireframe SVG based on `docs/05-wireframe.html` in `images/wireframe/wireframe-top-page.svg`.
+- 2026-04-06: `docs/05-wireframe.html` を参照し、Top Page ワイヤーフレームSVGを `images/wireframe/wireframe-top-page.svg` として作成・保存した。
+- 2026-04-06: Filled `docs/02-market-research.html` and `docs/03-persona.html` with concrete content for 3C/SWOT/STP/4P4C, competition patterns, and a primary persona journey aligned to the shodo school project.
+- 2026-04-06: `docs/02-market-research.html` と `docs/03-persona.html` を具体化し、3C/SWOT/STP/4P4C、競合傾向、主要ペルソナのジャーニーを現案件方針に合わせて反映した。
+- 2026-04-06: Cleaned legacy project-derived content across `project-docs` and re-baselined governance, tech, design, test, issue, and WIP documents for the shodo school project.
+- 2026-04-06: `project-docs` 配下の旧案件由来記述を一括削除し、ガバナンス・技術・デザイン・テスト・課題・WIP文書を書道塾プロジェクト向けに再基準化した。
+- 2026-04-06: Cleaned up `PROJECT_STATUS.md` by removing unrelated legacy project content and re-baselining the status for the shodo school website planning project.
+- 2026-04-06: `PROJECT_STATUS.md` から他案件由来の記述を削除し、書道塾サイト企画プロジェクト向けの内容に再整理した。
+- 2026-04-06: Updated `docs/04-sitemap.html` and `docs/05-wireframe.html` for the shodo school launch plan with concrete IA, user flows, URL design, and wireframe intent aligned to the current reference composition direction.
+- 2026-04-06: 書道塾サイト立ち上げ企画に合わせて `docs/04-sitemap.html` と `docs/05-wireframe.html` を更新し、情報設計、ユーザーフロー、URL設計、ワイヤーフレーム配置意図を参照構成方針に沿って具体化した。
+- 2026-04-06: Updated `docs/07-specification.html` with concrete functional list, functional detail for trial form, and non-functional requirements for the shodo school site.
+- 2026-04-06: `docs/07-specification.html` に書道塾サイト向けの機能一覧、体験申込フォーム詳細仕様、非機能要件を反映した。
+- 2026-04-06: Updated `docs/01-proposal.html` with business goals, personas, user needs, competition trends, differentiation, page composition, conversion design, and KPI.
+- 2026-04-06: `docs/01-proposal.html` にビジネスゴール、ペルソナ、ニーズ、競合傾向、差別化、ページ構成、CV設計、KPIを反映した。
 
 ## Quality Note / 品質注意
 - When Japanese text is included in updates, verify UTF-8 and the absence of mojibake.

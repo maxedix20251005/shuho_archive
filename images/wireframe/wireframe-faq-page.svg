@@ -1,0 +1,109 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2760" viewBox="0 0 1440 2760">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .frame { fill: #ffffff; stroke: #222; stroke-width: 2; }
+      .sec { fill: #fafafa; stroke: #555; stroke-width: 1.5; }
+      .label { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 22px; fill: #111; font-weight: 700; }
+      .sub { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 16px; fill: #444; }
+      .tiny { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 14px; fill: #666; }
+      .card { fill: #fff; stroke: #777; stroke-width: 1.2; }
+      .thumb { fill: #f0f0f0; stroke: #999; stroke-dasharray: 6 4; }
+      .line { stroke: #999; stroke-width: 1.2; }
+      .chip { fill: #f1f1f1; stroke: #999; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="2760" />
+  <rect class="frame" x="120" y="40" width="1200" height="2680" rx="8" />
+
+  <text x="140" y="28" class="sub">Sub Page Wireframe (PC) - FAQ Page</text>
+
+  <!-- Header -->
+  <rect class="sec" x="140" y="70" width="1160" height="90" />
+  <text x="165" y="124" class="label">1. Header (Logo / Global Navigation)</text>
+  <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
+  <text x="183" y="121" class="sub">LOGO</text>
+  <rect class="card" x="470" y="92" width="800" height="46" rx="4" />
+  <text x="490" y="121" class="sub">NAV: Home | About | Masters | Courses | Portfolio | FAQ | Access | Contact</text>
+
+  <!-- Hero -->
+  <rect class="sec" x="140" y="180" width="1160" height="220" />
+  <text x="165" y="222" class="label">2. Page Hero (FAQ)</text>
+  <rect class="thumb" x="170" y="248" width="1100" height="120" />
+  <text x="720" y="314" class="sub" text-anchor="middle">Frequently Asked Questions for Beginners and Families</text>
+
+  <!-- Search / Category -->
+  <rect class="sec" x="140" y="420" width="1160" height="190" />
+  <text x="165" y="462" class="label">3. FAQ Search and Categories</text>
+  <rect class="card" x="170" y="490" width="760" height="44" rx="6" />
+  <text x="190" y="518" class="tiny">Search questions by keyword...</text>
+  <rect class="chip" x="950" y="490" width="140" height="34" rx="17" />
+  <rect class="chip" x="1100" y="490" width="140" height="34" rx="17" />
+  <text x="1020" y="512" class="tiny" text-anchor="middle">Beginner</text>
+  <text x="1170" y="512" class="tiny" text-anchor="middle">Attendance</text>
+  <rect class="chip" x="170" y="548" width="150" height="34" rx="17" />
+  <rect class="chip" x="330" y="548" width="150" height="34" rx="17" />
+  <rect class="chip" x="490" y="548" width="150" height="34" rx="17" />
+  <rect class="chip" x="650" y="548" width="150" height="34" rx="17" />
+  <text x="245" y="570" class="tiny" text-anchor="middle">Materials</text>
+  <text x="405" y="570" class="tiny" text-anchor="middle">Fees</text>
+  <text x="565" y="570" class="tiny" text-anchor="middle">Schedule</text>
+  <text x="725" y="570" class="tiny" text-anchor="middle">Policy</text>
+
+  <!-- FAQ Accordion List -->
+  <rect class="sec" x="140" y="630" width="1160" height="560" />
+  <text x="165" y="672" class="label">4. FAQ Accordion List</text>
+  <rect class="card" x="170" y="702" width="1100" height="62" />
+  <rect class="card" x="170" y="774" width="1100" height="62" />
+  <rect class="card" x="170" y="846" width="1100" height="62" />
+  <rect class="card" x="170" y="918" width="1100" height="62" />
+  <rect class="card" x="170" y="990" width="1100" height="62" />
+  <rect class="card" x="170" y="1062" width="1100" height="62" />
+  <text x="190" y="740" class="tiny">Q. Is prior calligraphy experience required?</text>
+  <text x="190" y="812" class="tiny">Q. Can I rent writing materials?</text>
+  <text x="190" y="884" class="tiny">Q. How are makeup classes handled?</text>
+  <text x="190" y="956" class="tiny">Q. Which age groups are accepted?</text>
+  <text x="190" y="1028" class="tiny">Q. What are the monthly fees and payment methods?</text>
+  <text x="190" y="1100" class="tiny">Q. What should I wear in class?</text>
+
+  <!-- Expanded Answer Sample -->
+  <rect class="sec" x="140" y="1210" width="1160" height="320" />
+  <text x="165" y="1252" class="label">5. Expanded Answer Block (Sample)</text>
+  <rect class="card" x="170" y="1282" width="1100" height="220" />
+  <text x="190" y="1320" class="sub">Q. Is prior calligraphy experience required?</text>
+  <text x="190" y="1350" class="tiny">A. No. Beginners are welcome. Instructors adjust pace and assignments by level.</text>
+  <text x="190" y="1380" class="tiny">A. Materials and attendance details are provided during initial guidance.</text>
+
+  <!-- Related Links -->
+  <rect class="sec" x="140" y="1550" width="1160" height="220" />
+  <text x="165" y="1592" class="label">6. Related Links</text>
+  <rect class="card" x="170" y="1620" width="260" height="120" />
+  <rect class="card" x="450" y="1620" width="260" height="120" />
+  <rect class="card" x="730" y="1620" width="260" height="120" />
+  <rect class="card" x="1010" y="1620" width="260" height="120" />
+  <text x="300" y="1688" class="tiny" text-anchor="middle">Courses</text>
+  <text x="580" y="1688" class="tiny" text-anchor="middle">Masters</text>
+  <text x="860" y="1688" class="tiny" text-anchor="middle">Access</text>
+  <text x="1140" y="1688" class="tiny" text-anchor="middle">Contact</text>
+
+  <!-- Contact Strip -->
+  <rect class="sec" x="140" y="1790" width="1160" height="160" />
+  <text x="165" y="1832" class="label">7. Contact Strip</text>
+  <rect class="card" x="170" y="1852" width="1100" height="78" />
+  <text x="190" y="1898" class="tiny">Didn\'t find your answer? Contact form / phone support</text>
+
+  <!-- Footer -->
+  <rect class="sec" x="140" y="1970" width="1160" height="170" />
+  <text x="165" y="2012" class="label">8. Footer</text>
+  <line class="line" x1="170" y1="2030" x2="1270" y2="2030" />
+  <text x="170" y="2072" class="tiny">Contact | Phone | Privacy Policy | Sitemap</text>
+
+  <!-- Notes -->
+  <rect class="card" x="140" y="2160" width="1160" height="540" />
+  <text x="165" y="2200" class="label">Layout Notes</text>
+  <text x="165" y="2232" class="tiny">- Place search and categories above accordion for quick discovery.</text>
+  <text x="165" y="2260" class="tiny">- Keep answer blocks concise and actionable.</text>
+  <text x="165" y="2288" class="tiny">- Route unresolved questions to contact path, not trial CTA.</text>
+  <text x="165" y="2316" class="tiny">- Maintain consistent hierarchy with other subpages.</text>
+</svg>

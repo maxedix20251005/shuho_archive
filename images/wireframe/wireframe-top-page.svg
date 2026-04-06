@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3340" viewBox="0 0 1440 3340">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .frame { fill: #ffffff; stroke: #222; stroke-width: 2; }
+      .sec { fill: #fafafa; stroke: #555; stroke-width: 1.5; }
+      .label { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 22px; fill: #111; font-weight: 700; }
+      .sub { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 16px; fill: #444; }
+      .tiny { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 14px; fill: #666; }
+      .cta { fill: #ececec; stroke: #444; stroke-width: 1.5; }
+      .cta-disabled { fill: #dddddd; stroke: #888; stroke-width: 1.5; }
+      .card { fill: #fff; stroke: #777; stroke-width: 1.2; }
+      .thumb { fill: #f0f0f0; stroke: #999; stroke-dasharray: 6 4; }
+      .line { stroke: #999; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="3340" />
+  <rect class="frame" x="120" y="40" width="1200" height="3260" rx="8" />
+
+  <text x="140" y="28" class="sub">Top Page Wireframe (PC) - based on docs/05-wireframe.html</text>
+
+  <!-- 1. Header -->
+  <rect class="sec" x="140" y="70" width="1160" height="90" />
+  <text x="165" y="124" class="label">1. ヘッダー（ロゴ / グローバルナビ）</text>
+  <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
+  <text x="183" y="121" class="sub">LOGO</text>
+  <rect class="card" x="470" y="92" width="550" height="46" rx="4" />
+  <text x="490" y="121" class="sub">NAV: 塾について | 師範 | コース | 作品 | FAQ | アクセス</text>
+  <!-- 2. Hero -->
+  <rect class="sec" x="140" y="180" width="1160" height="470" />
+  <text x="165" y="222" class="label">2. ヒーロー（全面画像 / センターキャッチコピー）</text>
+  <rect class="thumb" x="170" y="248" width="1100" height="370" />
+  <text x="720" y="430" class="sub" text-anchor="middle">一筆に、品格と心を。</text>
+  <text x="720" y="458" class="tiny" text-anchor="middle">心を整える書の時間を、品川で。</text>
+
+  <!-- 3. History -->
+  <rect class="sec" x="140" y="670" width="1160" height="290" />
+  <text x="165" y="712" class="label">3. 塾の歩み（年表または3カラムで沿革を要約）</text>
+  <rect class="card" x="170" y="742" width="355" height="185" />
+  <rect class="card" x="542" y="742" width="355" height="185" />
+  <rect class="card" x="914" y="742" width="355" height="185" />
+  <text x="285" y="842" class="sub">開講背景</text>
+  <text x="657" y="842" class="sub">沿革</text>
+  <text x="1042" y="842" class="sub">教育方針</text>
+
+  <!-- 4. Masters -->
+  <rect class="sec" x="140" y="980" width="1160" height="320" />
+  <text x="165" y="1022" class="label">4. 師範ピックアップ（3名程度のカード）</text>
+  <rect class="card" x="170" y="1052" width="355" height="220" />
+  <rect class="card" x="542" y="1052" width="355" height="220" />
+  <rect class="card" x="914" y="1052" width="355" height="220" />
+  <rect class="thumb" x="190" y="1072" width="120" height="120" />
+  <rect class="thumb" x="562" y="1072" width="120" height="120" />
+  <rect class="thumb" x="934" y="1072" width="120" height="120" />
+  <text x="330" y="1120" class="tiny">師範情報</text>
+  <text x="702" y="1120" class="tiny">師範情報</text>
+  <text x="1074" y="1120" class="tiny">師範情報</text>
+
+  <!-- 5. Portfolio -->
+  <rect class="sec" x="140" y="1320" width="1160" height="390" />
+  <text x="165" y="1362" class="label">5. 作品ポートフォリオ（カテゴリ別サムネイル）</text>
+  <rect class="card" x="170" y="1392" width="1100" height="42" />
+  <text x="190" y="1419" class="tiny">カテゴリ: 子ども / 大人 / 検定 / テーマ別</text>
+  <rect class="thumb" x="170" y="1450" width="255" height="230" />
+  <rect class="thumb" x="445" y="1450" width="255" height="230" />
+  <rect class="thumb" x="720" y="1450" width="255" height="230" />
+  <rect class="thumb" x="995" y="1450" width="275" height="230" />
+
+  <!-- 6. Courses -->
+  <rect class="sec" x="140" y="1730" width="1160" height="270" />
+  <text x="165" y="1772" class="label">6. コース導線（子ども / 大人 / 検定）</text>
+  <rect class="card" x="170" y="1802" width="355" height="168" />
+  <rect class="card" x="542" y="1802" width="355" height="168" />
+  <rect class="card" x="914" y="1802" width="355" height="168" />
+  <text x="302" y="1888" class="sub">子ども書写</text>
+  <text x="679" y="1888" class="sub">大人実用書</text>
+  <text x="1049" y="1888" class="sub">検定対策</text>
+
+  <!-- 7. News -->
+  <rect class="sec" x="140" y="2020" width="1160" height="240" />
+  <text x="165" y="2062" class="label">7. お知らせ（更新情報）</text>
+  <rect class="card" x="170" y="2092" width="1100" height="46" />
+  <rect class="card" x="170" y="2148" width="1100" height="46" />
+  <rect class="card" x="170" y="2204" width="1100" height="46" />
+  <text x="190" y="2121" class="tiny">YYYY.MM.DD 体験会のお知らせ...</text>
+  <text x="190" y="2177" class="tiny">YYYY.MM.DD 新規募集枠の更新...</text>
+  <text x="190" y="2233" class="tiny">YYYY.MM.DD 作品展示情報...</text>
+
+  <!-- 8. Access -->
+  <rect class="sec" x="140" y="2280" width="1160" height="340" />
+  <text x="165" y="2322" class="label">8. アクセス（地図要約 / 最寄駅 / 徒歩分数）</text>
+  <rect class="thumb" x="170" y="2352" width="640" height="240" />
+  <text x="420" y="2478" class="sub">Map Area</text>
+  <rect class="card" x="840" y="2352" width="430" height="240" />
+  <text x="860" y="2390" class="tiny">住所: 東京都品川区...</text>
+  <text x="860" y="2420" class="tiny">最寄駅: ○○駅 徒歩5分</text>
+  <text x="860" y="2450" class="tiny">開講日: 平日夜 / 土曜</text>
+  <rect class="cta-disabled" x="860" y="2494" width="380" height="52" rx="6" />
+  <text x="898" y="2527" class="sub">体験申込（停止中） / 問い合わせ</text>
+
+  <!-- 9. Footer -->
+  <rect class="sec" x="140" y="2640" width="1160" height="190" />
+  <text x="165" y="2682" class="label">9. フッター（問い合わせ / 電話 / プライバシーポリシー）</text>
+  <line class="line" x1="170" y1="2700" x2="1270" y2="2700" />
+  <text x="170" y="2740" class="tiny">お問い合わせ | 電話番号 | LINE | プライバシーポリシー | サイトマップ</text>
+  <text x="170" y="2780" class="tiny">© SHINAGAWA SHODO SCHOOL</text>
+
+  <!-- Notes -->
+  <rect class="card" x="140" y="2860" width="1160" height="420" />
+  <text x="165" y="2900" class="label">設計メモ</text>
+  <text x="165" y="2934" class="tiny">・体験申込CTAは停止中表示（Disabled）でヘッダー、ヒーロー、アクセスに配置</text>
+  <text x="165" y="2962" class="tiny">・導線順序は「印象形成 -> 信頼形成 -> 比較検討 -> 行動」</text>
+  <text x="165" y="2990" class="tiny">・作品/師範/コースで判断材料を中段に集中配置</text>
+  <text x="165" y="3018" class="tiny">・スマホ版では同構造を縦積み化し、下部固定CTAを追加予定</text>
+</svg>

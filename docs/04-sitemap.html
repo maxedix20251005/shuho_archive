@@ -62,14 +62,40 @@
           <div class="fill-label">Webサイト構造図 <span class="required">必須</span></div>
           <div class="fill-hint">トップページから下層ページまでの階層構造をツリー形式で記載</div>
           <div class="fill-content">
-            <p>（ツリー形式のサイト構造図を記載）</p>
+            <p>トップ（/）</p>
+            <p>├ 塾について（/about）</p>
+            <p>│ ├ 塾の歩み（/about/history）</p>
+            <p>│ └ 教育方針（/about/policy）</p>
+            <p>├ 師範一覧（/masters）</p>
+            <p>│ └ 師範詳細（/masters/{slug}）</p>
+            <p>├ コース・料金（/courses）</p>
+            <p>│ ├ 子ども書写（/courses/kids）</p>
+            <p>│ ├ 大人実用書（/courses/adult）</p>
+            <p>│ └ 検定対策（/courses/certification）</p>
+            <p>├ 作品ポートフォリオ（/portfolio）</p>
+            <p>│ └ 作品詳細（/portfolio/{id}）</p>
+            <p>├ 生徒募集要項（/recruitment）</p>
+            <p>├ よくある質問（/faq）</p>
+            <p>├ アクセス（/access）</p>
+            <p>├ 体験申込（/trial）</p>
+            <p>├ 問い合わせ（/contact）</p>
+            <p>├ 送信完了（/thanks）</p>
+            <p>└ プライバシーポリシー（/privacy）</p>
           </div>
         </div>
         <div class="fill-block">
           <div class="fill-label">Webアプリケーション構造図 <span class="required">必須</span></div>
           <div class="fill-hint">Spring Bootアプリケーションの画面構造をツリー形式で記載</div>
           <div class="fill-content">
-            <p>（ツリー形式のアプリ構造図を記載）</p>
+            <p>管理画面トップ（/admin）</p>
+            <p>├ 問い合わせ一覧（/admin/contacts）</p>
+            <p>│ └ 問い合わせ詳細（/admin/contacts/{id}）</p>
+            <p>├ 体験申込一覧（/admin/trials）</p>
+            <p>│ └ 体験申込詳細（/admin/trials/{id}）</p>
+            <p>├ 作品管理（/admin/works）</p>
+            <p>│ ├ 新規登録（/admin/works/new）</p>
+            <p>│ └ 編集（/admin/works/{id}/edit）</p>
+            <p>└ 師範情報管理（/admin/masters）</p>
           </div>
         </div>
 
@@ -83,10 +109,16 @@
         <table class="doc-table">
           <thead><tr><th>No.</th><th>ページ名</th><th>ページの目的</th><th>主要コンテンツ</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>1</td><td>（トップページ）</td><td>（サービスの魅力を伝え、各ページへ誘導）</td><td>（ヒーロー、サービス紹介、CTA等）</td></tr>
-          <tr class="template-row"><td>2</td><td>（ページ名）</td><td>（目的を記載）</td><td>（コンテンツを記載）</td></tr>
-          <tr class="template-row"><td>3</td><td>（ページ名）</td><td>（目的を記載）</td><td>（コンテンツを記載）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="template-row"><td>1</td><td>トップ</td><td>第一印象形成と主要導線への誘導</td><td>ヒーロー、塾の価値、注目作品、CTA、アクセス要約</td></tr>
+          <tr class="template-row"><td>2</td><td>塾について</td><td>信頼形成</td><td>塾の歩み、理念、指導方針、代表メッセージ</td></tr>
+          <tr class="template-row"><td>3</td><td>師範一覧</td><td>講師理解</td><td>師範プロフィール、得意分野、担当コース</td></tr>
+          <tr class="template-row"><td>4</td><td>コース・料金</td><td>比較検討支援</td><td>対象別コース、月謝、時間割、持ち物、入会フロー</td></tr>
+          <tr class="template-row"><td>5</td><td>作品ポートフォリオ</td><td>品質証明</td><td>作品画像、カテゴリ絞り込み、制作背景</td></tr>
+          <tr class="template-row"><td>6</td><td>生徒募集要項</td><td>募集条件の明確化</td><td>募集対象、定員、受付期間、注意事項</td></tr>
+          <tr class="template-row"><td>7</td><td>FAQ</td><td>不安解消</td><td>初心者可否、道具、欠席振替、服装、支払い方法</td></tr>
+          <tr class="template-row"><td>8</td><td>アクセス</td><td>来塾率向上</td><td>地図、最寄駅、徒歩ルート、外観写真</td></tr>
+          <tr class="template-row"><td>9</td><td>体験申込</td><td>主要CV獲得</td><td>申込フォーム、希望日時、同意チェック</td></tr>
+          <tr class="template-row"><td>10</td><td>問い合わせ</td><td>相談窓口</td><td>問い合わせフォーム、電話番号、LINE導線</td></tr>
           </tbody>
         </table>
 
@@ -97,10 +129,11 @@
         <table class="doc-table">
           <thead><tr><th>No.</th><th>画面名</th><th>画面の目的</th><th>主要機能</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>1</td><td>（ログイン画面）</td><td>（ユーザー認証）</td><td>（メールアドレス/パスワード入力）</td></tr>
-          <tr class="template-row"><td>2</td><td>（一覧画面）</td><td>（データの一覧表示）</td><td>（検索・ソート・ページネーション）</td></tr>
-          <tr class="template-row"><td>3</td><td>（登録画面）</td><td>（新規データ登録）</td><td>（入力フォーム・バリデーション）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="template-row"><td>1</td><td>管理トップ</td><td>運用状況の把握</td><td>新着件数、未対応件数、ショートカット</td></tr>
+          <tr class="template-row"><td>2</td><td>問い合わせ一覧</td><td>問い合わせ対応</td><td>検索、絞り込み、ステータス更新</td></tr>
+          <tr class="template-row"><td>3</td><td>体験申込一覧</td><td>申込対応管理</td><td>希望日時確認、対応メモ、対応状態更新</td></tr>
+          <tr class="template-row"><td>4</td><td>作品管理</td><td>掲載作品の更新</td><td>新規登録、編集、公開/非公開切替</td></tr>
+          <tr class="template-row"><td>5</td><td>師範情報管理</td><td>講師情報の保守</td><td>プロフィール編集、表示順制御</td></tr>
           </tbody>
         </table>
 
@@ -114,14 +147,15 @@
           <div class="fill-label">メインシナリオ <span class="required">必須</span></div>
           <div class="fill-hint">ペルソナがサイトに訪問してから目的を達成するまでの動線（メインの行動パターン）</div>
           <div class="fill-content">
-            <p>（メインのユーザーフローを記載）</p>
+            <p>検索（「品川区 書道教室 初心者」）→ トップ閲覧 → 塾の歩み/師範一覧で信頼確認 → コース・料金で比較検討 → FAQで不安解消 → 体験申込フォーム送信 → 完了ページ到達</p>
           </div>
         </div>
         <div class="fill-block">
           <div class="fill-label">サブシナリオ <span class="optional">任意</span></div>
           <div class="fill-hint">その他の行動パターン（1〜2パターン）</div>
           <div class="fill-content">
-            <p>（サブシナリオを記載）</p>
+            <p>サブ1：SNS流入 → 作品ポートフォリオ閲覧 → 師範一覧 → 問い合わせ送信</p>
+            <p>サブ2：Googleマップ流入 → アクセス確認 → 電話問い合わせ → 体験予約確定</p>
           </div>
         </div>
 
@@ -136,13 +170,19 @@
           <thead><tr><th>URL</th><th>HTTPメソッド</th><th>画面/機能</th><th>説明</th></tr></thead>
           <tbody>
           <tr class="template-row"><td>/</td><td>GET</td><td>トップページ</td><td>Webサイトのトップ</td></tr>
-          <tr class="template-row"><td>/about</td><td>GET</td><td>概要ページ</td><td>サービスの概要</td></tr>
-          <tr class="template-row"><td>/app/login</td><td>GET</td><td>ログイン画面</td><td>ログインフォーム表示</td></tr>
-          <tr class="template-row"><td>/app/login</td><td>POST</td><td>ログイン処理</td><td>認証処理</td></tr>
-          <tr class="template-row"><td>/app/items</td><td>GET</td><td>一覧画面</td><td>データ一覧表示</td></tr>
-          <tr class="template-row"><td>/app/items/new</td><td>GET</td><td>新規登録画面</td><td>登録フォーム表示</td></tr>
-          <tr class="template-row"><td>/app/items</td><td>POST</td><td>新規登録処理</td><td>データ保存</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="template-row"><td>/about</td><td>GET</td><td>塾について</td><td>塾の歩み・理念・方針</td></tr>
+          <tr class="template-row"><td>/masters</td><td>GET</td><td>師範一覧</td><td>師範情報の一覧表示</td></tr>
+          <tr class="template-row"><td>/courses</td><td>GET</td><td>コース・料金</td><td>コース比較と料金表示</td></tr>
+          <tr class="template-row"><td>/portfolio</td><td>GET</td><td>作品ポートフォリオ</td><td>作品一覧と絞り込み表示</td></tr>
+          <tr class="template-row"><td>/recruitment</td><td>GET</td><td>生徒募集要項</td><td>募集条件表示</td></tr>
+          <tr class="template-row"><td>/faq</td><td>GET</td><td>FAQ</td><td>よくある質問の表示</td></tr>
+          <tr class="template-row"><td>/access</td><td>GET</td><td>アクセス</td><td>地図とルート案内</td></tr>
+          <tr class="template-row"><td>/trial</td><td>GET</td><td>体験申込画面</td><td>体験申込フォーム表示</td></tr>
+          <tr class="template-row"><td>/trial</td><td>POST</td><td>体験申込処理</td><td>申込データ保存・通知送信</td></tr>
+          <tr class="template-row"><td>/contact</td><td>GET</td><td>問い合わせ画面</td><td>問い合わせフォーム表示</td></tr>
+          <tr class="template-row"><td>/contact</td><td>POST</td><td>問い合わせ処理</td><td>問い合わせデータ保存・通知送信</td></tr>
+          <tr class="template-row"><td>/thanks</td><td>GET</td><td>完了ページ</td><td>送信完了メッセージ表示</td></tr>
+          <tr class="template-row"><td>/admin</td><td>GET</td><td>管理画面トップ</td><td>運用ダッシュボード表示</td></tr>
           </tbody>
         </table>
 

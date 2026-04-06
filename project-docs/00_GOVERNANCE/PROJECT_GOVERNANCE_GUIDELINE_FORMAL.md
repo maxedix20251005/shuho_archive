@@ -1,77 +1,56 @@
-﻿# PROJECT GOVERNANCE GUIDELINE (FORMAL) / 正式版ガイドライン
+# PROJECT GOVERNANCE GUIDELINE (FORMAL) / 正式版ガイドライン
 
 ## Scope / 適用範囲
-- Applies to design, implementation, testing, release, and operations.
-- デザイン、実装、テスト、リリース、運用に適用する。
-- Covers `docs`, `css`, `js`, and `sql` related delivery and documentation.
-- `docs`、`css`、`js`、`sql` 関連の成果物と文書を対象にする。
+- Applies to planning, design, implementation, testing, release, and operations.
+- 企画、設計、実装、テスト、公開、運用に適用する。
+- Covers deliverables under `docs/`, `css/`, `js/`, and `project-docs/`.
+- `docs/`、`css/`、`js/`、`project-docs/` 配下の成果物を対象とする。
 
 ## Basic Information / 基本情報
-- Site URL / 開発対象サイト: `C:\Users\maxsh\OneDrive\Documents\EDIX\src\shuho-srchive`
-- Public URL / 公開URL: `https://maxedix20251005.github.io/shuho-srchive/index.html`
-- Design document references / デザイン文書参照先: `C:\Users\maxsh\OneDrive\Documents\EDIX\src\portfolio\docs`
-- Governance document references / ガバナンス文書参照先: `C:\Users\maxsh\OneDrive\Documents\EDIX\src\portfolio\project-docs`
-- Test plan source of truth / テスト計画の正本: `project-docs/60_TEST/shuho-srchive_test_plan_refined.xlsx`
-- Test report source document / テスト報告書の元文書: `docs/09-test-report.html`
+- Project: shodo school website launch (`shuho-srchive`).
+- 対象プロジェクト: 書道塾サイト立ち上げ（`shuho-srchive`）。
+- Primary documentation roots:
+  - `docs/`
+  - `project-docs/`
 
 ## Governance Baseline / ガバナンス基準
-- Canonical project governance document: `project-docs/00_GOVERNANCE/PROJECT_GOVERNANCE_AND_RULE.md`
-- 正本となるプロジェクトガバナンス文書: `project-docs/00_GOVERNANCE/PROJECT_GOVERNANCE_AND_RULE.md`
-- Canonical technical baseline: `project-docs/30_TECH/TECH_SPEC.md`
-- 正本となる技術基準: `project-docs/30_TECH/TECH_SPEC.md`
-- Canonical status baseline: `project-docs/10_PROJECT/PROJECT_STATUS.md`
-- 正本となるステータス基準: `project-docs/10_PROJECT/PROJECT_STATUS.md`
-- Canonical restart baseline: `project-docs/90_WIP/WIP.md`
-- 正本となる再開基準: `project-docs/90_WIP/WIP.md`
+- Canonical governance baseline:
+  - `project-docs/00_GOVERNANCE/PROJECT_GOVERNANCE_AND_RULE.md`
+- Canonical status baseline:
+  - `project-docs/10_PROJECT/PROJECT_STATUS.md`
+- Canonical technical baseline:
+  - `project-docs/30_TECH/TECH_SPEC.md`
 
 ## Documentation Baseline / 文書基準
-- Documentation is updated in the same task as implementation.
-- 文書は実装と同じタスクで更新する。
+- Documentation is updated in the same task as implementation or planning changes.
+- 文書は実装変更または企画変更と同じタスクで更新する。
 - UTF-8 is mandatory.
 - UTF-8 を必須とする。
-- All project documents must remain bilingual in English and Japanese.
-- すべての project 文書は英語と日本語の bilingual を維持する。
-- For Japanese content, no mojibake must be confirmed at final review.
-- 日本語を含む場合は、最終確認で文字化けなしを必ず確認する。
+- `project-docs/*` must remain bilingual in English and Japanese.
+- `project-docs/*` は英語と日本語の日英併記を維持する。
+- `docs/*` can be maintained in Japanese-only.
+- `docs/*` は日本語のみで運用可能とする。
 
 ## Mandatory Update Rules / 必須更新ルール
-- Implementation changes: update `PROJECT_STATUS.md` and at least one related document.
-- 実装変更: `PROJECT_STATUS.md` と少なくとも1件の関連文書を更新する。
-- Testing scope/results changed: update `TEST_PLAN.md`.
-- テスト範囲や結果が変わった場合: `TEST_PLAN.md` を更新する。
-- Issue progress changed: update `ISSUE_LIST.md`.
-- 課題進捗が変わった場合: `ISSUE_LIST.md` を更新する。
+- Implementation/design changes: update `PROJECT_STATUS.md` and related docs.
+- 実装・設計変更時は `PROJECT_STATUS.md` と関連文書を更新する。
+- Testing scope/result changes: update `TEST_PLAN.md`.
+- テスト範囲や結果変更時は `TEST_PLAN.md` を更新する。
+- Issue progress changes: update `ISSUE_LIST.md`.
+- 課題進捗変更時は `ISSUE_LIST.md` を更新する。
 - Document add/delete/move/rename: update `DOCUMENT_CATALOG.md`.
-- 文書の追加・削除・移動・リネーム: `DOCUMENT_CATALOG.md` を更新する。
+- 文書の追加・削除・移動・リネーム時は `DOCUMENT_CATALOG.md` を更新する。
 
 ## Review Checklist / レビューチェック
-- UTF-8 and no encoding corruption.
-- UTF-8 であり、エンコーディング破損がないこと。
-- Cross-links and filenames are valid.
-- 相互参照とファイル名が正しいこと。
-- Decision rationale is documented.
-- 判断理由が文書化されていること。
-- Status, issue, and test records are updated.
-- ステータス・課題・テスト記録が更新されていること。
-- High-risk changes include pre-approval and rollback steps.
-- 高リスク変更には事前承認とロールバック手順を含めること。
-- Governance checklist is consulted before sign-off.
-- 確認完了の前にガバナンス・チェックリストを参照すること。
-
-## Operational Notes / 運用補足
-- Supabase auth/role model, seed, and RLS policies are managed as recorded in `TECH_SPEC.md`.
-- Supabase の認証/ロールモデル、seed、RLS ポリシーは `TECH_SPEC.md` の記載どおり管理する。
-- The public landing page `index.html` currently centers on the hero, booking shortcut, experience banner, journey, pickup, and new arrivals sections.
-- 公開ランディングページ `index.html` は、現在 hero、booking shortcut、experience banner、journey、pickup、new arrivals の各セクションを中心に構成する。
-- SQL migration (reservation/inquiry rename to booking/enquiry naming) is tracked in `TECH_SPEC.md` and validated in `TEST_PLAN.md`.
-- SQL migration（reservation/inquiry から booking/enquiry への命名変更）は `TECH_SPEC.md` で管理し、`TEST_PLAN.md` で検証する。
-- Full source traceability for migrated instructions is maintained in:
-- 移行した instructions の完全な参照追跡は以下で維持する。
-  - `INSTRUCTIONS_COVERAGE.md`
-  - `archives/instructions/`
+- UTF-8 and no mojibake.
+- UTF-8 かつ文字化けなし。
+- Valid links and filenames.
+- リンクとファイル名の整合。
+- Recorded rationale for major decisions.
+- 主要判断の根拠記録。
+- Status/issue/test records updated.
+- ステータス・課題・テスト記録の更新。
 
 ## Update Log / 更新履歴
-- 2026-03-25: Formal guideline normalized for this project.
-- 2026-03-25: Added source-mirror + coverage-audit requirement.
-- 2026-03-25: Added basic information references and bilingual document rule.
-
+- 2026-04-06: Re-baselined formal guideline to remove unrelated legacy project assumptions.
+- 2026-04-06: 旧案件依存の前提を除去し、正式版ガイドラインを再整理した。

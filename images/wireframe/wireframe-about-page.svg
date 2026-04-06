@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2600" viewBox="0 0 1440 2600">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .frame { fill: #ffffff; stroke: #222; stroke-width: 2; }
+      .sec { fill: #fafafa; stroke: #555; stroke-width: 1.5; }
+      .label { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 22px; fill: #111; font-weight: 700; }
+      .sub { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 16px; fill: #444; }
+      .tiny { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 14px; fill: #666; }
+      .card { fill: #fff; stroke: #777; stroke-width: 1.2; }
+      .thumb { fill: #f0f0f0; stroke: #999; stroke-dasharray: 6 4; }
+      .line { stroke: #999; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="2600" />
+  <rect class="frame" x="120" y="40" width="1200" height="2520" rx="8" />
+
+  <text x="140" y="28" class="sub">Sub Page Wireframe (PC) - About Page</text>
+
+  <!-- Header -->
+  <rect class="sec" x="140" y="70" width="1160" height="90" />
+  <text x="165" y="124" class="label">1. Header (Logo / Global Navigation)</text>
+  <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
+  <text x="183" y="121" class="sub">LOGO</text>
+  <rect class="card" x="470" y="92" width="800" height="46" rx="4" />
+  <text x="490" y="121" class="sub">NAV: Home | About | Masters | Courses | Portfolio | FAQ | Access | Contact</text>
+
+  <!-- Hero / Page Title -->
+  <rect class="sec" x="140" y="180" width="1160" height="260" />
+  <text x="165" y="222" class="label">2. Page Hero (About the School)</text>
+  <rect class="thumb" x="170" y="248" width="1100" height="160" />
+  <text x="720" y="334" class="sub" text-anchor="middle">School Philosophy / Intro Visual</text>
+
+  <!-- History Timeline -->
+  <rect class="sec" x="140" y="460" width="1160" height="430" />
+  <text x="165" y="502" class="label">3. School History (Timeline)</text>
+  <line class="line" x1="220" y1="560" x2="220" y2="840" />
+  <circle cx="220" cy="600" r="8" fill="#777" />
+  <circle cx="220" cy="690" r="8" fill="#777" />
+  <circle cx="220" cy="780" r="8" fill="#777" />
+  <rect class="card" x="250" y="570" width="1020" height="55" />
+  <rect class="card" x="250" y="660" width="1020" height="55" />
+  <rect class="card" x="250" y="750" width="1020" height="55" />
+  <text x="270" y="603" class="tiny">YYYY: Founding background and origin story</text>
+  <text x="270" y="693" class="tiny">YYYY: Key milestone and educational expansion</text>
+  <text x="270" y="783" class="tiny">YYYY: Current positioning and future direction</text>
+
+  <!-- Philosophy / Message -->
+  <rect class="sec" x="140" y="910" width="1160" height="360" />
+  <text x="165" y="952" class="label">4. Philosophy &amp; Message</text>
+  <rect class="card" x="170" y="980" width="540" height="260" />
+  <text x="190" y="1015" class="sub">Educational Philosophy</text>
+  <text x="190" y="1045" class="tiny">Core beliefs, teaching values, and learning stance.</text>
+  <rect class="card" x="730" y="980" width="540" height="260" />
+  <text x="750" y="1015" class="sub">Head Instructor Message</text>
+  <text x="750" y="1045" class="tiny">Personal message to beginners and prospective students.</text>
+
+  <!-- Credibility / Evidence -->
+  <rect class="sec" x="140" y="1290" width="1160" height="320" />
+  <text x="165" y="1332" class="label">5. Credibility Block (Achievements / Teaching Results)</text>
+  <rect class="card" x="170" y="1360" width="355" height="220" />
+  <rect class="card" x="542" y="1360" width="355" height="220" />
+  <rect class="card" x="914" y="1360" width="355" height="220" />
+  <text x="285" y="1475" class="tiny">Awards / Certifications</text>
+  <text x="657" y="1475" class="tiny">Student Results</text>
+  <text x="1042" y="1475" class="tiny">Community Activities</text>
+
+  <!-- Related Navigation -->
+  <rect class="sec" x="140" y="1630" width="1160" height="220" />
+  <text x="165" y="1672" class="label">6. Related Links</text>
+  <rect class="card" x="170" y="1700" width="260" height="120" />
+  <rect class="card" x="450" y="1700" width="260" height="120" />
+  <rect class="card" x="730" y="1700" width="260" height="120" />
+  <rect class="card" x="1010" y="1700" width="260" height="120" />
+  <text x="255" y="1768" class="tiny" text-anchor="middle">Masters</text>
+  <text x="535" y="1768" class="tiny" text-anchor="middle">Courses</text>
+  <text x="815" y="1768" class="tiny" text-anchor="middle">Portfolio</text>
+  <text x="1095" y="1768" class="tiny" text-anchor="middle">Contact</text>
+
+  <!-- Contact Strip -->
+  <rect class="sec" x="140" y="1870" width="1160" height="170" />
+  <text x="165" y="1912" class="label">7. Contact Strip</text>
+  <rect class="card" x="170" y="1932" width="1100" height="80" />
+  <text x="190" y="1978" class="tiny">For inquiries: contact form / phone (no trial-application CTA in current scope)</text>
+
+  <!-- Footer -->
+  <rect class="sec" x="140" y="2060" width="1160" height="170" />
+  <text x="165" y="2102" class="label">8. Footer</text>
+  <line class="line" x1="170" y1="2120" x2="1270" y2="2120" />
+  <text x="170" y="2162" class="tiny">Contact | Phone | Privacy Policy | Sitemap</text>
+
+  <!-- Notes -->
+  <rect class="card" x="140" y="2250" width="1160" height="280" />
+  <text x="165" y="2290" class="label">Layout Notes</text>
+  <text x="165" y="2322" class="tiny">- Purpose: trust building through history, philosophy, and credibility.</text>
+  <text x="165" y="2350" class="tiny">- Place evidence before conversion links to reduce uncertainty.</text>
+  <text x="165" y="2378" class="tiny">- Keep visual rhythm consistent with the top page structure.</text>
+</svg>
