@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>企画提案書 -  プロジェクトアーカイブ</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+  <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 01</div>
+        <h1 class="doc-title">企画提案書</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="external-link-box">
+          <div class="external-link-box-title">
+            <span class="material-symbols-outlined">link</span>
+            詳細ドキュメント（Google スプレッドシート）
+          </div>
+          <div class="external-link-box-desc">
+            このページは概要のみを記載しています。詳細な企画提案書は以下のリンクからご確認ください。
+          </div>
+          <div class="external-link-input">
+            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-01">
+            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-01').value || 'https://docs.google.com', '_blank'); return false;">
+              <span class="material-symbols-outlined">open_in_new</span>
+              開く
+            </a>
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">プロジェクト概要</a></li>
+            <li><a href="#sec2">背景と課題</a></li>
+            <li><a href="#sec3">提案するソリューション</a></li>
+            <li><a href="#sec4">制作範囲</a></li>
+            <li><a href="#sec5">使用技術</a></li>
+            <li><a href="#sec6">スケジュール</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> プロジェクト概要</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">サービス名 <span class="required">必須</span></div>
+          <div class="fill-hint">制作するWebサービスの名前</div>
+          <div class="fill-content">
+            <p><strong>品川書道塾「墨の道」公式サイト（仮）</strong></p>
+            <p>地域密着（東京都品川区）で、初心者から上級者まで通える書道塾のブランドサイト兼入塾導線サイト。</p>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">コンセプト <span class="required">必須</span></div>
+          <div class="fill-hint">サービスを一言で表す説明（キャッチコピー＋1〜2文の説明）</div>
+          <div class="fill-content">
+            <p><strong>⑥ サイトコンセプト（世界観・方向性）</strong></p>
+            <p><strong>キャッチコピー：</strong>「一筆に、品格と心を。」</p>
+            <p><strong>世界観：</strong>静けさ・余白・和の上質感を軸に、敷居の高さではなく「安心して始められる本格指導」を伝える。作品写真を主役にし、文字情報は簡潔に整理する。</p>
+            <p><strong>トーン＆マナー：</strong>黒・生成り・朱を基調。講師の人柄と教室の空気感が伝わる実写を多用。初心者向け説明を明示し、心理的ハードルを下げる。</p>
+            <p><strong>① サイトの目的（ビジネスゴール）</strong></p>
+            <ul>
+              <li>塾の信頼形成：塾の歩み・師範実績・作品品質を体系的に提示し、比較検討時の不安を解消する。</li>
+              <li>生徒募集の最大化：体験申込・問い合わせを獲得し、月次入塾者数を安定化させる。</li>
+              <li>対象層拡張：子ども・社会人・シニア・外国人学習者まで受け皿を可視化し、対象の偏りを減らす。</li>
+              <li>運用効率化：電話依存を減らし、フォーム経由で必要情報を取得して事務対応時間を短縮する。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">ターゲットユーザー <span class="required">必須</span></div>
+          <div class="fill-hint">このサービスを使う主なユーザー像（概要レベル）</div>
+          <div class="fill-content">
+            <p><strong>② ターゲットペルソナ（複数パターン）</strong></p>
+            <table class="doc-table">
+              <thead><tr><th>ペルソナ</th><th>属性</th><th>主目的</th><th>重視情報</th><th>CV動機</th></tr></thead>
+              <tbody>
+              <tr><td>小学生の保護者</td><td>品川区在住 / 30〜40代</td><td>子どもの集中力・礼儀・文字改善</td><td>通いやすさ、月謝、安全性、講師相性</td><td>体験授業</td></tr>
+              <tr><td>社会人初心者</td><td>20〜40代 / 会社員</td><td>趣味・リフレッシュ・美文字</td><td>平日夜/土日枠、初心者対応、道具不要可否</td><td>LINE相談→体験予約</td></tr>
+              <tr><td>シニア層</td><td>60〜70代</td><td>生涯学習・仲間づくり</td><td>教室の雰囲気、継続しやすさ、負担の少なさ</td><td>電話またはフォーム相談</td></tr>
+              <tr><td>検定志向学習者</td><td>学生〜社会人</td><td>段級位取得・展覧会出品</td><td>師範実績、指導方針、合格/受賞実績</td><td>入塾面談予約</td></tr>
+              <tr><td>訪日/在住外国人</td><td>20〜50代</td><td>文化体験としての書道</td><td>英語対応、単発受講可否、アクセス</td><td>英語フォーム予約</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> 背景と課題</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">市場の現状 <span class="required">必須</span></div>
+          <div class="fill-hint">このサービスが存在する市場の現状と課題</div>
+          <div class="fill-content">
+            <p><strong>④ 競合となる書道教室の特徴（一般傾向）</strong></p>
+            <ul>
+              <li>講師の肩書・実績訴求が中心で、初心者向け導線が弱い。</li>
+              <li>月謝・時間割・持ち物など意思決定に必要な情報が散在し、問い合わせ前に離脱しやすい。</li>
+              <li>作品掲載はあるが更新頻度が低く、教室の現在の雰囲気が伝わりにくい。</li>
+              <li>スマホUI最適化が不十分で、地図・申込導線が使いにくいサイトが多い。</li>
+              <li>電話前提運用が残っており、平日日中に問い合わせできない層を取りこぼしている。</li>
+            </ul>
+            <p>品川区の教室比較では、駅近・初心者歓迎・子ども対応の3点が比較軸になりやすい。</p>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">解決すべき課題 <span class="required">必須</span></div>
+          <div class="fill-hint">本プロジェクトで解決を目指す具体的な課題（3つ程度）</div>
+          <div class="fill-content">
+            <p><strong>③ ユーザーのニーズ・課題</strong></p>
+            <table class="doc-table">
+              <thead><tr><th>ユーザーニーズ</th><th>現状課題</th><th>サイト上の解決方法</th></tr></thead>
+              <tbody>
+              <tr><td>初心者でも通えるか知りたい</td><td>専門用語中心で難しそうに見える</td><td>「初心者向けコース」専用ページ、初回の流れを図解</td></tr>
+              <tr><td>継続可能か判断したい</td><td>時間割・費用・頻度の情報不足</td><td>料金表、曜日別枠、欠席時ルールを1ページ集約</td></tr>
+              <tr><td>講師との相性を確認したい</td><td>講師紹介が肩書のみ</td><td>師範ごとの指導方針・得意分野・コメントを掲載</td></tr>
+              <tr><td>教室のレベル感を知りたい</td><td>作品の分類がなく比較しづらい</td><td>作品を「子ども/大人/級別/テーマ別」で絞り込み表示</td></tr>
+              <tr><td>すぐ相談したい</td><td>問い合わせ手段が電話のみ</td><td>フォーム・LINE・電話の3導線を常時表示</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> 提案するソリューション</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">サービスの特長 <span class="required">必須</span></div>
+          <div class="fill-hint">競合と差別化するサービスの特長を3つ</div>
+          <div class="fill-content">
+            <p><strong>⑤ 差別化ポイントの提案</strong></p>
+            <ul>
+              <li><strong>コース設計の明確化：</strong>「子ども書写」「大人実用書」「師範/検定対策」「文化体験」の4軸で目的別に入口を分ける。</li>
+              <li><strong>師範の見える化：</strong>経歴だけでなく、指導スタイル・得意テーマ・対応対象（初心者/検定）をカード化。</li>
+              <li><strong>作品ポートフォリオの運用型設計：</strong>月次更新し、制作背景・学習段階を添えることで成長イメージを具体化。</li>
+              <li><strong>地域密着の実用情報：</strong>最寄り駅からの徒歩分数、近隣ランドマーク、保護者待機可否を明記。</li>
+              <li><strong>体験前不安の解消：</strong>道具レンタル有無、服装、所要時間、当日の流れをFAQで先回り提示。</li>
+            </ul>
+            <p><strong>⑧ コンバージョン設計（問い合わせ導線）</strong></p>
+            <table class="doc-table">
+              <thead><tr><th>導線</th><th>設置箇所</th><th>取得項目</th><th>目的</th></tr></thead>
+              <tbody>
+              <tr><td>体験申込フォーム</td><td>ヘッダー固定ボタン / 各コース末尾 / フッター</td><td>希望コース、年齢層、希望日時、連絡先</td><td>最重要CVの獲得</td></tr>
+              <tr><td>LINE相談</td><td>スマホ下部固定 / FAQ内</td><td>任意相談内容</td><td>心理的障壁が高い層の一次接点</td></tr>
+              <tr><td>電話問い合わせ</td><td>ファーストビュー / アクセスページ</td><td>口頭ヒアリング</td><td>シニア層・当日相談の受け皿</td></tr>
+              </tbody>
+            </table>
+            <p>導線ルール：各主要ページで「体験申込」CTAを1stビュー内に1つ、本文内に1つ、最下部に1つ配置する。</p>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> 制作範囲</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">Webサイト（フロントエンド）の範囲 <span class="required">必須</span></div>
+          <div class="fill-hint">制作するWebサイトのページ一覧と概要</div>
+          <div class="fill-content">
+            <p><strong>⑦ 必要なページ構成（理由付き）</strong></p>
+            <table class="doc-table">
+              <thead><tr><th>ページ</th><th>主目的</th><th>必要理由</th></tr></thead>
+              <tbody>
+              <tr><td>トップ</td><td>第一印象・導線集約</td><td>教室価値、対象者別導線、体験CTAを最短提示するため</td></tr>
+              <tr><td>塾について（理念・歩み）</td><td>信頼形成</td><td>開講背景と継続実績の提示で比較検討時の安心材料を作るため</td></tr>
+              <tr><td>師範一覧</td><td>講師理解</td><td>担当領域と人柄の可視化で「相性不安」を解消するため</td></tr>
+              <tr><td>コース・料金</td><td>意思決定支援</td><td>年齢/目的別に費用と通い方を比較可能にするため</td></tr>
+              <tr><td>作品ポートフォリオ</td><td>品質証明</td><td>指導成果を可視化し、入塾後イメージを具体化するため</td></tr>
+              <tr><td>生徒募集（募集要項）</td><td>募集情報明示</td><td>定員・募集時期・対象を明確化しミスマッチを防ぐため</td></tr>
+              <tr><td>体験申込・問い合わせ</td><td>CV獲得</td><td>必要入力を最小化し、送信完了率を上げるため</td></tr>
+              <tr><td>アクセス</td><td>来訪支援</td><td>地図・最寄駅・写真で迷いを減らし来塾率を高めるため</td></tr>
+              <tr><td>よくある質問</td><td>不安解消</td><td>問い合わせ前の離脱理由（初心者不安、道具、欠席対応）を解消するため</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">Webアプリケーション（サーバーサイド）の範囲 <span class="required">必須</span></div>
+          <div class="fill-hint">制作するWebアプリケーションの機能概要</div>
+          <div class="fill-content">
+            <p><strong>⑨ KPI（具体的数値イメージ）</strong></p>
+            <table class="doc-table">
+              <thead><tr><th>KPI</th><th>目標値（公開3か月）</th><th>計測方法</th></tr></thead>
+              <tbody>
+              <tr><td>月間セッション数（品川区中心）</td><td>1,500〜2,000</td><td>GA4（地域セグメント）</td></tr>
+              <tr><td>体験申込CV数</td><td>月20件</td><td>フォーム送信完了イベント</td></tr>
+              <tr><td>問い合わせ総数（フォーム+LINE+電話）</td><td>月35件</td><td>GA4 + 電話計測 + LINE管理画面</td></tr>
+              <tr><td>CVR（全体）</td><td>1.5〜2.0%</td><td>CV数 / セッション数</td></tr>
+              <tr><td>主要ページ離脱率（コース・料金）</td><td>40%以下</td><td>GA4探索レポート</td></tr>
+              <tr><td>体験→入塾転換率</td><td>35%以上</td><td>体験台帳と入塾台帳の突合</td></tr>
+              </tbody>
+            </table>
+            <p><strong>運用要件：</strong>GA4イベント（CTAクリック、フォーム到達、送信完了）を実装し、月次でKPIレビューを実施。3か月でCTA文言とフォーム項目をA/B改善する。</p>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec5">
+          <h2 class="section-title"><span class="section-icon">5</span> 使用技術</h2>
+
+<p style="font-size:13px;color:var(--text-light);margin-bottom:8px;">※ 自分の実際の使用技術に合わせて編集してください</p>
+        <table class="doc-table">
+          <thead><tr><th>区分</th><th>技術</th><th>用途</th></tr></thead>
+          <tbody>
+          <tr class="template-row"><td>フロントエンド</td><td>HTML / CSS / JavaScript</td><td>Webサイト構築</td></tr>
+          <tr class="template-row"><td>CSSフレームワーク</td><td>（Tailwind CSS 等）</td><td>スタイリング効率化</td></tr>
+          <tr class="template-row"><td>バックエンド</td><td>Java / Spring Boot</td><td>Webアプリケーション</td></tr>
+          <tr class="template-row"><td>テンプレートエンジン</td><td>Thymeleaf</td><td>画面表示</td></tr>
+          <tr class="template-row"><td>O/Rマッピング</td><td>MyBatis</td><td>データベース操作</td></tr>
+          <tr class="template-row"><td>データベース</td><td>（MySQL / H2 等）</td><td>データ永続化</td></tr>
+          <tr class="template-row"><td>デザインツール</td><td>Figma</td><td>ワイヤーフレーム・モックアップ</td></tr>
+          <tr class="template-row"><td>バージョン管理</td><td>Git / GitHub</td><td>ソースコード管理・公開</td></tr>
+          <tr class="template-row"><td>AI活用</td><td>ChatGPT / Claude</td><td>プロンプトプログラミング</td></tr>
+          </tbody>
+        </table>
+
+        </section>
+
+        <section class="section" id="sec6">
+          <h2 class="section-title"><span class="section-icon">6</span> スケジュール</h2>
+
+        <table class="doc-table">
+          <thead><tr><th>期間</th><th>フェーズ</th><th>内容</th></tr></thead>
+          <tbody>
+          <tr class="template-row"><td>Day 1〜3</td><td>企画</td><td>マーケットリサーチ・企画立案</td></tr>
+          <tr class="template-row"><td>Day 4〜5</td><td>設計</td><td>ペルソナ・サイトマップ設計</td></tr>
+          <tr class="template-row"><td>Day 6〜7</td><td>デザイン</td><td>ワイヤーフレーム・デザインガイドライン</td></tr>
+          <tr class="template-row"><td>Day 8〜12</td><td>フロント実装</td><td>HTML/CSS/JavaScript によるWebサイト構築</td></tr>
+          <tr class="template-row"><td>Day 13〜14</td><td>プロジェクトアーカイブ構築</td><td>プロジェクトアーカイブサイト・ドキュメント配置</td></tr>
+          <tr class="template-row"><td>Day 15〜16</td><td>前半完了</td><td>GitHub Pages 公開・前半振り返り</td></tr>
+          <tr class="template-row"><td>Day 17〜19</td><td>バックエンド設計</td><td>仕様書・DB設計書作成</td></tr>
+          <tr class="template-row"><td>Day 20〜24</td><td>バックエンド実装</td><td>Spring Boot アプリケーション開発</td></tr>
+          <tr class="template-row"><td>Day 25〜27</td><td>追加機能</td><td>検索・認証・追加機能の実装</td></tr>
+          <tr class="template-row"><td>Day 28〜29</td><td>テスト</td><td>テスト実施・バグ修正</td></tr>
+          <tr class="template-row"><td>Day 30〜31</td><td>ドキュメント</td><td>振り返り・技術記事・最終調整</td></tr>
+          <tr class="template-row"><td>Day 32</td><td>最終提出</td><td>プロジェクトアーカイブ最終版公開</td></tr>
+          </tbody>
+        </table>
+
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
