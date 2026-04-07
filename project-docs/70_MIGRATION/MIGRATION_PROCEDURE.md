@@ -126,6 +126,58 @@ git push -u origin main --force
 - EN: Approver: Project Owner
 - JA: 承認責任: Project Owner
 
-## 11. Change Log / 更新履歴
+## 11. Suggested Commit Message Set / 推奨コミットメッセージセット
+- EN: Use these messages to keep migration history easy to audit.
+- JA: 移行履歴を追跡しやすくするため、以下のメッセージを推奨する。
+
+```text
+chore: initialise shuho-website scaffold (public pages, admin pages, assets)
+docs: add migration runbook for history-preserving split
+chore: migration checkpoint before subtree split
+chore: create split branch from shuho-website with git subtree split
+chore: push split history to shuho-calligraphy-salon main
+docs: record migration result and destination repository link
+```
+
+- EN: If using `git filter-repo`, replace split-specific messages with `filter-repo` wording.
+- JA: `git filter-repo` を使う場合は、split 向け文言を `filter-repo` ベースに置換する。
+
+## 12. Change Log / 更新履歴
 - 2026-04-07: Initial version created for shuho website migration to `shuho-calligraphy-salon` repository.
 - 2026-04-07: `shuho-calligraphy-salon` リポジトリ移行向け初版を作成。
+
+
+## Appendix A. First Migration Run (Concrete Commands) / 初回移行の実行コマンド（具体例）
+- EN: Run from the source repository root after committing all `shuho-website/` work.
+- JA: `shuho-website/` の実装をコミット後、元リポジトリのルートで実行する。
+
+```bash
+# 1) Ensure clean and up-to-date main
+git checkout main
+git pull --ff-only
+
+# 2) Create checkpoint commit/tag (if there are staged changes)
+git add -A
+git commit -m "chore: migration checkpoint for shuho-website"
+git tag migration/shuho-website-pre-split-20260407
+
+# 3) Create split branch from shuho-website history
+git subtree split --prefix=shuho-website -b split/shuho-website
+
+# 4) Register destination remote (idempotent)
+git remote remove shuho-site 2>/dev/null || true
+git remote add shuho-site https://github.com/maxedix20251005/shuho-calligraphy-salon.git
+
+# 5) Push split history as destination main
+git push shuho-site split/shuho-website:main
+
+# 6) Verify
+git ls-remote --heads shuho-site
+```
+
+- EN: If branch protection blocks direct push to `main`, push to `migration/initial` and open PR in destination.
+- JA: `main` への直接 push が保護設定で禁止される場合は、`migration/initial` に push して移行先でPR作成する。
+
+```bash
+git push shuho-site split/shuho-website:migration/initial
+```

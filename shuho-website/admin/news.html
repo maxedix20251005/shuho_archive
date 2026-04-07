@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理画面: お知らせ管理 | 秀峰書道サロン</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-side">
+      <h1>秀峰管理</h1>
+      <nav class="admin-nav" aria-label="Admin Navigation">
+        <a href="./works.html">作品管理</a>
+        <a href="./enquiries.html">問い合わせ管理</a>
+        <a class="is-active" href="./news.html">お知らせ管理</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h2>お知らせ管理</h2>
+        <button class="btn-primary" type="button">新規登録</button>
+      </header>
+
+      <section class="admin-panel">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr><th>ID</th><th>掲載日</th><th>タイトル</th><th>状態</th><th>操作</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>N-001</td><td>2026.04.07</td><td>春期の受講枠を更新しました</td><td><span class="badge-pub">公開</span></td><td><button class="btn-mini">編集</button></td></tr>
+              <tr><td>N-002</td><td>2026.04.06</td><td>作品展示の掲載作品を追加しました</td><td><span class="badge-draft">下書き</span></td><td><button class="btn-mini">編集</button></td></tr>
+              <tr><td>N-003</td><td>2026.04.03</td><td>新年度コース案内を公開しました</td><td><span class="badge-pub">公開</span></td><td><button class="btn-mini">編集</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../assets/js/admin.js"></script>
+</body>
+</html>

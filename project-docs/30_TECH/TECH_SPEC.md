@@ -1,36 +1,66 @@
-﻿# TECH SPEC / 謚陦謎ｻ墓ｧ俶ｭ｣譛ｬ
+﻿# TECH SPEC / 技術仕様
 
-## 1. Purpose / 逶ｮ逧・- Define the technical baseline for the shodo school website launch project.
-- 譖ｸ驕灘｡ｾ繧ｵ繧､繝育ｫ九■荳翫￡繝励Ο繧ｸ繧ｧ繧ｯ繝医・謚陦灘渕貅悶ｒ螳夂ｾｩ縺吶ｋ縲・
-## 2. Current Phase / 迴ｾ蝨ｨ繝輔ぉ繝ｼ繧ｺ
-- Current scope is planning and requirements definition.
-- 迴ｾ蝨ｨ縺ｮ蟇ｾ雎｡縺ｯ莨∫判繝ｻ隕∽ｻｶ螳夂ｾｩ縺ｧ縺ゅｋ縲・- Implementation details are provisional and must be finalized before development starts.
-- 螳溯｣・ｩｳ邏ｰ縺ｯ證ｫ螳壹〒縺ゅｊ縲・幕逋ｺ逹謇句燕縺ｫ遒ｺ螳壹☆繧九・
-## 3. Delivery Scope / 謌先棡迚ｩ遽・峇
-- Public website planning/specification documents under `docs/`.
-- `docs/` 驟堺ｸ九・蜈ｬ髢九し繧､繝井ｼ∫判繝ｻ莉墓ｧ俶枚譖ｸ縲・- Governance and project control documents under `project-docs/`.
-- `project-docs/` 驟堺ｸ九・繧ｬ繝舌リ繝ｳ繧ｹ繝ｻ繝励Ο繧ｸ繧ｧ繧ｯ繝育ｮ｡逅・枚譖ｸ縲・
-## 4. Technical Baseline (Provisional) / 謚陦捺婿驥晢ｼ域圻螳夲ｼ・- Frontend: static HTML/CSS/JavaScript.
-- 繝輔Ο繝ｳ繝医お繝ｳ繝峨・髱咏噪 HTML/CSS/JavaScript 繧貞渕譛ｬ縺ｨ縺吶ｋ縲・- Responsive support: mobile-first, then tablet/desktop optimization.
-- 蟇ｾ蠢懈婿驥昴・ mobile-first 繧貞渕譛ｬ縺ｨ縺励√ち繝悶Ξ繝・ヨ/PC繧呈怙驕ｩ蛹悶☆繧九・- Analytics: event tracking for CTA and form conversion metrics.
-- 險域ｸｬ縺ｯCTA縺ｨ繝輔か繝ｼ繝CV繧剃ｸｭ蠢・↓繧､繝吶Φ繝郁ｨ域ｸｬ繧定｡後≧縲・- Form handling and backend integration are TBD in implementation planning.
-- 繝輔か繝ｼ繝騾∽ｿ｡蜃ｦ逅・→繝舌ャ繧ｯ繧ｨ繝ｳ繝蛾｣謳ｺ縺ｯ螳溯｣・ｨｭ險医〒遒ｺ螳壹☆繧九・
-## 5. Information Architecture Baseline / 諠・ｱ險ｭ險亥渕貅・- Primary references:
-- 荳ｻ隕∝盾辣ｧ:
-  - `docs/01-proposal.html`
-  - `docs/04-sitemap.html`
-  - `docs/05-wireframe.html`
-  - `docs/07-specification.html`
-- Any structural change must be synchronized across the above files.
-- 讒矩螟画峩譎ゅ・荳願ｨ倥ヵ繧｡繧､繝ｫ髢薙〒蜷梧凾謨ｴ蜷医☆繧九・
-## 6. Non-functional Baseline / 髱樊ｩ溯・蝓ｺ貅・- UTF-8 encoding is mandatory for all project documents.
-- 蜈ｨ譁・嶌縺ｧ UTF-8 繧貞ｿ・医→縺吶ｋ縲・- Updated Japanese content must be checked for mojibake.
-- 譌･譛ｬ隱樊峩譁ｰ譎ゅ・譁・ｭ怜喧縺醍｢ｺ隱阪ｒ蠢・医→縺吶ｋ縲・- Documentation changes require same-task updates in status and issue tracking documents.
-- 譁・嶌螟画峩譎ゅ・蜷御ｸ繧ｿ繧ｹ繧ｯ縺ｧ繧ｹ繝・・繧ｿ繧ｹ譁・嶌縺ｨ隱ｲ鬘悟床蟶ｳ繧呈峩譁ｰ縺吶ｋ縲・
-## 7. Security & Privacy Baseline / 繧ｻ繧ｭ繝･繝ｪ繝・ぅ繝ｻ繝励Λ繧､繝舌す繝ｼ蝓ｺ貅・- Define personal data handling policy before enabling enquiry forms in production.
-- 蝠上＞蜷医ｏ縺帙・菴馴ｨ鍋筏霎ｼ繝輔か繝ｼ繝繧呈悽逡ｪ驕狗畑縺吶ｋ蜑阪↓蛟倶ｺｺ諠・ｱ蜿匁桶譁ｹ驥昴ｒ遒ｺ螳壹☆繧九・- Use encrypted transport (HTTPS) for all public pages and form submissions.
-- 蜈ｬ髢九・繝ｼ繧ｸ縺ｨ繝輔か繝ｼ繝騾∽ｿ｡縺ｯ HTTPS 繧貞燕謠舌→縺吶ｋ縲・
-## 8. Open Decisions / 譛ｪ遒ｺ螳壻ｺ矩・- Final hosting and deployment pipeline.
-- 譛邨ゅ・繧ｹ繝・ぅ繝ｳ繧ｰ縺ｨ繝・・繝ｭ繧､謇矩・・- Form backend architecture and notification channel.
-- 繝輔か繝ｼ繝縺ｮ繝舌ャ繧ｯ繧ｨ繝ｳ繝画ｧ区・縺ｨ騾夂衍繝√Ε繝阪Ν縲・- Operational CMS necessity and scope.
-- CMS驕狗畑隕∝凄縺ｨ遽・峇縲・
+## 1. Purpose / 目的
+- EN: Define the technical baseline for implementation and operations of the Shuho website.
+- JA: 秀峰サイトの実装・運用における技術基準を定義する。
+
+## 2. Current Phase / 現在フェーズ
+- EN: Implementation in progress with static HTML/CSS/JS architecture.
+- JA: 静的 HTML/CSS/JS 構成で実装進行中。
+- EN: Supabase integration is partially implemented and pending production configuration.
+- JA: Supabase 連携は一部実装済みで、本番設定投入待ち。
+
+## 3. Delivery Scope / 対象範囲
+- EN: Public website under `shuho-website/*.html`.
+- JA: 公開サイト（`shuho-website/*.html`）。
+- EN: Admin screens under `shuho-website/admin/*` (works/enquiries/news).
+- JA: 管理画面（`shuho-website/admin/*`、作品/問い合わせ/お知らせ）。
+- EN: Technical/project docs under `project-docs/*`.
+- JA: 技術・管理文書（`project-docs/*`）。
+
+## 4. Technical Baseline / 技術基準
+- EN: Frontend: static HTML + CSS + vanilla JavaScript.
+- JA: フロントエンド: 静的 HTML + CSS + Vanilla JavaScript。
+- EN: Responsive strategy: mobile-first.
+- JA: レスポンシブ方針: mobile-first。
+- EN: Backend service: Supabase (REST-based access from JS).
+- JA: バックエンド: Supabase（JS から REST 経由で利用）。
+- EN: Data focus: enquiries, works, news management.
+- JA: データ対象: 問い合わせ、作品、お知らせ管理。
+
+## 5. Integration Baseline / 連携基準
+- EN: Enquiry form submits via `assets/js/site.js` and `assets/js/supabase-client.js`.
+- JA: 問い合わせフォームは `assets/js/site.js` と `assets/js/supabase-client.js` で送信。
+- EN: If `supabase/config.js` is missing, form uses local fallback success flow.
+- JA: `supabase/config.js` 未設定時はローカル成功フォールバックで動作。
+- EN: Live DB insertion requires configured `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+- JA: DB実登録には `SUPABASE_URL` と `SUPABASE_ANON_KEY` の設定が必要。
+
+## 6. Non-functional Baseline / 非機能基準
+- EN: Encoding: UTF-8 mandatory across project docs.
+- JA: 文字コード: project-docs は UTF-8 必須。
+- EN: Availability target (initial): static pages accessible without backend dependency.
+- JA: 初期可用性目標: バックエンド非依存で静的ページ表示可能。
+- EN: Security baseline: HTTPS required in production.
+- JA: セキュリティ基準: 本番は HTTPS 必須。
+- EN: Privacy baseline: personal data handling must follow privacy policy and least-privilege DB access.
+- JA: 個人情報基準: プライバシーポリシー準拠および最小権限でのDBアクセス。
+
+## 7. Open Decisions / 未確定事項
+- EN: Production domain for canonical/`og:url`.
+- JA: canonical/`og:url` 用の本番ドメイン。
+- EN: Supabase production config and secret handling workflow.
+- JA: Supabase 本番設定と秘密情報運用フロー。
+- EN: Admin live CRUD completion schedule.
+- JA: 管理画面実CRUD連携の完了スケジュール。
+
+## 8. Related Documents / 関連文書
+- `project-docs/10_PROJECT/PROJECT_STATUS.md`
+- `project-docs/10_PROJECT/BACKLOG.md`
+- `project-docs/70_MIGRATION/MIGRATION_PROCEDURE.md`
+- `docs/07-specification.html`
+
+## 9. Update Log / 更新履歴
+- 2026-04-06: Initial technical baseline for planning phase.
+- 2026-04-07: Updated to reflect current implementation status and Supabase enquiry path.
+- 2026-04-07: Rebuilt document in clean UTF-8 bilingual format.
