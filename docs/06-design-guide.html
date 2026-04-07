@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>デザインガイドライン -  プロジェクトアーカイブ</title>
+  <title>デザインガイドライン - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,16 +13,16 @@
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
         <div class="doc-category">DOCUMENT 06</div>
         <h1 class="doc-title">デザインガイドライン</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: Webディレクター / デザイナー</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.0</span>
         </div>
       </header>
 
@@ -31,17 +31,14 @@
         <div class="external-link-box">
           <div class="external-link-box-title">
             <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
+            参照資料
           </div>
           <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細なデザインガイドラインは以下のリンクからご確認ください。
+            本ガイドラインは、丸岡城公式サイトの構成リズム（強いヒーロー、縦方向の物語構造、落ち着いた品格）を、書道塾サイト向けに再解釈したものです。
           </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-06">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-06').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
+          <div class="fill-content">
+            <p><a href="https://maruoka-castle.jp/" target="_blank" rel="noopener">参照サイト: https://maruoka-castle.jp/</a></p>
+            <p><a href="../project-docs/20_DESIGN/DESIGN_GUIDELINE.md" target="_blank" rel="noopener">基準書: project-docs/20_DESIGN/DESIGN_GUIDELINE.md</a></p>
           </div>
         </div>
 
@@ -59,38 +56,42 @@
         <section class="section" id="sec1">
           <h2 class="section-title"><span class="section-icon">1</span> デザインコンセプト</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">デザインキーワード <span class="required">必須</span></div>
-          <div class="fill-hint">デザインの方向性を表すキーワード3つとその説明</div>
-          <div class="fill-content">
-            <p><strong>Top Pageデザイン参照先：</strong>https://maruoka-castle.jp/</p>
-            <p><strong>キーワード1：静謐（せいひつ）</strong> - 余白を活かし、情報を詰め込みすぎず落ち着いた印象を作る。</p>
-            <p><strong>キーワード2：品格</strong> - 墨色・生成り・朱の配色とタイポのコントラストで、伝統文化としての格を表現する。</p>
-            <p><strong>キーワード3：導線の明快さ</strong> - ヒーローから信頼情報（歩み/師範/作品）を経て問い合わせへ進む構成を明確にする。</p>
+          <div class="fill-block">
+            <div class="fill-label">基本方針 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p><strong>参照構成:</strong> 強いヒーロー + ストーリー主導の縦スクロール構成</p>
+              <p><strong>ページリズム:</strong> ヒーロー → 価値訴求ストーリー → 見どころ → お知らせ → 実用情報 → フッター</p>
+              <p><strong>ブランドキーワード:</strong> 静謐 / 品格 / 親しみ / 継承 / 成長</p>
+              <p><strong>対象配慮:</strong> 初心者・子ども・社会人が入りやすい、威圧感のない表現に統一する</p>
+              <p><strong>文言運用:</strong> 抽象表現のみで終わらせず、歩み・実績・作品・FAQなど根拠情報を併記する</p>
+            </div>
           </div>
-        </div>
-
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> カラーパレット</h2>
 
           <div class="fill-block">
-            <div class="fill-label">カラーパレット <span class="required">必須</span></div>
-            <div class="fill-hint">各色のHEXコード・使用場面を記載し、実際の色見本も表示してください</div>
+            <div class="fill-label">配色定義 <span class="required">必須</span></div>
+            <div class="fill-hint">下記の色トークンを基準値として固定運用する。アクセント色の乱用は禁止。</div>
 
-        <table class="doc-table">
-          <thead><tr><th>色の種類</th><th>カラーコード</th><th>色見本</th><th>使用場面</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>メインカラー</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>ヘッダー、ボタン、見出し</td></tr>
-          <tr class="template-row"><td>サブカラー</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>背景、カード、セクション区切り</td></tr>
-          <tr class="template-row"><td>アクセントカラー</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>CTA、リンク、強調</td></tr>
-          <tr class="template-row"><td>背景色</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>ページ背景</td></tr>
-          <tr class="template-row"><td>テキスト色</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>本文テキスト</td></tr>
-          <tr class="template-row"><td>テキスト色（薄）</td><td>#（コードを入力）</td><td>（CSSで色見本を表示）</td><td>補助テキスト、注釈</td></tr>
-          </tbody>
-        </table>
-
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>色名</th>
+                  <th>カラーコード</th>
+                  <th>用途</th>
+                  <th>運用ルール</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>主色（墨）</td><td>#1C1B1A</td><td>本文、見出し、主要線</td><td>常用色。可読性基準の中心</td></tr>
+                <tr class="template-row"><td>地色（和紙）</td><td>#F6F2E9</td><td>背景ベース</td><td>サイト全体の基調</td></tr>
+                <tr class="template-row"><td>補助背景</td><td>#EDE7DA</td><td>セクションの段差表現</td><td>情報ブロックの分離に使用</td></tr>
+                <tr class="template-row"><td>朱アクセント</td><td>#8C2A1E</td><td>CTA、重要マーカー</td><td>1画面で使用箇所を絞る</td></tr>
+                <tr class="template-row"><td>境界線</td><td>#8A8176</td><td>ボーダー、区切り線</td><td>主張しすぎない濃度で使用</td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -98,60 +99,69 @@
           <h2 class="section-title"><span class="section-icon">3</span> タイポグラフィ</h2>
 
           <div class="fill-block">
-            <div class="fill-label">フォント設定 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>要素</th><th>フォント名</th><th>サイズ</th><th>太さ</th><th>行間</th><th>用途</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>h1（大見出し）</td><td>（フォント名）</td><td>（px）</td><td>（bold等）</td><td>（倍率）</td><td>ページタイトル</td></tr>
-          <tr class="template-row"><td>h2（中見出し）</td><td>（フォント名）</td><td>（px）</td><td>（bold等）</td><td>（倍率）</td><td>セクション見出し</td></tr>
-          <tr class="template-row"><td>h3（小見出し）</td><td>（フォント名）</td><td>（px）</td><td>（bold等）</td><td>（倍率）</td><td>サブセクション</td></tr>
-          <tr class="template-row"><td>本文</td><td>（フォント名）</td><td>（px）</td><td>（regular等）</td><td>（倍率）</td><td>通常テキスト</td></tr>
-          <tr class="template-row"><td>キャプション</td><td>（フォント名）</td><td>（px）</td><td>（regular等）</td><td>（倍率）</td><td>画像の説明等</td></tr>
-          <tr class="template-row"><td>ボタン</td><td>（フォント名）</td><td>（px）</td><td>（bold等）</td><td>—</td><td>ボタンテキスト</td></tr>
-          </tbody>
-        </table>
-
+            <div class="fill-label">フォント体系 <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>要素</th>
+                  <th>推奨フォント</th>
+                  <th>サイズ目安</th>
+                  <th>太さ</th>
+                  <th>備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>h1（ページ主見出し）</td><td>"Noto Serif JP", "Yu Mincho", serif</td><td>36-44px</td><td>700</td><td>余白を広く取り格調を出す</td></tr>
+                <tr class="template-row"><td>h2（セクション見出し）</td><td>"Noto Serif JP", "Yu Mincho", serif</td><td>26-32px</td><td>700</td><td>視線の節目を明確化</td></tr>
+                <tr class="template-row"><td>本文</td><td>"Noto Sans JP", "Yu Gothic", sans-serif</td><td>16-18px</td><td>400</td><td>可読性最優先</td></tr>
+                <tr class="template-row"><td>注釈</td><td>"Noto Sans JP", "Yu Gothic", sans-serif</td><td>14-15px</td><td>400</td><td>スマホ14px未満は禁止</td></tr>
+                <tr class="template-row"><td>ボタン</td><td>"Noto Sans JP", "Yu Gothic", sans-serif</td><td>15-17px</td><td>600</td><td>タップ対象44px以上</td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
         <section class="section" id="sec4">
           <h2 class="section-title"><span class="section-icon">4</span> UIコンポーネント</h2>
 
+          <div class="fill-block">
+            <div class="fill-label">ヒーロー <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>全面画像 + 中央キャッチコピー（見出し1行、補助1行）を基本とする。</p>
+              <p>現スコープではヒーロー内に体験申込CTAを置かない。</p>
+            </div>
+          </div>
 
-        <div class="fill-block">
-          <div class="fill-label">ボタン <span class="required">必須</span></div>
-          <div class="fill-hint">プライマリ・セカンダリ・デンジャーの3種類のボタンスタイル（実物のHTMLサンプル付き）</div>
-          <div class="fill-content">
-            <p>（ここにボタンの実物サンプルとCSSコードを記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">カード（師範 / 作品） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>カード余白、角丸、メタ情報階層を共通化する。</p>
+              <p>師範ページは「師範3名・1段構成」を標準とする。</p>
+            </div>
           </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">フォーム要素 <span class="required">必須</span></div>
-          <div class="fill-hint">テキスト入力・セレクト・テキストエリア・チェックボックス・ラジオボタン（実物のHTMLサンプル付き）</div>
-          <div class="fill-content">
-            <p>（ここにフォーム要素の実物サンプルとCSSコードを記載）</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">カード・テーブル・その他 <span class="required">必須</span></div>
-          <div class="fill-hint">カードコンポーネント・テーブルスタイル・アラート等（実物のHTMLサンプル付き）</div>
-          <div class="fill-content">
-            <p>（ここにコンポーネントの実物サンプルとCSSコードを記載）</p>
-          </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">フォーム / CTA <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>必須マーク、入力エラー、返信目安（1〜2営業日以内）を明示する。</p>
+              <p>問い合わせフォームを主要コンバージョン地点として設計する。</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> レイアウトルール</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">レイアウト基本ルール <span class="required">必須</span></div>
-          <div class="fill-hint">グリッド・余白・角丸・シャドウ等の数値ルール</div>
-          <div class="fill-content">
-            <p>（レイアウトルールを記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">余白・階層・アクセシビリティ <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p><strong>セクション余白:</strong> PC 80-120px / SP 48-72px</p>
+              <p><strong>ナビ順序固定:</strong> 塾について / 師範 / コース / 作品 / FAQ / アクセス / お問い合わせ</p>
+              <p><strong>コントラスト:</strong> 本文4.5:1以上を目標とする</p>
+              <p><strong>画像代替文:</strong> 意味のある画像には日本語altを必須化する</p>
+              <p><strong>運用連携:</strong> スコープ変更時は `07-specification` と同時更新する</p>
+            </div>
           </div>
-        </div>
 
         </section>
 
@@ -162,3 +172,4 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
+

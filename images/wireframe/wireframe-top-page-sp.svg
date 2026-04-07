@@ -1,0 +1,117 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="430" height="3340" viewBox="0 0 430 3340">
+  <defs>
+    <style>
+      .bg { fill: #f6f2e9; }
+      .frame { fill: #ffffff; stroke: #1c1b1a; stroke-width: 2; }
+      .sec { fill: #faf8f3; stroke: #8a8176; stroke-width: 1.2; }
+      .label { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 14px; fill: #1c1b1a; font-weight: 700; }
+      .sub { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 12px; fill: #333; }
+      .tiny { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 11px; fill: #555; }
+      .card { fill: #fff; stroke: #8a8176; stroke-width: 1; }
+      .thumb { fill: #ede7da; stroke: #8a8176; stroke-dasharray: 4 3; }
+      .line { stroke: #8a8176; stroke-width: 1; }
+      .cta { fill: #8c2a1e; stroke: #8c2a1e; stroke-width: 1.1; }
+      .pill { fill: #f5f2ea; stroke: #8a8176; stroke-width: 1; }
+      .cta-text { fill: #fff; font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 12px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="430" height="3340" />
+  <rect class="frame" x="10" y="20" width="410" height="3300" rx="6" />
+
+  <text x="14" y="14" class="sub">トップページ ワイヤーフレーム（SP）</text>
+
+  <!-- 1 Header -->
+  <rect class="sec" x="20" y="40" width="390" height="78" />
+  <text x="30" y="62" class="label">1. ヘッダー（ロゴ / メニュー）</text>
+  <rect class="card" x="30" y="70" width="126" height="34" rx="4" />
+  <text x="48" y="92" class="sub">ロゴ</text>
+  <rect class="card" x="350" y="70" width="50" height="34" rx="4" />
+  <text x="365" y="92" class="sub">MENU</text>
+
+  <!-- 2 Hero -->
+  <rect class="sec" x="20" y="130" width="390" height="520" />
+  <text x="30" y="152" class="label">2. ヒーロー（全面画像）</text>
+  <rect class="thumb" x="30" y="164" width="370" height="440" />
+  <text x="215" y="360" class="sub" text-anchor="middle">一筆に、品格と心を。</text>
+  <text x="215" y="384" class="tiny" text-anchor="middle">心を整える書の時間を、品川で。</text>
+
+  <!-- 3 Quick Access -->
+  <rect class="sec" x="20" y="662" width="390" height="160" />
+  <text x="30" y="684" class="label">3. クイック導線</text>
+  <rect class="pill" x="30" y="696" width="115" height="44" rx="18" />
+  <rect class="pill" x="157" y="696" width="115" height="44" rx="18" />
+  <rect class="pill" x="285" y="696" width="115" height="44" rx="18" />
+  <rect class="pill" x="30" y="752" width="115" height="44" rx="18" />
+  <rect class="pill" x="157" y="752" width="115" height="44" rx="18" />
+  <rect class="pill" x="285" y="752" width="115" height="44" rx="18" />
+
+  <!-- 4 About + History -->
+  <rect class="sec" x="20" y="834" width="390" height="320" />
+  <text x="30" y="856" class="label">4. 塾について・歩み要約</text>
+  <rect class="card" x="30" y="870" width="370" height="86" />
+  <rect class="card" x="30" y="966" width="370" height="86" />
+  <rect class="card" x="30" y="1062" width="370" height="78" />
+  <text x="40" y="1110" class="tiny">年表要約 + 塾についてページ導線</text>
+
+  <!-- 5 Masters -->
+  <rect class="sec" x="20" y="1166" width="390" height="300" />
+  <text x="30" y="1188" class="label">5. 師範ピックアップ（3名）</text>
+  <rect class="card" x="30" y="1202" width="370" height="78" />
+  <rect class="card" x="30" y="1288" width="370" height="78" />
+  <rect class="card" x="30" y="1374" width="370" height="78" />
+
+  <!-- 6 Courses -->
+  <rect class="sec" x="20" y="1478" width="390" height="288" />
+  <text x="30" y="1500" class="label">6. コース（縦積み）</text>
+  <rect class="card" x="30" y="1514" width="370" height="74" />
+  <rect class="card" x="30" y="1598" width="370" height="74" />
+  <rect class="card" x="30" y="1682" width="370" height="74" />
+
+  <!-- 7 Portfolio -->
+  <rect class="sec" x="20" y="1778" width="390" height="418" />
+  <text x="30" y="1800" class="label">7. 作品（2カラム）</text>
+  <rect class="card" x="30" y="1814" width="370" height="28" />
+  <text x="38" y="1832" class="tiny">カテゴリ: すべて / 師範1 / 師範2 / 師範3 / 一般 / こども</text>
+  <rect class="thumb" x="30" y="1852" width="180" height="104" />
+  <rect class="thumb" x="220" y="1852" width="180" height="104" />
+  <rect class="thumb" x="30" y="1966" width="180" height="104" />
+  <rect class="thumb" x="220" y="1966" width="180" height="104" />
+  <rect class="thumb" x="30" y="2080" width="180" height="104" />
+  <rect class="thumb" x="220" y="2080" width="180" height="104" />
+
+  <!-- 8 News -->
+  <rect class="sec" x="20" y="2208" width="390" height="218" />
+  <text x="30" y="2230" class="label">8. お知らせ</text>
+  <rect class="card" x="30" y="2244" width="370" height="52" />
+  <rect class="card" x="30" y="2304" width="370" height="52" />
+  <rect class="card" x="30" y="2364" width="370" height="52" />
+
+  <!-- 9 Access -->
+  <rect class="sec" x="20" y="2438" width="390" height="386" />
+  <text x="30" y="2460" class="label">9. アクセス</text>
+  <rect class="thumb" x="30" y="2474" width="370" height="190" />
+  <rect class="card" x="30" y="2672" width="370" height="98" />
+
+  <!-- 10 Footer -->
+  <rect class="sec" x="20" y="2836" width="390" height="120" />
+  <text x="30" y="2858" class="label">10. フッター</text>
+  <line class="line" x1="30" y1="2870" x2="400" y2="2870" />
+  <text x="30" y="2892" class="tiny">お問い合わせ | 電話 | プライバシーポリシー | サイトマップ</text>
+
+  <!-- 11 Fixed Bottom CTA -->
+  <rect class="sec" x="20" y="2968" width="390" height="94" />
+  <text x="30" y="2990" class="label">11. 下部固定CTA（SP）</text>
+  <rect class="cta" x="30" y="3002" width="250" height="46" rx="6" />
+  <rect class="card" x="290" y="3002" width="110" height="46" rx="6" />
+  <text x="155" y="3031" class="cta-text" text-anchor="middle">お問い合わせフォーム</text>
+  <text x="345" y="3031" class="sub" text-anchor="middle">電話</text>
+
+  <!-- Notes -->
+  <rect class="card" x="20" y="3076" width="390" height="236" />
+  <text x="30" y="3100" class="label">SP設計メモ</text>
+  <text x="30" y="3124" class="tiny">- 体験申込導線は置かず、問い合わせ導線を主軸にする</text>
+  <text x="30" y="3146" class="tiny">- セクション余白は48-72pxを基準に縦リズムを統一</text>
+  <text x="30" y="3168" class="tiny">- タップ領域は44px以上を確保する</text>
+  <text x="30" y="3190" class="tiny">- 師範は3名構成、作品は2カラムで閲覧性を確保</text>
+</svg>

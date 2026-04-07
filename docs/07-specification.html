@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>仕様書（機能仕様書） -  プロジェクトアーカイブ</title>
+  <title>仕様定義（機能要件 / 非機能要件） - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,16 +13,16 @@
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
         <div class="doc-category">DOCUMENT 07</div>
-        <h1 class="doc-title">仕様書（機能仕様書）</h1>
+        <h1 class="doc-title">仕様定義（機能要件 / 非機能要件）</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: Webディレクター / PM</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.0</span>
         </div>
       </header>
 
@@ -31,17 +31,16 @@
         <div class="external-link-box">
           <div class="external-link-box-title">
             <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
+            関連資料
           </div>
           <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細な仕様書は以下のリンクからご確認ください。
+            本仕様は、要件定義・ワイヤーフレーム・デザインガイドラインとの整合を前提とする。変更時は関連ドキュメントを同時更新する。
           </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-07">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-07').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
+          <div class="fill-content">
+            <p><a href="./01-proposal.html" target="_blank" rel="noopener">01-proposal.html</a></p>
+            <p><a href="./05-wireframe.html" target="_blank" rel="noopener">05-wireframe.html</a></p>
+            <p><a href="./06-design-guide.html" target="_blank" rel="noopener">06-design-guide.html</a></p>
+            <p><a href="../project-docs/20_DESIGN/DESIGN_GUIDELINE.md" target="_blank" rel="noopener">project-docs/20_DESIGN/DESIGN_GUIDELINE.md</a></p>
           </div>
         </div>
 
@@ -49,9 +48,9 @@
           <div class="toc-title">目次</div>
           <ol class="toc-list">
             <li><a href="#sec1">システム概要</a></li>
-            <li><a href="#sec2">機能一覧</a></li>
-            <li><a href="#sec3">画面遷移図</a></li>
-            <li><a href="#sec4">機能詳細仕様</a></li>
+            <li><a href="#sec2">機能要件</a></li>
+            <li><a href="#sec3">画面遷移概要</a></li>
+            <li><a href="#sec4">機能詳細（主要機能）</a></li>
             <li><a href="#sec5">非機能要件</a></li>
           </ol>
         </div>
@@ -59,114 +58,175 @@
         <section class="section" id="sec1">
           <h2 class="section-title"><span class="section-icon">1</span> システム概要</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">システムの目的 <span class="required">必須</span></div>
-          <div class="fill-hint">このシステムが解決する課題と提供する価値</div>
-          <div class="fill-content">
-            <p>東京都品川区の書道塾における「認知」「比較検討」「体験申込」までを一気通貫で支援する。</p>
-            <p>主目的は、塾の信頼形成（歩み・師範・作品の可視化）と生徒募集（体験申込/問い合わせ獲得）の最大化。</p>
-            <p>電話依存を減らし、フォーム経由で必要情報を取得することで、事務対応を効率化する。</p>
+          <div class="fill-block">
+            <div class="fill-label">目的と範囲 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>東京都品川区の書道塾サイトとして、塾紹介・師範紹介・コース案内・作品閲覧・問い合わせ導線を提供する。</p>
+              <p>公開サイトは「印象形成 → 信頼形成 → 比較検討 → 問い合わせ」の順で情報設計する。</p>
+              <p>主要コンバージョンは問い合わせフォーム送信とし、現スコープでは体験申込ページは作成しない。</p>
+              <p>管理画面スコープは「作品管理 / 問い合わせ管理 / お知らせ管理」の3画面とする（体験申込管理は対象外）。</p>
+            </div>
           </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">システム構成図 <span class="required">必須</span></div>
-          <div class="fill-hint">フロントエンド ↔ バックエンド ↔ データベースの関係を図示</div>
-          <div class="fill-content">
-            <p>利用者ブラウザ（PC/スマホ）</p>
-            <p>↓ HTTPS</p>
-            <p>Webフロント（トップ/塾紹介/師範一覧/作品/募集要項/FAQ/問い合わせ）</p>
-            <p>↓ API またはフォーム送信</p>
-            <p>アプリ層（問い合わせ受付、バリデーション、通知連携）</p>
-            <p>↓</p>
-            <p>データ保存（問い合わせ台帳、体験申込台帳、流入パラメータ）</p>
-            <p>＋ 計測基盤（GA4：CTAクリック/フォーム到達/送信完了）</p>
-          </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">システム構成 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・公開Webサイト（トップ / 塾について / 師範 / コース / 作品 / FAQ / アクセス / お問い合わせ）</p>
+              <p>・管理画面（作品管理 / 問い合わせ管理 / お知らせ管理）</p>
+              <p>・問い合わせフォーム送信機能（メール通知連携を想定）</p>
+              <p>・HTTPS前提、レスポンシブ対応（PC/SP）</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec2">
-          <h2 class="section-title"><span class="section-icon">2</span> 機能一覧</h2>
+          <h2 class="section-title"><span class="section-icon">2</span> 機能要件</h2>
 
           <div class="fill-block">
-            <div class="fill-label">機能一覧表 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>No.</th><th>機能名</th><th>概要</th><th>対応画面</th><th>優先度</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>F-001</td><td>トップページ表示</td><td>塾の価値提案、対象者別導線、主要CTAを表示</td><td>トップ</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-002</td><td>塾の歩み・理念表示</td><td>開講背景、沿革、教育方針を時系列で表示</td><td>塾について</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-003</td><td>師範一覧表示</td><td>師範プロフィール、得意分野、対応対象を表示</td><td>師範一覧</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-004</td><td>作品ポートフォリオ表示</td><td>作品画像と説明をカテゴリ別に閲覧可能</td><td>作品一覧</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-005</td><td>コース・料金表示</td><td>対象者別コース、月謝、開催曜日、持ち物を表示</td><td>コース・料金</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-006</td><td>生徒募集要項表示</td><td>募集枠、対象、受付時期、注意事項を表示</td><td>生徒募集</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-007</td><td>体験申込フォーム送信</td><td>必要項目を入力して体験申込を送信</td><td>体験申込</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-008</td><td>問い合わせフォーム送信</td><td>一般問い合わせを送信し受付完了を表示</td><td>問い合わせ</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-009</td><td>CTA計測イベント送信</td><td>CTAクリック/フォーム到達/送信完了を計測</td><td>全ページ</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-010</td><td>FAQ表示</td><td>初心者不安、道具、欠席対応などをQ&Aで表示</td><td>FAQ</td><td><span class="badge badge-should">Should</span></td></tr>
-          </tbody>
-        </table>
-
+            <div class="fill-label">機能要件一覧 <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>機能名</th>
+                  <th>概要</th>
+                  <th>対象画面</th>
+                  <th>優先度</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>F-001</td><td>トップページ表示</td><td>ヒーロー、歩み、師範、作品、コース、お知らせ、アクセス、フッターを表示</td><td>トップ</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-002</td><td>塾の歩み表示</td><td>年表・沿革要約を表示し、信頼形成を支援</td><td>塾について</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-003</td><td>師範一覧表示</td><td>師範プロフィールと指導スタイルを表示（3名・1段構成）</td><td>師範</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-004</td><td>作品一覧・絞り込み</td><td>作品サムネイル表示、カテゴリ絞り込み（すべて / 師範1 / 師範2 / 師範3 / 一般 / こども）</td><td>作品</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-005</td><td>コース・料金表示</td><td>対象別コース情報、料金、日程、FAQを表示</td><td>コース</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-006</td><td>FAQ表示</td><td>初心者・保護者の質問に回答し、問い合わせへ接続</td><td>FAQ</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-007</td><td>アクセス表示</td><td>地図、住所、最寄駅、受付時間、来塾案内を表示</td><td>アクセス</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-008</td><td>問い合わせフォーム送信</td><td>必須入力チェック後に送信し、完了メッセージを表示</td><td>お問い合わせ</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-009</td><td>作品管理（管理画面）</td><td>作品の新規登録、編集、公開/下書き切替、画像アップロード</td><td>管理画面</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-010</td><td>問い合わせ管理（管理画面）</td><td>問い合わせ一覧、詳細、状態更新、管理メモ更新</td><td>管理画面</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-011</td><td>お知らせ管理（管理画面）</td><td>お知らせの新規登録、編集、公開/下書き切替、掲載日管理</td><td>管理画面</td><td><span class="badge badge-must">Must</span></td></tr>
+                <tr class="template-row"><td>F-012</td><td>お知らせ表示</td><td>日付付きお知らせ一覧の表示</td><td>トップ</td><td><span class="badge badge-should">Should</span></td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
         <section class="section" id="sec3">
-          <h2 class="section-title"><span class="section-icon">3</span> 画面遷移図</h2>
+          <h2 class="section-title"><span class="section-icon">3</span> 画面遷移概要</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">画面遷移図 <span class="required">必須</span></div>
-          <div class="fill-hint">各画面間の遷移関係を図示</div>
-          <div class="fill-content">
-            <p>トップ</p>
-            <p>├ 塾について</p>
-            <p>├ 師範一覧</p>
-            <p>├ コース・料金</p>
-            <p>├ 作品ポートフォリオ</p>
-            <p>├ 生徒募集要項</p>
-            <p>├ FAQ</p>
-            <p>├ アクセス</p>
-            <p>├ 体験申込フォーム → 完了ページ</p>
-            <p>└ 問い合わせフォーム → 完了ページ</p>
+          <div class="fill-block">
+            <div class="fill-label">公開サイト遷移 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>トップ</p>
+              <p>→ 塾について</p>
+              <p>→ 師範</p>
+              <p>→ コース</p>
+              <p>→ 作品</p>
+              <p>→ FAQ</p>
+              <p>→ アクセス</p>
+              <p>→ お問い合わせ（主要CV地点）</p>
+            </div>
           </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">管理画面遷移 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>ログイン</p>
+              <p>→ 作品一覧 / 作品新規登録 / 作品編集</p>
+              <p>→ 問い合わせ一覧 / 問い合わせ詳細 / 状態更新</p>
+              <p>→ お知らせ一覧 / 新規登録 / 公開切替</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec4">
-          <h2 class="section-title"><span class="section-icon">4</span> 機能詳細仕様</h2>
-
+          <h2 class="section-title"><span class="section-icon">4</span> 機能詳細（主要機能）</h2>
 
           <div class="subsection">
-            <h3 class="subsection-title">機能仕様テンプレート（コピーして使用）</h3>
-
-        <div class="fill-block">
-          <div class="fill-label">機能名：体験申込フォーム送信 <span class="required">必須</span></div>
-          <div class="fill-hint">機能ID：F-007</div>
-          <div class="fill-content">
-            <p>利用者が体験授業の希望内容を入力し、送信できる機能。</p>
-            <p>送信前に必須/形式バリデーションを実施し、エラー時は該当項目上にメッセージを表示する。</p>
-            <p>送信成功時は完了ページへ遷移し、同時に管理者通知（メール等）を実行する。</p>
-            <p>二重送信防止として、送信中はボタンを無効化する。</p>
-          </div>
-        </div>
+            <h3 class="subsection-title">問い合わせフォーム（F-008）</h3>
 
             <div class="fill-block">
-              <div class="fill-label">入力項目一覧 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>項目名</th><th>データ型</th><th>必須</th><th>バリデーション</th><th>備考</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>お名前</td><td>String</td><td>○</td><td>1〜50文字、前後空白除去</td><td>保護者名入力も可</td></tr>
-          <tr class="template-row"><td>ふりがな</td><td>String</td><td>○</td><td>1〜80文字、ひらがな推奨</td><td>任意でカタカナ許容</td></tr>
-          <tr class="template-row"><td>メールアドレス</td><td>String</td><td>○</td><td>メール形式、最大255文字</td><td>返信先として利用</td></tr>
-          <tr class="template-row"><td>電話番号</td><td>String</td><td>○</td><td>数字とハイフンのみ、10〜13桁</td><td>緊急連絡用</td></tr>
-          <tr class="template-row"><td>希望コース</td><td>String</td><td>○</td><td>選択式（子ども/大人/検定/体験）</td><td>プルダウン</td></tr>
-          <tr class="template-row"><td>希望日時（第1希望）</td><td>DateTime</td><td>○</td><td>現在日時より未来、営業時間内</td><td>営業日判定あり</td></tr>
-          <tr class="template-row"><td>希望日時（第2希望）</td><td>DateTime</td><td>—</td><td>第1希望と重複不可</td><td>任意入力</td></tr>
-          <tr class="template-row"><td>経験有無</td><td>String</td><td>○</td><td>選択式（初心者/経験あり）</td><td>指導準備に使用</td></tr>
-          <tr class="template-row"><td>お問い合わせ内容</td><td>String</td><td>—</td><td>最大1000文字</td><td>自由記述</td></tr>
-          <tr class="template-row"><td>個人情報同意</td><td>Boolean</td><td>○</td><td>チェック必須</td><td>未チェックは送信不可</td></tr>
-          </tbody>
-        </table>
+              <div class="fill-label">入力項目定義 <span class="required">必須</span></div>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>項目名</th>
+                    <th>型</th>
+                    <th>必須</th>
+                    <th>バリデーション</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row"><td>お名前</td><td>String</td><td>◯</td><td>1〜50文字</td><td>全角・半角可</td></tr>
+                  <tr class="template-row"><td>メールアドレス</td><td>String</td><td>◯</td><td>メール形式、255文字以内</td><td>確認用入力推奨</td></tr>
+                  <tr class="template-row"><td>電話番号</td><td>String</td><td>△</td><td>数字・ハイフン、10〜13桁</td><td>任意入力</td></tr>
+                  <tr class="template-row"><td>お問い合わせ種別</td><td>Enum</td><td>◯</td><td>選択必須</td><td>例: コース / 料金 / 通塾 / その他</td></tr>
+                  <tr class="template-row"><td>お問い合わせ内容</td><td>Text</td><td>◯</td><td>1〜1000文字</td><td>HTMLタグ無効化</td></tr>
+                  <tr class="template-row"><td>同意チェック</td><td>Boolean</td><td>◯</td><td>未チェック時は送信不可</td><td>プライバシーポリシー同意</td></tr>
+                </tbody>
+              </table>
+            </div>
 
+            <div class="fill-block">
+              <div class="fill-label">送信後挙動 <span class="required">必須</span></div>
+              <div class="fill-content">
+                <p>・送信成功時: 完了メッセージを表示</p>
+                <p>・送信失敗時: エラーメッセージを表示し再入力導線を維持</p>
+                <p>・返信目安（1〜2営業日以内）を画面上に明記</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">作品管理（F-009）</h3>
+
+            <div class="fill-block">
+              <div class="fill-label">管理項目定義 <span class="required">必須</span></div>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>項目名</th>
+                    <th>型</th>
+                    <th>必須</th>
+                    <th>バリデーション</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row"><td>作品タイトル</td><td>String</td><td>◯</td><td>1〜80文字</td><td>公開側見出しに使用</td></tr>
+                  <tr class="template-row"><td>カテゴリ</td><td>Enum</td><td>◯</td><td>選択必須</td><td>師範1 / 師範2 / 師範3 / 一般 / こども</td></tr>
+                  <tr class="template-row"><td>レベル</td><td>String</td><td>△</td><td>0〜40文字</td><td>任意</td></tr>
+                  <tr class="template-row"><td>説明文</td><td>Text</td><td>△</td><td>0〜1000文字</td><td>改行保持、タグ無効化</td></tr>
+                  <tr class="template-row"><td>画像</td><td>File</td><td>◯</td><td>JPEG/PNG/WebP、最大5MB</td><td>altテキスト必須</td></tr>
+                  <tr class="template-row"><td>公開状態</td><td>Enum</td><td>◯</td><td>下書き / 公開</td><td>未公開は公開側非表示</td></tr>
+                </tbody>
+              </table>
+            </div>
+          <div class="subsection">
+            <h3 class="subsection-title">問い合わせ管理（F-010）</h3>
+
+            <div class="fill-block">
+              <div class="fill-label">管理項目定義 <span class="required">必須</span></div>
+              <div class="fill-content">
+                <p>・一覧項目: 受付日時 / 氏名 / メールアドレス / 種別 / 状態 / 担当</p>
+                <p>・詳細項目: 本文、管理メモ、状態（new / processing / closed / spam）</p>
+                <p>・更新操作: 状態更新、管理メモ更新、更新者・更新日時の監査記録</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">お知らせ管理（F-011）</h3>
+
+            <div class="fill-block">
+              <div class="fill-label">管理項目定義 <span class="required">必須</span></div>
+              <div class="fill-content">
+                <p>・入力項目: タイトル、本文、掲載日、公開状態（draft / published）</p>
+                <p>・操作: 新規登録、編集、公開/下書き切替、固定表示フラグ設定</p>
+                <p>・公開品質: 掲載日フォーマット（YYYY.MM.DD）を統一</p>
+              </div>
             </div>
           </div>
         </section>
@@ -174,30 +234,35 @@
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> 非機能要件</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">セキュリティ要件 <span class="required">必須</span></div>
-          <div class="fill-hint">認証・認可・データ保護に関する要件</div>
-          <div class="fill-content">
-            <p>・全ページ HTTPS を必須とし、フォーム送信は暗号化通信のみ許可する。</p>
-            <p>・フォーム入力値はサーバー側で再バリデーションし、SQLインジェクション/XSS対策を実施する。</p>
-            <p>・個人情報（氏名、連絡先）は最小権限で管理し、閲覧権限を運営担当に限定する。</p>
-            <p>・スパム対策として reCAPTCHA または同等のBot対策を導入する。</p>
-            <p>・管理通知メールに機微情報を過剰に含めない（必要最小限のみ送付）。</p>
-            <p>・プライバシーポリシーへの同意取得と同意履歴の保持を行う。</p>
+          <div class="fill-block">
+            <div class="fill-label">セキュリティ <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・全ページHTTPS必須</p>
+              <p>・フォーム入力値はサーバ側でバリデーションし、XSS/SQLインジェクション対策を実施</p>
+              <p>・管理画面は認証必須、権限外アクセスを禁止</p>
+              <p>・CSRF対策、ログイン試行制限を実装</p>
+            </div>
           </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">対応環境 <span class="required">必須</span></div>
-          <div class="fill-hint">対応ブラウザ・デバイス</div>
-          <div class="fill-content">
-            <p>・対応ブラウザ：Chrome / Safari / Edge / Firefox の各最新版とその1つ前のメジャーバージョン</p>
-            <p>・対応デバイス：PC（1280px以上推奨）、タブレット、スマートフォン（iOS/Android）</p>
-            <p>・レスポンシブ対応：360px〜1440px の主要幅でレイアウト破綻がないこと</p>
-            <p>・性能目標：主要ページのLCP 2.5秒以内（4G相当）、CLS 0.1以下</p>
-            <p>・可用性目標：月間稼働率 99.5%以上（計画停止を除く）</p>
-            <p>・アクセシビリティ：主要導線でキーボード操作可能、画像には代替テキストを付与</p>
+
+          <div class="fill-block">
+            <div class="fill-label">性能・可用性 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・主要ページのLCPは2.5秒以内（4G相当）を目標</p>
+              <p>・CLSは0.1以下を目標</p>
+              <p>・月間稼働率99.5%以上（計画停止を除く）</p>
+              <p>・画像最適化（圧縮 / 適切サイズ配信）を実施</p>
+            </div>
           </div>
-        </div>
+
+          <div class="fill-block">
+            <div class="fill-label">対応環境・アクセシビリティ <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・対応ブラウザ: Chrome / Safari / Edge / Firefox の最新版とその1つ前のメジャーバージョン</p>
+              <p>・レスポンシブ対応: 320px〜1440pxの主要幅でレイアウト崩れがないこと</p>
+              <p>・本文コントラスト比4.5:1以上、タップ領域44px以上</p>
+              <p>・意味のある画像には日本語altを設定</p>
+            </div>
+          </div>
 
         </section>
 
@@ -208,3 +273,7 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
+
+
+
+

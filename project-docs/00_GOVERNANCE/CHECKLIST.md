@@ -53,6 +53,7 @@
 - `project-docs/00_GOVERNANCE/INSTRUCTIONS_COVERAGE.md`
 - `project-docs/60_TEST/TEST_PLAN.md`
 - `project-docs/10_PROJECT/ISSUE_LIST.md`
-- `project-docs/20_PRODUCT/DESIGN_GUIDELINE.md`
+- `project-docs/20_DESIGN/DESIGN_GUIDELINE.md`
 - `project-docs/30_TECH/TECH_SPEC.md`
 - `project-docs/90_WIP/WIP.md`
+

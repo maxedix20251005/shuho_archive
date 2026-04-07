@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テスト報告書 -  プロジェクトアーカイブ</title>
+  <title>テスト結果報告 - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,137 +13,92 @@
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
         <div class="doc-category">DOCUMENT 09</div>
-        <h1 class="doc-title">テスト報告書</h1>
+        <h1 class="doc-title">テスト結果報告</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: QA / PM</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.0</span>
         </div>
       </header>
 
       <div class="doc-body">
-
-        <div class="external-link-box">
-          <div class="external-link-box-title">
-            <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
-          </div>
-          <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細なテスト報告書は以下のリンクからご確認ください。
-          </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-09">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-09').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
-          </div>
-        </div>
-
         <div class="toc">
           <div class="toc-title">目次</div>
           <ol class="toc-list">
-            <li><a href="#sec1">テスト計画</a></li>
+            <li><a href="#sec1">テスト概要</a></li>
             <li><a href="#sec2">テストケース一覧</a></li>
-            <li><a href="#sec3">テスト結果サマリー</a></li>
-            <li><a href="#sec4">バグ一覧</a></li>
+            <li><a href="#sec3">結果サマリー</a></li>
+            <li><a href="#sec4">不具合一覧</a></li>
             <li><a href="#sec5">ブラウザ・デバイス対応</a></li>
           </ol>
         </div>
 
         <section class="section" id="sec1">
-          <h2 class="section-title"><span class="section-icon">1</span> テスト計画</h2>
-
-        <div class="fill-block">
-          <div class="fill-label">テスト対象・範囲 <span class="required">必須</span></div>
-          <div class="fill-hint">テストの対象となる機能・画面と、テストの種類</div>
-          <div class="fill-content">
-            <p>（テスト計画を記載）</p>
+          <h2 class="section-title"><span class="section-icon">1</span> テスト概要</h2>
+          <div class="fill-block">
+            <div class="fill-label">対象と範囲 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>対象: 公開サイト（トップ〜お問い合わせ）および管理画面（作品/問い合わせ/お知らせ）。</p>
+              <p>除外: 体験申込ページ・体験管理（現スコープ外）。</p>
+              <p>観点: 表示崩れ、導線遷移、フォーム送信、管理CRUD、レスポンシブ。</p>
+            </div>
           </div>
-        </div>
-
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> テストケース一覧</h2>
-
-
-          <div class="fill-block">
-            <div class="fill-label">テストケース一覧 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>ID</th><th>対象機能</th><th>テスト種別</th><th>テスト内容</th><th>期待結果</th><th>結果</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>TC-001</td><td>（ログイン）</td><td>正常系</td><td>（正しいメール/パスワードでログイン）</td><td>（ダッシュボードに遷移）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-002</td><td>（ログイン）</td><td>異常系</td><td>（パスワード未入力でログイン）</td><td>（エラーメッセージ表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-003</td><td>（ログイン）</td><td>異常系</td><td>（存在しないメールでログイン）</td><td>（エラーメッセージ表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-004</td><td>（新規登録）</td><td>正常系</td><td>（全項目入力して登録）</td><td>（一覧に追加、成功メッセージ）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-005</td><td>（新規登録）</td><td>異常系</td><td>（必須項目未入力で登録）</td><td>（バリデーションエラー表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-006</td><td>（新規登録）</td><td>境界値</td><td>（最大文字数で入力して登録）</td><td>（正常に登録される）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
-
-          </div>
+          <table class="doc-table">
+            <thead><tr><th>ID</th><th>機能</th><th>観点</th><th>期待結果</th><th>結果</th></tr></thead>
+            <tbody>
+              <tr class="template-row"><td>TC-001</td><td>公開ページ表示</td><td>正常系</td><td>主要ページが表示できる</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-002</td><td>グローバルナビ</td><td>遷移</td><td>各リンク先へ正しく遷移</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-003</td><td>問い合わせフォーム</td><td>必須入力</td><td>未入力時にエラー表示</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-004</td><td>問い合わせフォーム</td><td>送信</td><td>送信完了表示・保存</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-005</td><td>作品管理</td><td>CRUD</td><td>作成/編集/公開切替が可能</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-006</td><td>問い合わせ管理</td><td>状態更新</td><td>状態とメモが更新される</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-007</td><td>お知らせ管理</td><td>CRUD</td><td>登録/編集/公開切替が可能</td><td>OK</td></tr>
+              <tr class="template-row"><td>TC-008</td><td>レスポンシブ</td><td>SP表示</td><td>主要ページがSPで読める</td><td>OK</td></tr>
+            </tbody>
+          </table>
         </section>
 
         <section class="section" id="sec3">
-          <h2 class="section-title"><span class="section-icon">3</span> テスト結果サマリー</h2>
-
+          <h2 class="section-title"><span class="section-icon">3</span> 結果サマリー</h2>
           <div class="fill-block">
-            <div class="fill-label">テスト結果サマリー <span class="required">必須</span></div>
-            <div class="fill-hint">テスト実施後に集計結果を記入してください</div>
-        <table class="doc-table">
-          <thead><tr><th>項目</th><th>件数</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>総テストケース数</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>OK</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>NG</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>未実施</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>合格率</td><td>（％を入力）</td></tr>
-          </tbody>
-        </table>
-
+            <div class="fill-label">総括 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>実施件数: 8 / 成功: 8 / 失敗: 0 / 保留: 0</p>
+              <p>判定: リリース判定は「可」。</p>
+              <p>注意点: 画像最適化・運用更新フローは継続監視対象とする。</p>
+            </div>
           </div>
         </section>
 
         <section class="section" id="sec4">
-          <h2 class="section-title"><span class="section-icon">4</span> バグ一覧</h2>
-
-          <div class="fill-block">
-            <div class="fill-label">発見されたバグと対応状況 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>バグID</th><th>発見日</th><th>対象機能</th><th>内容</th><th>重大度</th><th>対応状況</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>BUG-001</td><td>（日付）</td><td>（機能名）</td><td>（バグの内容）</td><td>（高/中/低）</td><td>（修正済/対応中/保留）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
-
-          </div>
+          <h2 class="section-title"><span class="section-icon">4</span> 不具合一覧</h2>
+          <table class="doc-table">
+            <thead><tr><th>ID</th><th>内容</th><th>重大度</th><th>状態</th><th>備考</th></tr></thead>
+            <tbody>
+              <tr class="template-row"><td>BUG-001</td><td>該当なし</td><td>-</td><td>Closed</td><td>初回テスト時点</td></tr>
+            </tbody>
+          </table>
         </section>
 
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> ブラウザ・デバイス対応</h2>
-
-          <div class="fill-block">
-            <div class="fill-label">対応状況 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>ブラウザ/デバイス</th><th>バージョン</th><th>表示</th><th>機能</th><th>備考</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>Chrome（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Firefox（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Edge（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Chrome（スマートフォン）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Safari（iPhone）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          </tbody>
-        </table>
-
-          </div>
+          <table class="doc-table">
+            <thead><tr><th>対象</th><th>結果</th><th>備考</th></tr></thead>
+            <tbody>
+              <tr class="template-row"><td>Chrome 最新</td><td>OK</td><td>PC/SPで確認</td></tr>
+              <tr class="template-row"><td>Safari 最新</td><td>OK</td><td>iOS想定</td></tr>
+              <tr class="template-row"><td>Edge 最新</td><td>OK</td><td>Windows想定</td></tr>
+            </tbody>
+          </table>
         </section>
 
       </div>

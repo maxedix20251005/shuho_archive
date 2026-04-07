@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>データベース設計書 -  プロジェクトアーカイブ</title>
+  <title>データベース設計 - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,15 +13,15 @@
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
         <div class="doc-category">DOCUMENT 08</div>
-        <h1 class="doc-title">データベース設計書</h1>
+        <h1 class="doc-title">データベース設計</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: Tech Lead / Webディレクター</span>
           <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
         </div>
       </header>
@@ -31,90 +31,197 @@
         <div class="external-link-box">
           <div class="external-link-box-title">
             <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
+            前提と関連資料
           </div>
           <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細なDB設計書は以下のリンクからご確認ください。
+            本設計は「静的HTML + Supabase（PostgreSQL/Auth/Storage）」を前提とする。体験申込ページは現スコープ外、問い合わせフォームを主要CVとする。
           </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-08">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-08').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
+          <div class="fill-content">
+            <p><a href="./07-specification.html" target="_blank" rel="noopener">07-specification.html</a></p>
+            <p><a href="./05-wireframe.html" target="_blank" rel="noopener">05-wireframe.html</a></p>
+            <p><a href="../project-docs/30_TECH/TECH_SPEC.md" target="_blank" rel="noopener">project-docs/30_TECH/TECH_SPEC.md</a></p>
           </div>
         </div>
 
         <div class="toc">
           <div class="toc-title">目次</div>
           <ol class="toc-list">
-            <li><a href="#sec1">ER図</a></li>
+            <li><a href="#sec1">ER概要</a></li>
             <li><a href="#sec2">テーブル定義</a></li>
-            <li><a href="#sec3">インデックス設計</a></li>
-            <li><a href="#sec4">初期データ</a></li>
+            <li><a href="#sec3">インデックス・制約・RLS</a></li>
+            <li><a href="#sec4">初期データ / 運用データ</a></li>
           </ol>
         </div>
 
         <section class="section" id="sec1">
-          <h2 class="section-title"><span class="section-icon">1</span> ER図</h2>
+          <h2 class="section-title"><span class="section-icon">1</span> ER概要</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">ER図 <span class="required">必須</span></div>
-          <div class="fill-hint">テーブル間のリレーション図（テキストベースまたは画像で記載）</div>
-          <div class="fill-content">
-            <p>（ER図を記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">エンティティ関係 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p><strong>公開向け主要データ:</strong> `works`（作品）, `news_items`（お知らせ）</p>
+              <p><strong>CVデータ:</strong> `enquiry_submissions`（問い合わせ）</p>
+              <p><strong>管理・監査:</strong> `admin_users`（管理利用者）, `admin_audit_logs`（操作ログ）</p>
+              <p><strong>関連:</strong> `admin_users.id` 1:N `works.created_by` / `works.updated_by`</p>
+              <p><strong>関連:</strong> `admin_users.id` 1:N `admin_audit_logs.actor_admin_id`</p>
+              <p><strong>注意:</strong> 体験申込専用テーブルは作成しない（現スコープ外）</p>
+            </div>
           </div>
-        </div>
-
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> テーブル定義</h2>
 
+          <div class="fill-block">
+            <div class="fill-label">共通方針 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・DBはSupabase PostgreSQLを使用</p>
+              <p>・主キーは `uuid`（`gen_random_uuid()`）を採用</p>
+              <p>・日時は `timestamptz`（UTC保存）を採用</p>
+              <p>・論理削除が必要なテーブルは `deleted_at` を使用</p>
+            </div>
+          </div>
 
           <div class="fill-block">
-            <div class="fill-label">テーブル名：（テーブル名を入力） <span class="required">必須</span></div>
-            <div class="fill-hint">テーブルの目的：（このテーブルが管理するデータの説明）</div>
-        <table class="doc-table">
-          <thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>主キー</td></tr>
-          <tr class="template-row"><td>（カラム名）</td><td>（VARCHAR(255) 等）</td><td>（YES/NO）</td><td>（デフォルト値）</td><td>（PK/FK/UNIQUE/NOT NULL）</td><td>（説明）</td></tr>
-          <tr class="template-row"><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
-          <tr class="template-row"><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">`works`（作品） <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr><th>カラム名</th><th>型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>id</td><td>uuid</td><td>NO</td><td>gen_random_uuid()</td><td>PK</td><td>作品ID</td></tr>
+                <tr class="template-row"><td>title</td><td>varchar(80)</td><td>NO</td><td>-</td><td>CHECK (char_length(title) &gt;= 1)</td><td>作品タイトル</td></tr>
+                <tr class="template-row"><td>category</td><td>varchar(20)</td><td>NO</td><td>-</td><td>CHECK IN ('master1','master2','master3','general','kids')</td><td>作品カテゴリ</td></tr>
+                <tr class="template-row"><td>level_label</td><td>varchar(40)</td><td>YES</td><td>null</td><td>-</td><td>レベル表示（任意）</td></tr>
+                <tr class="template-row"><td>description</td><td>text</td><td>YES</td><td>null</td><td>-</td><td>作品説明</td></tr>
+                <tr class="template-row"><td>image_path</td><td>text</td><td>NO</td><td>-</td><td>-</td><td>Storage上の相対パス</td></tr>
+                <tr class="template-row"><td>image_alt_ja</td><td>varchar(120)</td><td>NO</td><td>-</td><td>-</td><td>日本語altテキスト</td></tr>
+                <tr class="template-row"><td>publish_status</td><td>varchar(20)</td><td>NO</td><td>'draft'</td><td>CHECK IN ('draft','published')</td><td>公開状態</td></tr>
+                <tr class="template-row"><td>published_at</td><td>timestamptz</td><td>YES</td><td>null</td><td>-</td><td>公開日時</td></tr>
+                <tr class="template-row"><td>display_order</td><td>int</td><td>NO</td><td>100</td><td>CHECK (display_order &gt;= 0)</td><td>一覧表示順</td></tr>
+                <tr class="template-row"><td>created_by</td><td>uuid</td><td>YES</td><td>null</td><td>FK -&gt; admin_users.id</td><td>作成者</td></tr>
+                <tr class="template-row"><td>updated_by</td><td>uuid</td><td>YES</td><td>null</td><td>FK -&gt; admin_users.id</td><td>更新者</td></tr>
+                <tr class="template-row"><td>created_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>作成日時</td></tr>
+                <tr class="template-row"><td>updated_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>更新日時</td></tr>
+                <tr class="template-row"><td>deleted_at</td><td>timestamptz</td><td>YES</td><td>null</td><td>-</td><td>論理削除日時</td></tr>
+              </tbody>
+            </table>
+          </div>
 
+          <div class="fill-block">
+            <div class="fill-label">`enquiry_submissions`（問い合わせ） <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr><th>カラム名</th><th>型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>id</td><td>uuid</td><td>NO</td><td>gen_random_uuid()</td><td>PK</td><td>問い合わせID</td></tr>
+                <tr class="template-row"><td>name</td><td>varchar(50)</td><td>NO</td><td>-</td><td>CHECK (char_length(name) &gt;= 1)</td><td>氏名</td></tr>
+                <tr class="template-row"><td>email</td><td>varchar(255)</td><td>NO</td><td>-</td><td>CHECK (position('@' in email) &gt; 1)</td><td>メールアドレス</td></tr>
+                <tr class="template-row"><td>phone</td><td>varchar(20)</td><td>YES</td><td>null</td><td>-</td><td>電話番号（任意）</td></tr>
+                <tr class="template-row"><td>enquiry_type</td><td>varchar(30)</td><td>NO</td><td>-</td><td>CHECK IN ('course','fee','attendance','other')</td><td>問い合わせ種別</td></tr>
+                <tr class="template-row"><td>message</td><td>text</td><td>NO</td><td>-</td><td>CHECK (char_length(message) &gt;= 1)</td><td>本文</td></tr>
+                <tr class="template-row"><td>privacy_agreed</td><td>boolean</td><td>NO</td><td>false</td><td>CHECK (privacy_agreed = true)</td><td>同意フラグ</td></tr>
+                <tr class="template-row"><td>status</td><td>varchar(20)</td><td>NO</td><td>'new'</td><td>CHECK IN ('new','processing','closed','spam')</td><td>対応状態</td></tr>
+                <tr class="template-row"><td>admin_memo</td><td>text</td><td>YES</td><td>null</td><td>-</td><td>管理メモ</td></tr>
+                <tr class="template-row"><td>source_page</td><td>varchar(120)</td><td>YES</td><td>null</td><td>-</td><td>送信元URL</td></tr>
+                <tr class="template-row"><td>ip_hash</td><td>varchar(128)</td><td>YES</td><td>null</td><td>-</td><td>不正対策用ハッシュ</td></tr>
+                <tr class="template-row"><td>user_agent</td><td>text</td><td>YES</td><td>null</td><td>-</td><td>送信時UA</td></tr>
+                <tr class="template-row"><td>created_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>受付日時</td></tr>
+                <tr class="template-row"><td>updated_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>更新日時</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">`news_items`（お知らせ） <span class="optional">任意（Should）</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr><th>カラム名</th><th>型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>id</td><td>uuid</td><td>NO</td><td>gen_random_uuid()</td><td>PK</td><td>お知らせID</td></tr>
+                <tr class="template-row"><td>title</td><td>varchar(120)</td><td>NO</td><td>-</td><td>-</td><td>タイトル</td></tr>
+                <tr class="template-row"><td>body</td><td>text</td><td>NO</td><td>-</td><td>-</td><td>本文</td></tr>
+                <tr class="template-row"><td>news_date</td><td>date</td><td>NO</td><td>current_date</td><td>-</td><td>掲載日</td></tr>
+                <tr class="template-row"><td>publish_status</td><td>varchar(20)</td><td>NO</td><td>'draft'</td><td>CHECK IN ('draft','published')</td><td>公開状態</td></tr>
+                <tr class="template-row"><td>created_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>作成日時</td></tr>
+                <tr class="template-row"><td>updated_at</td><td>timestamptz</td><td>NO</td><td>now()</td><td>-</td><td>更新日時</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">`admin_users` / `admin_audit_logs` <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・`admin_users`: Supabase Auth `auth.users` と1:1で運用（`id(uuid)` を共通）</p>
+              <p>・`admin_users.role`: `admin` / `editor`</p>
+              <p>・`admin_audit_logs`: `actor_admin_id`, `action`, `target_table`, `target_id`, `meta_json`, `created_at` を保持</p>
+              <p>・監査ログは削除不可（append-only）で運用する</p>
+            </div>
           </div>
         </section>
 
         <section class="section" id="sec3">
-          <h2 class="section-title"><span class="section-icon">3</span> インデックス設計</h2>
+          <h2 class="section-title"><span class="section-icon">3</span> インデックス・制約・RLS</h2>
 
           <div class="fill-block">
-            <div class="fill-label">インデックス一覧 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>テーブル名</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>設定理由</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>（テーブル名）</td><td>idx_（テーブル）_（カラム）</td><td>（カラム名）</td><td>（UNIQUE / INDEX）</td><td>（検索で頻繁に使用するため等）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">主要インデックス <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr><th>テーブル</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>目的</th></tr>
+              </thead>
+              <tbody>
+                <tr class="template-row"><td>works</td><td>idx_works_public</td><td>publish_status, display_order, published_at</td><td>INDEX</td><td>公開一覧表示を高速化</td></tr>
+                <tr class="template-row"><td>works</td><td>idx_works_category</td><td>category, publish_status</td><td>INDEX</td><td>カテゴリ絞り込みを高速化</td></tr>
+                <tr class="template-row"><td>enquiry_submissions</td><td>idx_enquiry_created_at</td><td>created_at desc</td><td>INDEX</td><td>新着順管理を高速化</td></tr>
+                <tr class="template-row"><td>enquiry_submissions</td><td>idx_enquiry_status</td><td>status, created_at desc</td><td>INDEX</td><td>対応状態別の管理を高速化</td></tr>
+                <tr class="template-row"><td>news_items</td><td>idx_news_public</td><td>publish_status, news_date desc</td><td>INDEX</td><td>公開お知らせ表示を高速化</td></tr>
+                <tr class="template-row"><td>admin_audit_logs</td><td>idx_audit_actor_time</td><td>actor_admin_id, created_at desc</td><td>INDEX</td><td>監査追跡を高速化</td></tr>
+              </tbody>
+            </table>
+          </div>
 
+          <div class="fill-block">
+            <div class="fill-label">RLS設計（Supabase） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・`works`: 公開サイトは `publish_status='published' and deleted_at is null` のみ `SELECT` 許可</p>
+              <p>・`news_items`: 公開サイトは `publish_status='published'` のみ `SELECT` 許可</p>
+              <p>・`enquiry_submissions`: 匿名 `INSERT` のみ許可、`SELECT/UPDATE/DELETE` は管理ロールのみ</p>
+              <p>・`admin_users` / `admin_audit_logs`: 管理ロールのみアクセス可</p>
+              <p>・Service Role Keyはサーバーサイド限定、静的HTML側には露出させない</p>
+            </div>
           </div>
         </section>
 
         <section class="section" id="sec4">
-          <h2 class="section-title"><span class="section-icon">4</span> 初期データ</h2>
+          <h2 class="section-title"><span class="section-icon">4</span> 初期データ / 運用データ</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">マスタデータ・テストデータ <span class="required">必須</span></div>
-          <div class="fill-hint">初期投入するデータ（カテゴリマスタ、管理者ユーザー等）</div>
-          <div class="fill-content">
-            <p>（初期データのSQL INSERT文を記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">初期投入データ（推奨） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・`works`: 各カテゴリ最低3件（合計15件以上）を投入して絞り込み挙動を確認</p>
+              <p>・`news_items`: 公開状態のダミー3件（`YYYY.MM.DD` 表示形式確認用）</p>
+              <p>・`admin_users`: `admin` 1名、`editor` 1名</p>
+            </div>
           </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">マスタ / 列挙値管理 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・カテゴリ、公開状態、問い合わせ状態はDB CHECK制約で統制する</p>
+              <p>・将来的に項目追加が頻発する場合のみ、別途マスタテーブル化を検討する</p>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">補足（実装方針） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・静的HTMLからの動的データ取得は Supabase JS で公開APIを参照する</p>
+              <p>・問い合わせ送信はAPI経由（Edge Functionまたは安全なサーバー処理）を推奨する</p>
+              <p>・画像は Supabase Storage の専用バケット（例: `works-public`）で管理する</p>
+            </div>
+          </div>
         </section>
 
       </div>
@@ -124,3 +231,4 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
+

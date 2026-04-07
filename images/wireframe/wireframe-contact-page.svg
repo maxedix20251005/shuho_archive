@@ -18,92 +18,96 @@
   <rect class="bg" x="0" y="0" width="1440" height="2920" />
   <rect class="frame" x="120" y="40" width="1200" height="2840" rx="8" />
 
-  <text x="140" y="28" class="sub">Sub Page Wireframe (PC) - Contact Page</text>
+  <text x="140" y="28" class="sub">サブページ ワイヤーフレーム（PC）- お問い合わせ</text>
 
   <!-- Header -->
   <rect class="sec" x="140" y="70" width="1160" height="90" />
-  <text x="165" y="124" class="label">1. Header (Logo / Global Navigation)</text>
+  <text x="165" y="124" class="label">1. ヘッダー（ロゴ / グローバルナビ）</text>
   <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
-  <text x="183" y="121" class="sub">LOGO</text>
+  <text x="183" y="121" class="sub">ロゴ</text>
   <rect class="card" x="470" y="92" width="800" height="46" rx="4" />
-  <text x="490" y="121" class="sub">NAV: Home | About | Masters | Courses | Portfolio | FAQ | Access | Contact</text>
+  <text x="490" y="121" class="sub">NAV: ホーム | 塾について | 師範 | コース | 作品 | FAQ | アクセス | お問い合わせ</text>
 
   <!-- Hero -->
   <rect class="sec" x="140" y="180" width="1160" height="220" />
-  <text x="165" y="222" class="label">2. Page Hero (Contact)</text>
+  <text x="165" y="222" class="label">2. ページヒーロー（お問い合わせ）</text>
   <rect class="thumb" x="170" y="248" width="1100" height="120" />
-  <text x="720" y="314" class="sub" text-anchor="middle">Contact us for class guidance and inquiries</text>
+  <text x="720" y="314" class="sub" text-anchor="middle">受講相談・お問い合わせはこちら</text>
 
-  <!-- Contact Method Summary -->
+  <!-- お問い合わせ Method Summary -->
   <rect class="sec" x="140" y="420" width="1160" height="220" />
-  <text x="165" y="462" class="label">3. Contact Method Summary</text>
+  <text x="165" y="462" class="label">3. 問い合わせ手段の概要</text>
   <rect class="card" x="170" y="492" width="355" height="120" />
   <rect class="card" x="542" y="492" width="355" height="120" />
   <rect class="card" x="914" y="492" width="355" height="120" />
-  <text x="347" y="528" class="sub" text-anchor="middle">Form</text>
-  <text x="719" y="528" class="sub" text-anchor="middle">Phone</text>
-  <text x="1091" y="528" class="sub" text-anchor="middle">Response Time</text>
-  <text x="347" y="558" class="tiny" text-anchor="middle">Best for detailed questions</text>
-  <text x="719" y="558" class="tiny" text-anchor="middle">Best for urgent matters</text>
-  <text x="1091" y="558" class="tiny" text-anchor="middle">Within 1-2 business days</text>
+  <text x="347" y="528" class="sub" text-anchor="middle">フォーム</text>
+  <text x="719" y="528" class="sub" text-anchor="middle">電話</text>
+  <text x="1091" y="528" class="sub" text-anchor="middle">返信目安</text>
+  <text x="347" y="558" class="tiny" text-anchor="middle">詳細相談向け</text>
+  <text x="719" y="558" class="tiny" text-anchor="middle">お急ぎ向け</text>
+  <text x="1091" y="558" class="tiny" text-anchor="middle">1〜2営業日以内</text>
 
-  <!-- Contact Form -->
+  <!-- お問い合わせ フォーム -->
   <rect class="sec" x="140" y="660" width="1160" height="920" />
-  <text x="165" y="702" class="label">4. Contact Form</text>
+  <text x="165" y="702" class="label">4. お問い合わせ フォーム</text>
   <rect class="card" x="170" y="732" width="1100" height="820" />
 
-  <text x="190" y="780" class="tiny">Name *</text>
+  <text x="190" y="780" class="tiny">お名前 *</text>
   <rect class="field" x="190" y="792" width="1060" height="46" rx="4" />
 
-  <text x="190" y="870" class="tiny">Email *</text>
+  <text x="190" y="870" class="tiny">メールアドレス *</text>
   <rect class="field" x="190" y="882" width="1060" height="46" rx="4" />
 
-  <text x="190" y="960" class="tiny">Phone</text>
+  <text x="190" y="960" class="tiny">電話</text>
   <rect class="field" x="190" y="972" width="1060" height="46" rx="4" />
 
-  <text x="190" y="1050" class="tiny">Inquiry Category *</text>
+  <text x="190" y="1050" class="tiny">問い合わせ カテゴリ *</text>
   <rect class="field" x="190" y="1062" width="1060" height="46" rx="4" />
 
-  <text x="190" y="1140" class="tiny">Message *</text>
+  <text x="190" y="1140" class="tiny">お問い合わせ内容 *</text>
   <rect class="field" x="190" y="1152" width="1060" height="220" rx="4" />
 
   <rect class="chip" x="190" y="1390" width="18" height="18" rx="3" />
-  <text x="218" y="1405" class="tiny">I agree to the privacy policy *</text>
+  <text x="218" y="1405" class="tiny">プライバシーポリシーに同意する *</text>
 
   <rect class="card" x="190" y="1430" width="240" height="48" rx="6" />
-  <text x="310" y="1460" class="tiny" text-anchor="middle">Submit Inquiry</text>
+  <text x="310" y="1460" class="tiny" text-anchor="middle">送信する</text>
 
   <!-- Side Guidance -->
   <rect class="sec" x="140" y="1600" width="1160" height="290" />
-  <text x="165" y="1642" class="label">5. Form Guidance</text>
+  <text x="165" y="1642" class="label">5. フォーム入力ガイド</text>
   <rect class="card" x="170" y="1672" width="540" height="190" />
   <rect class="card" x="730" y="1672" width="540" height="190" />
-  <text x="190" y="1708" class="tiny">Before sending</text>
-  <text x="190" y="1736" class="tiny">- Confirm email correctness</text>
-  <text x="190" y="1764" class="tiny">- Add preferred contact time if needed</text>
-  <text x="750" y="1708" class="tiny">After sending</text>
-  <text x="750" y="1736" class="tiny">- Auto-confirmation email</text>
-  <text x="750" y="1764" class="tiny">- Manual response from school office</text>
+  <text x="190" y="1708" class="tiny">送信前</text>
+  <text x="190" y="1736" class="tiny">- メールアドレスの入力誤りを確認</text>
+  <text x="190" y="1764" class="tiny">- 必要に応じて希望連絡時間を記載</text>
+  <text x="750" y="1708" class="tiny">送信後</text>
+  <text x="750" y="1736" class="tiny">- 自動返信メール</text>
+  <text x="750" y="1764" class="tiny">- 事務局からの個別返信</text>
 
-  <!-- Contact FAQ -->
+  <!-- お問い合わせ FAQ -->
   <rect class="sec" x="140" y="1910" width="1160" height="220" />
-  <text x="165" y="1952" class="label">6. Contact FAQ</text>
+  <text x="165" y="1952" class="label">6. お問い合わせFAQ</text>
   <rect class="card" x="170" y="1982" width="1100" height="56" />
   <rect class="card" x="170" y="2048" width="1100" height="56" />
-  <text x="190" y="2016" class="tiny">Q. I did not receive a confirmation email. What should I do?</text>
-  <text x="190" y="2082" class="tiny">Q. Can I ask multiple questions in one form?</text>
+  <text x="190" y="2016" class="tiny">Q. 自動返信メールが届かない場合は？</text>
+  <text x="190" y="2082" class="tiny">Q. 1つのフォームで複数質問してもよいですか？</text>
 
   <!-- Footer -->
   <rect class="sec" x="140" y="2150" width="1160" height="170" />
-  <text x="165" y="2192" class="label">7. Footer</text>
+  <text x="165" y="2192" class="label">7. フッター</text>
   <line class="line" x1="170" y1="2210" x2="1270" y2="2210" />
-  <text x="170" y="2252" class="tiny">Contact | Phone | Privacy Policy | Sitemap</text>
+  <text x="170" y="2252" class="tiny">お問い合わせ | 電話 | プライバシーポリシー | サイトマップ</text>
 
-  <!-- Notes -->
+  <!-- 備考 -->
   <rect class="card" x="140" y="2340" width="1160" height="520" />
-  <text x="165" y="2380" class="label">Layout Notes</text>
-  <text x="165" y="2412" class="tiny">- Keep form fields straightforward and reduce completion friction.</text>
-  <text x="165" y="2440" class="tiny">- Place privacy agreement close to submit button.</text>
-  <text x="165" y="2468" class="tiny">- Provide pre-send and post-send guidance to reduce uncertainty.</text>
-  <text x="165" y="2496" class="tiny">- Keep this page as primary conversion endpoint in current scope.</text>
+  <text x="165" y="2380" class="label">レイアウト注記</text>
+  <text x="165" y="2412" class="tiny">- 入力項目を明快にし、離脱を減らす</text>
+  <text x="165" y="2440" class="tiny">- 送信ボタン付近に同意チェックを配置</text>
+  <text x="165" y="2468" class="tiny">- 送信前後の案内で不安を減らす</text>
+  <text x="165" y="2496" class="tiny">- 本スコープでは本ページを主要問い合わせ地点とする</text>
 </svg>
+
+
+
+

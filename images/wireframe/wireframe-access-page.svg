@@ -17,89 +17,93 @@
   <rect class="bg" x="0" y="0" width="1440" height="2740" />
   <rect class="frame" x="120" y="40" width="1200" height="2660" rx="8" />
 
-  <text x="140" y="28" class="sub">Sub Page Wireframe (PC) - Access Page</text>
+  <text x="140" y="28" class="sub">サブページ ワイヤーフレーム（PC）- アクセス</text>
 
   <!-- Header -->
   <rect class="sec" x="140" y="70" width="1160" height="90" />
-  <text x="165" y="124" class="label">1. Header (Logo / Global Navigation)</text>
+  <text x="165" y="124" class="label">1. ヘッダー（ロゴ / グローバルナビ）</text>
   <rect class="card" x="165" y="92" width="170" height="46" rx="4" />
-  <text x="183" y="121" class="sub">LOGO</text>
+  <text x="183" y="121" class="sub">ロゴ</text>
   <rect class="card" x="470" y="92" width="800" height="46" rx="4" />
-  <text x="490" y="121" class="sub">NAV: Home | About | Masters | Courses | Portfolio | FAQ | Access | Contact</text>
+  <text x="490" y="121" class="sub">NAV: ホーム | 塾について | 師範 | コース | 作品 | FAQ | アクセス | お問い合わせ</text>
 
   <!-- Hero -->
   <rect class="sec" x="140" y="180" width="1160" height="220" />
-  <text x="165" y="222" class="label">2. Page Hero (Access)</text>
+  <text x="165" y="222" class="label">2. ページヒーロー（アクセス）</text>
   <rect class="thumb" x="170" y="248" width="1100" height="120" />
-  <text x="720" y="314" class="sub" text-anchor="middle">How to reach the school smoothly</text>
+  <text x="720" y="314" class="sub" text-anchor="middle">迷わず来塾できるアクセス情報</text>
 
-  <!-- Main Access Block -->
+  <!-- Main アクセス Block -->
   <rect class="sec" x="140" y="420" width="1160" height="470" />
-  <text x="165" y="462" class="label">3. Map and Basic Info</text>
+  <text x="165" y="462" class="label">3. 地図と基本情報</text>
   <rect class="thumb" x="170" y="492" width="640" height="370" />
-  <text x="490" y="688" class="sub" text-anchor="middle">Map Area</text>
+  <text x="490" y="688" class="sub" text-anchor="middle">地図エリア</text>
   <rect class="card" x="840" y="492" width="430" height="370" />
-  <text x="860" y="530" class="sub">Address / Station / Contact</text>
-  <text x="860" y="560" class="tiny">Address: Shinagawa, Tokyo</text>
-  <text x="860" y="588" class="tiny">Nearest station: XX station, 5 min walk</text>
-  <text x="860" y="616" class="tiny">Open hours: Weekday evenings / Saturday</text>
-  <text x="860" y="644" class="tiny">Phone / Contact form guidance</text>
+  <text x="860" y="530" class="sub">住所 / 最寄駅 / お問い合わせ</text>
+  <text x="860" y="560" class="tiny">住所：東京都品川区</text>
+  <text x="860" y="588" class="tiny">最寄駅：〇〇駅 徒歩5分</text>
+  <text x="860" y="616" class="tiny">受付時間：平日夕方 / 土曜日</text>
+  <text x="860" y="644" class="tiny">電話 / お問い合わせフォーム案内</text>
 
   <!-- Route Guides -->
   <rect class="sec" x="140" y="910" width="1160" height="360" />
-  <text x="165" y="952" class="label">4. Route Guide by Station Exit</text>
+  <text x="165" y="952" class="label">4. 駅出口別ルート案内</text>
   <rect class="card" x="170" y="982" width="355" height="260" />
   <rect class="card" x="542" y="982" width="355" height="260" />
   <rect class="card" x="914" y="982" width="355" height="260" />
   <rect class="thumb" x="190" y="1002" width="315" height="120" />
   <rect class="thumb" x="562" y="1002" width="315" height="120" />
   <rect class="thumb" x="934" y="1002" width="315" height="120" />
-  <text x="347" y="1160" class="tiny" text-anchor="middle">Exit A Route</text>
-  <text x="719" y="1160" class="tiny" text-anchor="middle">Exit B Route</text>
-  <text x="1091" y="1160" class="tiny" text-anchor="middle">Landmark Route</text>
+  <text x="347" y="1160" class="tiny" text-anchor="middle">A出口ルート</text>
+  <text x="719" y="1160" class="tiny" text-anchor="middle">B出口ルート</text>
+  <text x="1091" y="1160" class="tiny" text-anchor="middle">目印ルート</text>
 
   <!-- Exterior Photos -->
   <rect class="sec" x="140" y="1290" width="1160" height="300" />
-  <text x="165" y="1332" class="label">5. Exterior and Entrance Photos</text>
+  <text x="165" y="1332" class="label">5. 外観・入口写真</text>
   <rect class="thumb" x="170" y="1362" width="355" height="200" />
   <rect class="thumb" x="542" y="1362" width="355" height="200" />
   <rect class="thumb" x="914" y="1362" width="355" height="200" />
-  <text x="347" y="1574" class="tiny" text-anchor="middle">Building Exterior</text>
-  <text x="719" y="1574" class="tiny" text-anchor="middle">Entrance Gate</text>
-  <text x="1091" y="1574" class="tiny" text-anchor="middle">Neighborhood Landmark</text>
+  <text x="347" y="1574" class="tiny" text-anchor="middle">建物外観</text>
+  <text x="719" y="1574" class="tiny" text-anchor="middle">入口</text>
+  <text x="1091" y="1574" class="tiny" text-anchor="middle">周辺ランドマーク</text>
 
-  <!-- Transport / Notes -->
+  <!-- Transport / 備考 -->
   <rect class="sec" x="140" y="1610" width="1160" height="260" />
-  <text x="165" y="1652" class="label">6. Transport and Visit Notes</text>
+  <text x="165" y="1652" class="label">6. 来塾時の注意事項</text>
   <rect class="card" x="170" y="1682" width="1100" height="160" />
-  <text x="190" y="1720" class="tiny">- Bicycle / car access policy</text>
-  <text x="190" y="1748" class="tiny">- Waiting area for guardians</text>
-  <text x="190" y="1776" class="tiny">- Recommended arrival timing before class</text>
+  <text x="190" y="1720" class="tiny">- 自転車・車での来塾ルール</text>
+  <text x="190" y="1748" class="tiny">- 保護者待機スペースの有無</text>
+  <text x="190" y="1776" class="tiny">- 授業開始前の推奨到着時間</text>
 
   <!-- FAQ Snippet -->
   <rect class="sec" x="140" y="1890" width="1160" height="210" />
-  <text x="165" y="1932" class="label">7. Access FAQ</text>
+  <text x="165" y="1932" class="label">7. アクセスFAQ</text>
   <rect class="card" x="170" y="1962" width="1100" height="56" />
   <rect class="card" x="170" y="2028" width="1100" height="56" />
-  <text x="190" y="1996" class="tiny">Q. Is there parking nearby?</text>
-  <text x="190" y="2062" class="tiny">Q. Can guardians wait during class?</text>
+  <text x="190" y="1996" class="tiny">Q. 近隣に駐車場はありますか？</text>
+  <text x="190" y="2062" class="tiny">Q. 授業中に保護者は待機できますか？</text>
 
-  <!-- Contact Strip -->
+  <!-- お問い合わせ Strip -->
   <rect class="sec" x="140" y="2120" width="1160" height="160" />
-  <text x="165" y="2162" class="label">8. Contact Strip</text>
+  <text x="165" y="2162" class="label">8. お問い合わせ導線</text>
   <rect class="card" x="170" y="2182" width="1100" height="78" />
-  <text x="190" y="2228" class="tiny">Need route support? Contact form / phone</text>
+  <text x="190" y="2228" class="tiny">道順のご相談：お問い合わせフォーム / 電話</text>
 
   <!-- Footer -->
   <rect class="sec" x="140" y="2300" width="1160" height="170" />
-  <text x="165" y="2342" class="label">9. Footer</text>
+  <text x="165" y="2342" class="label">9. フッター</text>
   <line class="line" x1="170" y1="2360" x2="1270" y2="2360" />
-  <text x="170" y="2402" class="tiny">Contact | Phone | Privacy Policy | Sitemap</text>
+  <text x="170" y="2402" class="tiny">お問い合わせ | 電話 | プライバシーポリシー | サイトマップ</text>
 
-  <!-- Notes -->
+  <!-- 備考 -->
   <rect class="card" x="140" y="2490" width="1160" height="200" />
-  <text x="165" y="2530" class="label">Layout Notes</text>
-  <text x="165" y="2562" class="tiny">- Prioritize map, station access, and visual landmarks above all.</text>
-  <text x="165" y="2590" class="tiny">- Reduce arrival anxiety with route photos and practical notes.</text>
-  <text x="165" y="2618" class="tiny">- Keep conversion pathway as contact support by current scope.</text>
+  <text x="165" y="2530" class="label">レイアウト注記</text>
+  <text x="165" y="2562" class="tiny">- 地図・最寄駅・目印情報を最優先で配置</text>
+  <text x="165" y="2590" class="tiny">- ルート写真と実用情報で来訪不安を軽減</text>
+  <text x="165" y="2618" class="tiny">- 現スコープでは問い合わせ導線を主軸にする</text>
 </svg>
+
+
+
+

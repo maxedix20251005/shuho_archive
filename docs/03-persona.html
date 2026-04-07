@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ペルソナシート -  プロジェクトアーカイブ</title>
+  <title>ペルソナ設計 - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,159 +13,140 @@
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
         <div class="doc-category">DOCUMENT 03</div>
-        <h1 class="doc-title">ペルソナシート</h1>
+        <h1 class="doc-title">ペルソナ設計</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: Webディレクター / UX</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.0</span>
         </div>
       </header>
 
       <div class="doc-body">
-
-        <div class="external-link-box">
-          <div class="external-link-box-title">
-            <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
-          </div>
-          <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細なペルソナシートは以下のリンクからご確認ください。
-          </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-03">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-03').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
-          </div>
-        </div>
 
         <div class="toc">
           <div class="toc-title">目次</div>
           <ol class="toc-list">
             <li><a href="#sec1">基本プロフィール</a></li>
             <li><a href="#sec2">ライフスタイル</a></li>
-            <li><a href="#sec3">デジタル行動</a></li>
-            <li><a href="#sec4">課題とニーズ</a></li>
+            <li><a href="#sec3">デジタル環境</a></li>
+            <li><a href="#sec4">ニーズと課題</a></li>
             <li><a href="#sec5">カスタマージャーニーマップ</a></li>
           </ol>
         </div>
 
-
         <section class="section" id="sec1">
           <h2 class="section-title"><span class="section-icon">1</span> 基本プロフィール</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">ペルソナ基本情報 <span class="required">必須</span></div>
-          <div class="fill-hint">架空の人物として具体的に設定してください</div>
-          <div class="fill-content">
-            <p>氏名：中村 美咲（仮名） / 34歳 / 女性</p>
-            <p>居住地：東京都品川区（最寄駅から徒歩10分圏）</p>
-            <p>職業：IT企業の営業企画（平日勤務）</p>
-            <p>家族構成：夫と2人暮らし</p>
-            <p>年収帯：500〜650万円</p>
-            <p>書道経験：小学生以来ほぼ未経験（初心者）</p>
-            <p>目的：仕事での手書き文字改善、趣味として心を整える時間を持ちたい</p>
+          <div class="fill-block">
+            <div class="fill-label">ペルソナA（一次ターゲット） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>氏名: 田中 美咲（仮） / 34歳 / 女性 / 品川区在住</p>
+              <p>職業: 会社員（時短勤務）</p>
+              <p>家族構成: 配偶者・小学生の子ども1名</p>
+              <p>目的: 子どもの集中力と文字改善、礼儀作法を身につけたい</p>
+              <p>最終行動: 問い合わせフォーム送信</p>
+            </div>
           </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">ペルソナB（一次ターゲット） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>氏名: 鈴木 恒一（仮） / 29歳 / 男性 / 港区勤務</p>
+              <p>職業: IT企業勤務</p>
+              <p>目的: 趣味とメンタルリセット、美文字習得</p>
+              <p>重視点: 平日夜の通塾可否、初心者歓迎、通いやすさ</p>
+              <p>最終行動: 問い合わせフォーム送信</p>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">ペルソナC（二次ターゲット） <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>氏名: 佐々木 和子（仮） / 67歳 / 女性</p>
+              <p>目的: 生涯学習と仲間づくり、生活リズムの維持</p>
+              <p>重視点: 昼間帯、落ち着いた環境、電話相談のしやすさ</p>
+              <p>最終行動: 電話または問い合わせフォーム</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> ライフスタイル</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">平日のタイムスケジュール <span class="required">必須</span></div>
-          <div class="fill-hint">朝起きてから寝るまでの1日の流れ</div>
-          <div class="fill-content">
-            <p>06:30 起床 → 08:00 出勤 → 09:00〜18:30 勤務 → 19:30 帰宅 → 20:30 夕食・家事 → 21:30 自由時間（スマホ閲覧・動画）→ 23:30 就寝</p>
-            <p>習い事に使える時間は「平日21時前後」または「土曜午前」が中心。</p>
+          <div class="fill-block">
+            <div class="fill-label">平日行動パターン <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>保護者層: 朝に情報収集、夜に比較検討し、週末に家族と相談して意思決定。</p>
+              <p>社会人層: 通勤時間と就寝前にスマホで比較、短時間で候補を絞る。</p>
+              <p>シニア層: 日中にPCまたはタブレット閲覧、電話相談への安心感が高い。</p>
+            </div>
           </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">休日の過ごし方 <span class="required">必須</span></div>
-          <div class="fill-hint">休日にどのように過ごしているか</div>
-          <div class="fill-content">
-            <p>午前中に家事、午後はカフェや散歩。月1〜2回は美術館や和文化イベントに参加。</p>
-            <p>習い事は「移動が負担でない」「予定変更に対応しやすい」ことを重視。</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">趣味・関心事 <span class="required">必須</span></div>
-          <div class="fill-hint">興味のある分野・趣味</div>
-          <div class="fill-content">
-            <p>趣味：読書、カフェ巡り、写真、和雑貨。</p>
-            <p>関心事：姿勢改善、マインドフルネス、手書き文字の印象向上。</p>
-          </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">関心・価値観 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>・「続けられること」を重視し、上達の見通しがある教室を選ぶ。</p>
+              <p>・価格の安さだけでなく、講師品質と安心感で判断する。</p>
+              <p>・世界観に共感できるサイトは、問い合わせ行動につながりやすい。</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec3">
-          <h2 class="section-title"><span class="section-icon">3</span> デジタル行動</h2>
+          <h2 class="section-title"><span class="section-icon">3</span> デジタル環境</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">使用デバイス・サービス <span class="required">必須</span></div>
-          <div class="fill-hint">日常的に使用するデバイス、SNS、Webサービス</div>
-          <div class="fill-content">
-            <p>主デバイス：iPhone（情報収集の8割）、会社PC（比較検討時）。</p>
-            <p>利用サービス：Google検索、Googleマップ、Instagram、YouTube、LINE。</p>
-            <p>行動傾向：まずスマホで候補を3〜5件比較し、料金・時間割・雰囲気が分かるサイトを優先する。</p>
+          <div class="fill-block">
+            <div class="fill-label">利用デバイス・行動 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>主デバイス: スマホ（全体の約7〜8割を想定）</p>
+              <p>補助デバイス: PC（詳細比較時）</p>
+              <p>主な流入: Google検索、Googleマップ、SNS投稿、口コミ共有</p>
+              <p>期待値: 3分以内に必要情報へ到達し、問い合わせ送信まで完了できること</p>
+            </div>
           </div>
-        </div>
-
         </section>
 
         <section class="section" id="sec4">
-          <h2 class="section-title"><span class="section-icon">4</span> 課題とニーズ</h2>
+          <h2 class="section-title"><span class="section-icon">4</span> ニーズと課題</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">抱えている課題・悩み <span class="required">必須</span></div>
-          <div class="fill-hint">このペルソナが日常で抱えている課題（サービスに関連するもの）</div>
-          <div class="fill-content">
-            <p>1. 書道を始めたいが「初心者には敷居が高そう」と感じる。</p>
-            <p>2. 平日夜に通える教室が限られ、継続可能性に不安がある。</p>
-            <p>3. 講師や教室の雰囲気が事前に分からず、申込の決め手に欠ける。</p>
-            <p>4. 料金体系や初期準備（道具・服装）が分かりにくいと離脱する。</p>
+          <div class="fill-block">
+            <div class="fill-label">ニーズ <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>1. 初心者でも安心できる説明（難易度、持ち物、当日の流れ）。</p>
+              <p>2. 比較しやすい情報（料金、時間、対象、アクセス）。</p>
+              <p>3. 講師と作品から教室品質を確認できること。</p>
+              <p>4. 迷わず相談できる問い合わせ導線。</p>
+            </div>
           </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">サービスに期待すること <span class="required">必須</span></div>
-          <div class="fill-hint">このペルソナが（サービス名）に期待する価値</div>
-          <div class="fill-content">
-            <p>1. 初心者歓迎が明確で、初回の流れが分かりやすいこと。</p>
-            <p>2. 料金・時間割・持ち物が1ページで確認できること。</p>
-            <p>3. 師範紹介と作品例から、指導品質と相性を判断できること。</p>
-            <p>4. スマホで3分以内に体験申込が完了すること。</p>
-          </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">課題 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <p>1. 必要情報が別ページに散ると離脱率が上がる。</p>
+              <p>2. 作品の分類が曖昧だと自分向けの成果イメージが持てない。</p>
+              <p>3. 問い合わせフォームの入力負荷が高いとCVが落ちる。</p>
+              <p>4. スマホで視認性が低いと信頼形成前に離脱する。</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> カスタマージャーニーマップ</h2>
-
-          <div class="fill-block">
-            <div class="fill-label">カスタマージャーニーマップ <span class="required">必須</span></div>
-            <div class="fill-hint">ペルソナがサービスを認知してから利用・共有するまでの行動を時系列で記載</div>
-
-        <table class="doc-table">
-          <thead><tr><th>段階</th><th>行動</th><th>接点（タッチポイント）</th><th>感情</th><th>課題・機会</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td><strong>認知</strong></td><td>「品川区 書道教室 初心者」で検索し候補を把握</td><td>Google検索、Googleマップ、Instagram</td><td>🤔</td><td>機会：検索結果で初心者歓迎を明確表示するとクリック率向上</td></tr>
-          <tr class="template-row"><td><strong>興味</strong></td><td>塾の歩み・師範・作品を閲覧して雰囲気を確認</td><td>公式Webサイト（トップ、師範一覧、作品）</td><td>😊</td><td>機会：作品と講師情報の連動で信頼形成を短縮</td></tr>
-          <tr class="template-row"><td><strong>比較検討</strong></td><td>料金、時間割、アクセス、体験可否を比較</td><td>コース・料金ページ、口コミ、地図</td><td>🤨</td><td>課題：情報が分散すると離脱。機会：比較項目を1ページ集約</td></tr>
-          <tr class="template-row"><td><strong>行動</strong></td><td>体験申込フォームを送信</td><td>体験申込ページ、LINE、電話</td><td>😃</td><td>機会：必須項目最小化と入力補助で完了率改善</td></tr>
-          <tr class="template-row"><td><strong>共有・継続</strong></td><td>受講継続し、友人へ紹介またはSNSで共有</td><td>口コミ、SNS、紹介</td><td>😍</td><td>機会：体験後フォロー導線で継続率と紹介率を高める</td></tr>
-          </tbody>
-        </table>
-
-          </div>
+          <table class="doc-table">
+            <thead><tr><th>フェーズ</th><th>行動</th><th>接点</th><th>感情</th><th>設計ポイント</th></tr></thead>
+            <tbody>
+              <tr class="template-row"><td><strong>認知</strong></td><td>地域検索で候補を見つける</td><td>Google検索 / マップ</td><td>🙂</td><td>トップで世界観と価値を即提示</td></tr>
+              <tr class="template-row"><td><strong>比較検討</strong></td><td>料金・時間・講師・作品を比較</td><td>コース / 師範 / 作品ページ</td><td>🤔</td><td>比較情報を分散させない</td></tr>
+              <tr class="template-row"><td><strong>不安解消</strong></td><td>初心者不安や運用ルールを確認</td><td>FAQ / アクセス</td><td>😌</td><td>想定質問を先回り掲載</td></tr>
+              <tr class="template-row"><td><strong>行動</strong></td><td>問い合わせフォーム送信</td><td>お問い合わせページ</td><td>😃</td><td>入力項目を最小化し完了率改善</td></tr>
+              <tr class="template-row"><td><strong>継続</strong></td><td>返信後に見学・入塾検討へ進む</td><td>メール / 電話</td><td>😍</td><td>返信SLAを明示し安心感を維持</td></tr>
+            </tbody>
+          </table>
         </section>
 
       </div>
