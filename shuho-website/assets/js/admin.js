@@ -2,7 +2,7 @@
 
 window.__adminBooted = true;
 
-const client = initSupabase();
+let client = null;
 const page = document.body.dataset.adminPage || "";
 
 function setMessage(text, isError = false) {
@@ -93,7 +93,7 @@ function renderEnquiryRows(items) {
 
     saveButton.addEventListener("click", async () => {
       if (!client) {
-        setMessage("Supabase設定が未完了です。`supabase/config.js` を設定してください。", true);
+        setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
         return;
       }
 
@@ -139,14 +139,14 @@ async function loadEnquiries() {
   }
 
   if (!client) {
-    setMessage("Supabase設定が未完了です。`supabase/config.js` を設定してください。", true);
+    setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
     renderEnquiryRows([]);
     return;
   }
 
-  const search = document.querySelector("#enquiry-search")?.value?.trim() || "";
-  const status = document.querySelector("#enquiry-status-filter")?.value || "";
-  const enquiryType = document.querySelector("#enquiry-type-filter")?.value || "";
+  const search = ((document.querySelector("#enquiry-search") || {}).value || "").trim();
+  const status = ((document.querySelector("#enquiry-status-filter") || {}).value || "");
+  const enquiryType = ((document.querySelector("#enquiry-type-filter") || {}).value || "");
 
   setMessage("読み込み中...");
   const result = await listEnquiries(client, { search, status, enquiryType });
@@ -201,7 +201,7 @@ function renderWorkRows(items) {
 
     saveButton.addEventListener("click", async () => {
       if (!client) {
-        setMessage("Supabase設定が未完了です。`supabase/config.js` を設定してください。", true);
+        setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
         return;
       }
 
@@ -246,14 +246,14 @@ async function loadWorks() {
   }
 
   if (!client) {
-    setMessage("Supabase設定が未完了です。`supabase/config.js` を設定してください。", true);
+    setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
     renderWorkRows([]);
     return;
   }
 
-  const search = document.querySelector("#works-search")?.value?.trim() || "";
-  const category = document.querySelector("#works-category-filter")?.value || "";
-  const publishStatus = document.querySelector("#works-status-filter")?.value || "";
+  const search = ((document.querySelector("#works-search") || {}).value || "").trim();
+  const category = ((document.querySelector("#works-category-filter") || {}).value || "");
+  const publishStatus = ((document.querySelector("#works-status-filter") || {}).value || "");
 
   setMessage("読み込み中...");
   const result = await listWorks(client, { search, category, publishStatus });
@@ -317,14 +317,19 @@ function bindWorksFilterEvents() {
   }
 }
 
-if (page === "enquiries") {
-  bindEnquiryFilterEvents();
-  loadEnquiries();
+async function boot() {
+  client = await initSupabase();
+
+  if (page === "enquiries") {
+    bindEnquiryFilterEvents();
+    await loadEnquiries();
+  }
+
+  if (page === "works") {
+    bindWorksFilterEvents();
+    await loadWorks();
+  }
 }
 
-if (page === "works") {
-  bindWorksFilterEvents();
-  loadWorks();
-}
-
+boot();
 

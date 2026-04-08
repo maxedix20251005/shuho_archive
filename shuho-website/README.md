@@ -10,20 +10,25 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 
 ## Current
 1. Top page and public page UI implemented.
-2. Enquiry form validation and Supabase submission path implemented (falls back to local success if config is missing).
+2. Enquiry form validation and Supabase submission path implemented.
 3. Enquiries admin page loads/filters/updates real data via Supabase (prototype policy mode).
 4. Works admin page loads/filters/updates publish status via Supabase (prototype policy mode).
 5. `supabase/schema.sql` prepared for `enquiries` + `works`.
 
-## Supabase Local Setup
-1. `supabase/config.example.js` is the template.
-2. Local runtime config file is `supabase/config.js`.
-3. `supabase/config.js` is git-ignored via `.gitignore` and should not be committed.
-4. Set values:
+## Supabase Config Modes
+1. Local/private mode: `supabase/config.js` (git-ignored)
+2. Deployed/static mode (e.g. GitHub Pages): `supabase/config.public.js` (tracked)
+3. Fallback order in runtime:
+   - `supabase/config.js`
+   - `supabase/config.public.js`
+   - `window.__SUPABASE_CONFIG`
+
+## Setup
+1. Apply `supabase/schema.sql` in Supabase SQL Editor.
+2. Set either local or deployed config file:
    - `SUPABASE_URL`
    - `SUPABASE_ANON_KEY`
-5. Apply `supabase/schema.sql` in Supabase SQL Editor.
-6. Validate:
+3. Validate:
    - `admin/enquiries.html` list/filter/save
    - `admin/works.html` list/filter/status save
 

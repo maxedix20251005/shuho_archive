@@ -20,9 +20,9 @@
         <div class="doc-category">DOCUMENT 08</div>
         <h1 class="doc-title">データベース設計</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-07</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 最終更新日: 2026-04-08</span>
           <span><span class="material-symbols-outlined icon-sm">person</span> 作成者: Tech Lead / Webディレクター</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.1</span>
         </div>
       </header>
 
@@ -40,6 +40,7 @@
             <p><a href="./07-specification.html" target="_blank" rel="noopener">07-specification.html</a></p>
             <p><a href="./05-wireframe.html" target="_blank" rel="noopener">05-wireframe.html</a></p>
             <p><a href="../project-docs/30_TECH/TECH_SPEC.md" target="_blank" rel="noopener">project-docs/30_TECH/TECH_SPEC.md</a></p>
+            <p><a href="../shuho-website/supabase/schema.sql" target="_blank" rel="noopener">shuho-website/supabase/schema.sql</a></p>
           </div>
         </div>
 
@@ -60,7 +61,7 @@
             <div class="fill-label">エンティティ関係 <span class="required">必須</span></div>
             <div class="fill-content">
               <p><strong>公開向け主要データ:</strong> `works`（作品）, `news_items`（お知らせ）</p>
-              <p><strong>CVデータ:</strong> `enquiry_submissions`（問い合わせ）</p>
+              <p><strong>CVデータ:</strong> `enquiries`（問い合わせ）</p>
               <p><strong>管理・監査:</strong> `admin_users`（管理利用者）, `admin_audit_logs`（操作ログ）</p>
               <p><strong>関連:</strong> `admin_users.id` 1:N `works.created_by` / `works.updated_by`</p>
               <p><strong>関連:</strong> `admin_users.id` 1:N `admin_audit_logs.actor_admin_id`</p>
@@ -109,7 +110,7 @@
           </div>
 
           <div class="fill-block">
-            <div class="fill-label">`enquiry_submissions`（問い合わせ） <span class="required">必須</span></div>
+            <div class="fill-label">`enquiries`（問い合わせ） <span class="required">必須</span></div>
             <table class="doc-table">
               <thead>
                 <tr><th>カラム名</th><th>型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr>
@@ -174,8 +175,8 @@
               <tbody>
                 <tr class="template-row"><td>works</td><td>idx_works_public</td><td>publish_status, display_order, published_at</td><td>INDEX</td><td>公開一覧表示を高速化</td></tr>
                 <tr class="template-row"><td>works</td><td>idx_works_category</td><td>category, publish_status</td><td>INDEX</td><td>カテゴリ絞り込みを高速化</td></tr>
-                <tr class="template-row"><td>enquiry_submissions</td><td>idx_enquiry_created_at</td><td>created_at desc</td><td>INDEX</td><td>新着順管理を高速化</td></tr>
-                <tr class="template-row"><td>enquiry_submissions</td><td>idx_enquiry_status</td><td>status, created_at desc</td><td>INDEX</td><td>対応状態別の管理を高速化</td></tr>
+                <tr class="template-row"><td>enquiries</td><td>idx_enquiries_created_at</td><td>created_at desc</td><td>INDEX</td><td>新着順管理を高速化</td></tr>
+                <tr class="template-row"><td>enquiries</td><td>idx_enquiries_status_created_at</td><td>status, created_at desc</td><td>INDEX</td><td>対応状態別の管理を高速化</td></tr>
                 <tr class="template-row"><td>news_items</td><td>idx_news_public</td><td>publish_status, news_date desc</td><td>INDEX</td><td>公開お知らせ表示を高速化</td></tr>
                 <tr class="template-row"><td>admin_audit_logs</td><td>idx_audit_actor_time</td><td>actor_admin_id, created_at desc</td><td>INDEX</td><td>監査追跡を高速化</td></tr>
               </tbody>
@@ -187,7 +188,7 @@
             <div class="fill-content">
               <p>・`works`: 公開サイトは `publish_status='published' and deleted_at is null` のみ `SELECT` 許可</p>
               <p>・`news_items`: 公開サイトは `publish_status='published'` のみ `SELECT` 許可</p>
-              <p>・`enquiry_submissions`: 匿名 `INSERT` のみ許可、`SELECT/UPDATE/DELETE` は管理ロールのみ</p>
+              <p>・`enquiries`: 現行プロトタイプは匿名 `INSERT/SELECT/UPDATE` を許可（静的管理画面用）。本番前に管理ロール専用へ切替必須</p>
               <p>・`admin_users` / `admin_audit_logs`: 管理ロールのみアクセス可</p>
               <p>・Service Role Keyはサーバーサイド限定、静的HTML側には露出させない</p>
             </div>
@@ -231,4 +232,10 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 

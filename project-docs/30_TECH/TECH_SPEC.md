@@ -35,6 +35,8 @@
 - JA: `supabase/config.js` 未設定時はローカル成功フォールバックで動作。
 - EN: Live DB insertion requires configured `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
 - JA: DB実登録には `SUPABASE_URL` と `SUPABASE_ANON_KEY` の設定が必要。
+- EN: Base table DDL for enquiry flow is maintained in `shuho-website/supabase/schema.sql`.
+- JA: 問い合わせ導線の基準DDLは `shuho-website/supabase/schema.sql` で管理する。
 
 ## 6. Non-functional Baseline / 非機能基準
 - EN: Encoding: UTF-8 mandatory across project docs.
@@ -59,8 +61,14 @@
 - `project-docs/10_PROJECT/BACKLOG.md`
 - `project-docs/70_MIGRATION/MIGRATION_PROCEDURE.md`
 - `docs/07-specification.html`
+- `shuho-website/supabase/schema.sql`
 
 ## 9. Update Log / 更新履歴
 - 2026-04-06: Initial technical baseline for planning phase.
 - 2026-04-07: Updated to reflect current implementation status and Supabase enquiry path.
 - 2026-04-07: Rebuilt document in clean UTF-8 bilingual format.
+
+- 2026-04-08: Added enquiries schema reference and aligned DB naming to enquiries across design docs.
+- 2026-04-08: 問い合わせDB名を enquiries へ統一し、スキーマ参照を追記。
+
+

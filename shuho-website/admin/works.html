@@ -57,21 +57,36 @@
     </main>
   </div>
 
-  <script>
+    <script>
     window.__adminBooted = false;
-    setTimeout(function () {
-      if (window.__adminBooted) return;
+    window.__adminBootError = '';
+    function showAdminBootError(message) {
       var msg = document.querySelector('#admin-message');
       if (msg) {
-        msg.textContent = '管理画面スクリプトを読み込めません。file:// ではなくローカルサーバー（http://localhost など）で開いてください。';
+        msg.textContent = message;
         msg.style.color = '#8c2a1e';
       }
       var tbody = document.querySelector('#works-tbody, #enquiry-tbody');
       if (tbody) {
-        tbody.innerHTML = '<tr><td colspan="7">スクリプト読込に失敗しました。ブラウザのコンソールを確認してください。</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6">スクリプト読込に失敗しました。ブラウザのコンソールを確認してください。</td></tr>';
       }
-    }, 2000);
-  </script>  <script type="module" src="../assets/js/admin.js"></script>
+    }
+    setTimeout(function () {
+      if (window.__adminBooted) return;
+      var base = '管理画面スクリプトを読み込めません。`supabase/config.public.js` の配置、ローカルサーバー起動、またはブラウザコンソールを確認してください。';
+      showAdminBootError(window.__adminBootError ? base + ' 詳細: ' + window.__adminBootError : base);
+    }, 2200);
+  </script>
+  <script type="module">
+    import('../assets/js/admin.js').catch(function (error) {
+      window.__adminBootError = error && error.message ? String(error.message) : String(error);
+      if (window.console && window.console.error) {
+        window.console.error('Admin boot failed:', error);
+      }
+    });
+  </script>
 </body>
 </html>
+
+
 

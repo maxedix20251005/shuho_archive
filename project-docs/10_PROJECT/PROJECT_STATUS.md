@@ -37,12 +37,12 @@
 - JA: 履歴保持分割による移行手順書を整備済み。
 
 ## 5. Current Priorities / 現在の優先事項
-1. EN: Finalise production domain and apply canonical/`og:url` to all public pages.
-   JA: 本番ドメインを確定し、全公開ページへ canonical/`og:url` を反映する。
-2. EN: Create `supabase/config.js` and validate end-to-end enquiry insertion.
+1. EN: Create `supabase/config.js` and validate end-to-end enquiry insertion.
    JA: `supabase/config.js` を作成し、問い合わせ登録のE2E動作を確認する。
-3. EN: Connect admin screens to live Supabase CRUD.
+2. EN: Connect admin screens to live Supabase CRUD.
    JA: 管理画面を Supabase 実CRUDに接続する。
+3. EN: Production domain + canonical/`og:url` work is on hold until further notice.
+   JA: 本番ドメイン確定および canonical/`og:url` 反映は、別途指示があるまで保留。
 
 ## 6. Risks / リスク
 - EN: Encoding inconsistency can reintroduce mojibake in bilingual docs.
@@ -73,3 +73,24 @@
 - 2026-04-07: ガバナンス/技術文書の文字化けを修正し、`project-docs/00_GOVERNANCE/PROJECT_GOVERNANCE_AND_RULE.md` と `project-docs/30_TECH/TECH_SPEC.md` を UTF-8 日英併記で再構成。
 - 2026-04-07: Replaced header text logo with image asset `images/logo/logo-shuho.jpg` via shared layout renderer and adjusted header mobile nav offset.
 - 2026-04-07: 共有ヘッダーのロゴ表記を文字から `images/logo/logo-shuho.jpg` 画像へ置換し、モバイル時のヘッダーナビ表示位置を調整。
+- 2026-04-08: Updated production domain task status to on-hold until further notice and reordered active priorities.
+- 2026-04-08: 本番ドメイン関連タスクを別途指示まで保留へ変更し、当面の優先順位を再整理。
+- 2026-04-08: Added local Supabase config handling baseline (`shuho-website/.gitignore` includes `supabase/config.js`, and local template `supabase/config.js` is in place).
+- 2026-04-08: Supabase ローカル設定運用を追加（`shuho-website/.gitignore` に `supabase/config.js` を追加、`supabase/config.js` テンプレートを配置）。
+- 2026-04-08: Current header logo asset path is `assets/images/logo/logo-shuho.jpg`.
+- 2026-04-08: ヘッダーロゴの現行パスは `assets/images/logo/logo-shuho.jpg` に統一。
+- 2026-04-08: Aligned DB naming from `enquiry_submissions` to `enquiries` in `docs/08-db-design.html` to match current implementation endpoint.
+- 2026-04-08: `docs/08-db-design.html` の問い合わせテーブル名を `enquiry_submissions` から `enquiries` へ統一し、実装エンドポイントとの整合を取った。
+- 2026-04-08: Added executable schema file `shuho-website/supabase/schema.sql` for enquiries table, constraints, indexes, trigger, and baseline RLS policies.
+- 2026-04-08: `shuho-website/supabase/schema.sql` を追加し、問い合わせテーブルの制約・インデックス・更新トリガー・RLS基本ポリシーを定義した。
+- 2026-04-08: Started BLG-003 by implementing live enquiry admin list/filter/status-memo update flow in `shuho-website/admin/enquiries.html` and `shuho-website/assets/js/admin.js`.
+- 2026-04-08: `shuho-website/admin/enquiries.html` と `shuho-website/assets/js/admin.js` に、問い合わせ管理の実データ読込・絞り込み・状態/メモ更新フローを実装し、BLG-003に着手。
+- 2026-04-08: Updated `shuho-website/supabase/schema.sql` with explicit prototype anon select/update policies for static admin mode and documented pre-production hardening requirement.
+- 2026-04-08: `shuho-website/supabase/schema.sql` に静的管理画面向けの暫定 anon select/update ポリシーを追記し、本番前の権限制御強化要件を明記。
+- 2026-04-08: Extended admin integration to works management (`shuho-website/admin/works.html` + `shuho-website/assets/js/admin.js`) with live list/filter/status update.
+- 2026-04-08: 作品管理画面（`shuho-website/admin/works.html` + `shuho-website/assets/js/admin.js`）を実データ連携へ拡張し、一覧・絞り込み・公開状態更新を実装。
+- 2026-04-08: Extended `shuho-website/supabase/schema.sql` to include `works` table/indexes/trigger and prototype static-admin policies.
+- 2026-04-08: `shuho-website/supabase/schema.sql` を `works` テーブル（インデックス/トリガー/静的管理画面向け暫定ポリシー）まで拡張。
+- 2026-04-08: Added deploy-safe Supabase config fallback (`config.public.js`) and async config loading to resolve GitHub Pages module-load failure.
+- 2026-04-08: GitHub Pages でのモジュール読込失敗に対応するため、`config.public.js` フォールバックと非同期設定読込へ改修。
+- 2026-04-08: Opened ISSUE-005 (critical): admin pages stuck on loading/fallback in local and GitHub Pages. Added explicit module-import error surfacing and continued fix investigation.

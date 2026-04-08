@@ -1,11 +1,51 @@
-﻿import { SUPABASE_URL, SUPABASE_ANON_KEY } from "../../supabase/config.js";
+﻿const CONFIG_RELATIVE_PATHS = [
+  "../../supabase/config.js",
+  "../../supabase/config.public.js",
+];
 
-export function initSupabase() {
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.warn("Supabase config is not set. Copy supabase/config.example.js to supabase/config.js");
+let cachedConfig = null;
+let configLoadAttempted = false;
+
+async function loadConfig() {
+  if (cachedConfig) {
+    return cachedConfig;
+  }
+  if (configLoadAttempted) {
     return null;
   }
-  return { url: SUPABASE_URL, key: SUPABASE_ANON_KEY };
+  configLoadAttempted = true;
+
+  for (const path of CONFIG_RELATIVE_PATHS) {
+    try {
+      const mod = await import(path);
+      const url = (mod.SUPABASE_URL || "").trim();
+      const key = (mod.SUPABASE_ANON_KEY || "").trim();
+      if (url && key) {
+        cachedConfig = { url, key, source: path };
+        return cachedConfig;
+      }
+    } catch (error) {
+      // Try next config source.
+    }
+  }
+
+  const win = typeof window !== "undefined" ? window : null;
+  const runtime = win && win.__SUPABASE_CONFIG ? win.__SUPABASE_CONFIG : null;
+  if (runtime && runtime.url && runtime.anonKey) {
+    cachedConfig = { url: String(runtime.url), key: String(runtime.anonKey), source: "window.__SUPABASE_CONFIG" };
+    return cachedConfig;
+  }
+
+  return null;
+}
+
+export async function initSupabase() {
+  const cfg = await loadConfig();
+  if (!cfg || !cfg.url || !cfg.key) {
+    console.warn("Supabase config is not set. Provide supabase/config.js (local) or supabase/config.public.js (deployed).");
+    return null;
+  }
+  return { url: cfg.url, key: cfg.key };
 }
 
 async function request(client, path, options = {}) {
@@ -27,7 +67,7 @@ async function request(client, path, options = {}) {
       },
     });
   } catch (error) {
-    const timeoutError = error?.name === "AbortError";
+    const timeoutError = error && error.name === "AbortError";
     const reason = timeoutError ? `Request timeout (${timeoutMs}ms)` : String(error);
     return { ok: false, status: 0, error: `Network error: ${reason}` };
   } finally {
@@ -38,8 +78,8 @@ async function request(client, path, options = {}) {
     let detail = "";
     try {
       const errorBody = await response.json();
-      detail = errorBody?.message || errorBody?.error || JSON.stringify(errorBody);
-    } catch {
+      detail = (errorBody && (errorBody.message || errorBody.error)) || JSON.stringify(errorBody);
+    } catch (error) {
       detail = await response.text();
     }
     return { ok: false, status: response.status, error: `Supabase API error (${response.status}): ${detail}` };
@@ -54,7 +94,7 @@ async function request(client, path, options = {}) {
 }
 
 export async function createEnquiry(client, payload) {
-  if (!client?.url || !client?.key) {
+  if (!client || !client.url || !client.key) {
     return { ok: false, error: "Supabase client is not initialised." };
   }
 
@@ -68,7 +108,7 @@ export async function createEnquiry(client, payload) {
 }
 
 export async function listEnquiries(client, filters = {}) {
-  if (!client?.url || !client?.key) {
+  if (!client || !client.url || !client.key) {
     return { ok: false, error: "Supabase client is not initialised." };
   }
 
@@ -83,7 +123,7 @@ export async function listEnquiries(client, filters = {}) {
     params.set("enquiry_type", `eq.${filters.enquiryType}`);
   }
   if (filters.search) {
-    const escaped = filters.search.replaceAll(",", "\\,");
+    const escaped = String(filters.search).split(",").join("\\\\,");
     params.set("or", `(name.ilike.*${escaped}*,email.ilike.*${escaped}*)`);
   }
 
@@ -93,7 +133,7 @@ export async function listEnquiries(client, filters = {}) {
 }
 
 export async function updateEnquiry(client, id, payload) {
-  if (!client?.url || !client?.key) {
+  if (!client || !client.url || !client.key) {
     return { ok: false, error: "Supabase client is not initialised." };
   }
   if (!id) {
@@ -110,7 +150,7 @@ export async function updateEnquiry(client, id, payload) {
 }
 
 export async function listWorks(client, filters = {}) {
-  if (!client?.url || !client?.key) {
+  if (!client || !client.url || !client.key) {
     return { ok: false, error: "Supabase client is not initialised." };
   }
 
@@ -125,7 +165,7 @@ export async function listWorks(client, filters = {}) {
     params.set("publish_status", `eq.${filters.publishStatus}`);
   }
   if (filters.search) {
-    const escaped = filters.search.replaceAll(",", "\\,");
+    const escaped = String(filters.search).split(",").join("\\\\,");
     params.set("title", `ilike.*${escaped}*`);
   }
 
@@ -135,7 +175,7 @@ export async function listWorks(client, filters = {}) {
 }
 
 export async function updateWork(client, id, payload) {
-  if (!client?.url || !client?.key) {
+  if (!client || !client.url || !client.key) {
     return { ok: false, error: "Supabase client is not initialised." };
   }
   if (!id) {
@@ -150,3 +190,5 @@ export async function updateWork(client, id, payload) {
     body: JSON.stringify(payload),
   });
 }
+
+
