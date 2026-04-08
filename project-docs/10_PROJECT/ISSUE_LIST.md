@@ -12,6 +12,7 @@
 | `ISSUE-003` | `2026-04-07` | `Website UI` | Header/footer did not render in local preview | Shared layout depended on module execution in the local environment. | `Closed` | Switched public-page script loading to `defer` and revalidated layout render. | `2026-04-07` | `Frontend Engineer` |
 | `ISSUE-004` | `2026-04-07` | `Documentation` | Mojibake and control characters in project tracking docs | `PROJECT_STATUS.md` contained garbled Japanese and invalid control bytes. | `Closed` | Rebuilt affected tracking docs in clean UTF-8 bilingual format. | `2026-04-07` | `PM` |
 | `ISSUE-005` | `2026-04-08` | `Admin UI (Local/GitHub Pages)` | Admin screens stuck in loading/fallback message | Root causes split: (1) local opened via `file://` so dynamic module import is blocked, (2) GitHub Pages had empty/missing `supabase/config.public.js` values. | `Closed` | Synced `supabase/config.public.js` with actual credentials, validated local via HTTP server, and verified both admin pages on GitHub Pages (`件数:0件` with no config error). | `2026-04-08` | `Frontend Engineer` |
+| `ISSUE-006` | `2026-04-08` | `Admin News (GitHub Pages)` | News admin boot failure due module export mismatch | `admin.js` imports named `createNewsItem`, but loaded `supabase-client.js` variant did not export that symbol, causing module boot to fail. | `Fixing` | Switched `admin.js` to namespace import with backward-compatible fallback symbols and explicit capability guard message. Awaiting redeploy verification. | `-` | `Frontend Engineer` |
 
 ## 3. Status Flow / 状態遷移
 - `Open -> Investigating -> Fixing -> Monitoring -> Closed`
@@ -25,6 +26,7 @@
 - JA: 日本語編集時は UTF-8 を確認する。
 
 ## 5. Update Log / 更新履歴
+- 2026-04-08: Added `ISSUE-006` for news admin module export mismatch and started compatibility fix.
 - 2026-04-08: Closed `ISSUE-005` after confirming both admin pages load correctly on GitHub Pages with Supabase config applied.
 - 2026-04-08: Synced `supabase/config.public.js` with `config.js`; moved ISSUE-005 to Monitoring pending GitHub Pages cache-clear/redeploy verification.
 - 2026-04-08: Identified dual root causes for ISSUE-005 (`file://` module block and missing deployed Supabase config values); added local PowerShell server script and clearer diagnostics.

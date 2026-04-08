@@ -102,3 +102,4 @@
 - 2026-04-08: Expanded `shuho-website/supabase/schema.sql` to include `news_items` table/indexes/trigger/RLS policies for admin + public-read model.
 - 2026-04-08: `shuho-website/supabase/schema.sql` を `news_items` テーブル（インデックス/トリガー/RLS）まで拡張し、管理画面と公開参照モデルに対応。
 
+- 2026-04-08: Opened ISSUE-006 for dmin/news.html boot failure (createNewsItem export mismatch). Applied namespace-import compatibility fix in ssets/js/admin.js and started verification.

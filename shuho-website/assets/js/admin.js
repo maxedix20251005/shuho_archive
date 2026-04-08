@@ -1,13 +1,13 @@
-﻿import {
-  initSupabase,
-  listEnquiries,
-  updateEnquiry,
-  listWorks,
-  updateWork,
-  listNewsItems,
-  createNewsItem,
-  updateNewsItem,
-} from "./supabase-client.js";
+﻿import * as supabaseApi from "./supabase-client.js";
+
+const initSupabase = supabaseApi.initSupabase;
+const listEnquiries = supabaseApi.listEnquiries;
+const updateEnquiry = supabaseApi.updateEnquiry;
+const listWorks = supabaseApi.listWorks;
+const updateWork = supabaseApi.updateWork;
+const listNewsItems = supabaseApi.listNewsItems || supabaseApi.listNews;
+const createNewsItem = supabaseApi.createNewsItem || supabaseApi.createNews;
+const updateNewsItem = supabaseApi.updateNewsItem || supabaseApi.updateNews;
 
 window.__adminBooted = true;
 
@@ -21,6 +21,10 @@ function setMessage(text, isError = false) {
   }
   el.textContent = text;
   el.style.color = isError ? "#8c2a1e" : "#5e564b";
+}
+
+function hasNewsApiSupport() {
+  return !!(listNewsItems && createNewsItem && updateNewsItem);
 }
 
 function formatDateTime(value) {
@@ -388,6 +392,12 @@ async function loadNewsItems() {
     return;
   }
 
+  if (!hasNewsApiSupport()) {
+    setMessage("news API が未対応のスクリプトが読み込まれています。`assets/js/supabase-client.js` を最新化してください。", true);
+    renderNewsRows([]);
+    return;
+  }
+
   if (!client) {
     setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
     renderNewsRows([]);
@@ -413,6 +423,10 @@ async function loadNewsItems() {
 
 async function createNewsFromForm() {
   if (page !== "news") {
+    return;
+  }
+  if (!hasNewsApiSupport()) {
+    setMessage("news API が未対応のスクリプトが読み込まれています。`assets/js/supabase-client.js` を最新化してください。", true);
     return;
   }
   if (!client) {
@@ -563,3 +577,7 @@ async function boot() {
 }
 
 boot();
+
+
+
+
