@@ -37,3 +37,9 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 2. Add anti-spam control to enquiry submission flow.
 3. Replace prototype anon admin policies with authenticated admin role model before production.
 4. Add canonical/`og:url` after production domain hold is lifted.
+
+## Local Preview (PowerShell)
+If Python/Node is not available, run the included script:
+1. `powershell -ExecutionPolicy Bypass -File .\scripts\start-local-server.ps1 -Port 5500`
+2. Open `http://localhost:5500/admin/enquiries.html`
+3. Do not open admin pages with `file://`.

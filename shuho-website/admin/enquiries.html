@@ -84,7 +84,10 @@
     }
     setTimeout(function () {
       if (window.__adminBooted) return;
-      var base = '管理画面スクリプトを読み込めません。`supabase/config.public.js` の配置、ローカルサーバー起動、またはブラウザコンソールを確認してください。';
+      var isFile = window.location.protocol === 'file:';
+      var base = isFile
+        ? '管理画面スクリプトを読み込めません。file:// では動作しません。http://localhost のローカルサーバーで開いてください。'
+        : '管理画面スクリプトを読み込めません。`supabase/config.public.js` の配置、ローカルサーバー起動、またはブラウザコンソールを確認してください。';
       showAdminBootError(window.__adminBootError ? base + ' 詳細: ' + window.__adminBootError : base);
     }, 2200);
   </script>
@@ -98,6 +101,9 @@
   </script>
 </body>
 </html>
+
+
+
 
 
 
