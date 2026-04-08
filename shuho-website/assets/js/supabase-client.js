@@ -191,4 +191,55 @@ export async function updateWork(client, id, payload) {
   });
 }
 
+export async function listNewsItems(client, filters = {}) {
+  if (!client || !client.url || !client.key) {
+    return { ok: false, error: "Supabase client is not initialised." };
+  }
 
+  const params = new URLSearchParams();
+  params.set("select", "id,news_date,title,publish_status,updated_at");
+  params.set("order", "news_date.desc,updated_at.desc");
+
+  if (filters.publishStatus) {
+    params.set("publish_status", `eq.${filters.publishStatus}`);
+  }
+  if (filters.search) {
+    const escaped = String(filters.search).split(",").join("\\\\,");
+    params.set("title", `ilike.*${escaped}*`);
+  }
+
+  return request(client, `/rest/v1/news_items?${params.toString()}`, {
+    method: "GET",
+  });
+}
+
+export async function createNewsItem(client, payload) {
+  if (!client || !client.url || !client.key) {
+    return { ok: false, error: "Supabase client is not initialised." };
+  }
+
+  return request(client, "/rest/v1/news_items", {
+    method: "POST",
+    headers: {
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updateNewsItem(client, id, payload) {
+  if (!client || !client.url || !client.key) {
+    return { ok: false, error: "Supabase client is not initialised." };
+  }
+  if (!id) {
+    return { ok: false, error: "News ID is required." };
+  }
+
+  return request(client, `/rest/v1/news_items?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    headers: {
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify(payload),
+  });
+}

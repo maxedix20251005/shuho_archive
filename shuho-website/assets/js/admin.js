@@ -1,4 +1,13 @@
-﻿import { initSupabase, listEnquiries, updateEnquiry, listWorks, updateWork } from "./supabase-client.js";
+﻿import {
+  initSupabase,
+  listEnquiries,
+  updateEnquiry,
+  listWorks,
+  updateWork,
+  listNewsItems,
+  createNewsItem,
+  updateNewsItem,
+} from "./supabase-client.js";
 
 window.__adminBooted = true;
 
@@ -28,6 +37,20 @@ function formatDateTime(value) {
   const hh = String(date.getHours()).padStart(2, "0");
   const mi = String(date.getMinutes()).padStart(2, "0");
   return `${yyyy}.${mm}.${dd} ${hh}:${mi}`;
+}
+
+function formatDate(value) {
+  if (!value) {
+    return "-";
+  }
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  return `${yyyy}.${mm}.${dd}`;
 }
 
 function createSelect(options, current) {
@@ -269,6 +292,185 @@ async function loadWorks() {
   setMessage(`件数: ${(result.data || []).length}件`);
 }
 
+function renderNewsRows(items) {
+  const tbody = document.querySelector("#news-tbody");
+  if (!tbody) {
+    return;
+  }
+
+  tbody.innerHTML = "";
+  if (!Array.isArray(items) || items.length === 0) {
+    tbody.innerHTML = "<tr><td colspan=\"6\">該当データがありません。</td></tr>";
+    return;
+  }
+
+  items.forEach((item) => {
+    const row = document.createElement("tr");
+
+    const idCell = document.createElement("td");
+    idCell.textContent = item.id;
+
+    const dateCell = document.createElement("td");
+    dateCell.textContent = formatDate(item.news_date);
+
+    const titleCell = document.createElement("td");
+    const titleInput = document.createElement("input");
+    titleInput.type = "text";
+    titleInput.maxLength = 120;
+    titleInput.value = item.title || "";
+    titleInput.className = "status-select";
+    titleCell.appendChild(titleInput);
+
+    const statusCell = document.createElement("td");
+    const statusSelect = createSelect(["draft", "published"], item.publish_status || "draft");
+    statusCell.appendChild(statusSelect);
+
+    const updatedCell = document.createElement("td");
+    updatedCell.textContent = formatDateTime(item.updated_at);
+
+    const actionCell = document.createElement("td");
+    const saveButton = document.createElement("button");
+    saveButton.type = "button";
+    saveButton.className = "btn-mini";
+    saveButton.textContent = "保存";
+
+    saveButton.addEventListener("click", async () => {
+      if (!client) {
+        setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
+        return;
+      }
+      if (!titleInput.value.trim()) {
+        setMessage("タイトルは必須です。", true);
+        return;
+      }
+
+      saveButton.disabled = true;
+      saveButton.textContent = "保存中...";
+
+      const payload = {
+        title: titleInput.value.trim(),
+        publish_status: statusSelect.value,
+      };
+      if (statusSelect.value === "published") {
+        payload.published_at = new Date().toISOString();
+      }
+
+      const result = await updateNewsItem(client, item.id, payload);
+      if (!result.ok) {
+        const permissionError = result.status === 401 || result.status === 403;
+        setMessage(permissionError ? "更新権限がありません。RLSと認証状態を確認してください。" : `更新失敗: ${result.error}`, true);
+        saveButton.disabled = false;
+        saveButton.textContent = "保存";
+        return;
+      }
+
+      setMessage(`保存しました: ${item.id}`);
+      saveButton.disabled = false;
+      saveButton.textContent = "保存";
+      loadNewsItems();
+    });
+
+    actionCell.appendChild(saveButton);
+
+    row.appendChild(idCell);
+    row.appendChild(dateCell);
+    row.appendChild(titleCell);
+    row.appendChild(statusCell);
+    row.appendChild(updatedCell);
+    row.appendChild(actionCell);
+
+    tbody.appendChild(row);
+  });
+}
+
+async function loadNewsItems() {
+  if (page !== "news") {
+    return;
+  }
+
+  if (!client) {
+    setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
+    renderNewsRows([]);
+    return;
+  }
+
+  const search = ((document.querySelector("#news-search") || {}).value || "").trim();
+  const publishStatus = ((document.querySelector("#news-status-filter") || {}).value || "");
+
+  setMessage("読み込み中...");
+  const result = await listNewsItems(client, { search, publishStatus });
+
+  if (!result.ok) {
+    const permissionError = result.status === 401 || result.status === 403;
+    setMessage(permissionError ? "閲覧権限がありません。RLSと認証状態を確認してください。" : `読込失敗: ${result.error}`, true);
+    renderNewsRows([]);
+    return;
+  }
+
+  renderNewsRows(result.data || []);
+  setMessage(`件数: ${(result.data || []).length}件`);
+}
+
+async function createNewsFromForm() {
+  if (page !== "news") {
+    return;
+  }
+  if (!client) {
+    setMessage("Supabase設定が未完了です。`supabase/config.js` または `supabase/config.public.js` を設定してください。", true);
+    return;
+  }
+
+  const titleInput = document.querySelector("#news-create-title");
+  const dateInput = document.querySelector("#news-create-date");
+  const statusSelect = document.querySelector("#news-create-status");
+  const createButton = document.querySelector("#news-create-btn");
+
+  const title = ((titleInput || {}).value || "").trim();
+  const newsDate = ((dateInput || {}).value || "").trim();
+  const status = ((statusSelect || {}).value || "draft");
+
+  if (!title) {
+    setMessage("新規登録にはタイトルが必要です。", true);
+    return;
+  }
+
+  const payload = {
+    title,
+    news_date: newsDate || new Date().toISOString().slice(0, 10),
+    publish_status: status,
+  };
+  if (status === "published") {
+    payload.published_at = new Date().toISOString();
+  }
+
+  if (createButton) {
+    createButton.disabled = true;
+    createButton.textContent = "登録中...";
+  }
+
+  const result = await createNewsItem(client, payload);
+  if (!result.ok) {
+    const permissionError = result.status === 401 || result.status === 403;
+    setMessage(permissionError ? "登録権限がありません。RLSと認証状態を確認してください。" : `登録失敗: ${result.error}`, true);
+    if (createButton) {
+      createButton.disabled = false;
+      createButton.textContent = "新規登録";
+    }
+    return;
+  }
+
+  if (titleInput) titleInput.value = "";
+  if (dateInput) dateInput.value = "";
+  if (statusSelect) statusSelect.value = "draft";
+
+  setMessage("お知らせを新規登録しました。");
+  if (createButton) {
+    createButton.disabled = false;
+    createButton.textContent = "新規登録";
+  }
+  loadNewsItems();
+}
+
 function bindEnquiryFilterEvents() {
   const filterButton = document.querySelector("#enquiry-filter-btn");
   const searchInput = document.querySelector("#enquiry-search");
@@ -317,6 +519,30 @@ function bindWorksFilterEvents() {
   }
 }
 
+function bindNewsEvents() {
+  const filterButton = document.querySelector("#news-filter-btn");
+  const createButton = document.querySelector("#news-create-btn");
+  const searchInput = document.querySelector("#news-search");
+  const statusSelect = document.querySelector("#news-status-filter");
+
+  if (filterButton) {
+    filterButton.addEventListener("click", () => loadNewsItems());
+  }
+  if (createButton) {
+    createButton.addEventListener("click", () => createNewsFromForm());
+  }
+  if (searchInput) {
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        loadNewsItems();
+      }
+    });
+  }
+  if (statusSelect) {
+    statusSelect.addEventListener("change", () => loadNewsItems());
+  }
+}
+
 async function boot() {
   client = await initSupabase();
 
@@ -329,7 +555,11 @@ async function boot() {
     bindWorksFilterEvents();
     await loadWorks();
   }
+
+  if (page === "news") {
+    bindNewsEvents();
+    await loadNewsItems();
+  }
 }
 
 boot();
-

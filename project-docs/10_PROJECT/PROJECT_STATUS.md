@@ -82,7 +82,6 @@
 - 2026-04-08: Aligned DB naming from `enquiry_submissions` to `enquiries` in `docs/08-db-design.html` to match current implementation endpoint.
 - 2026-04-08: `docs/08-db-design.html` の問い合わせテーブル名を `enquiry_submissions` から `enquiries` へ統一し、実装エンドポイントとの整合を取った。
 - 2026-04-08: Added executable schema file `shuho-website/supabase/schema.sql` for enquiries table, constraints, indexes, trigger, and baseline RLS policies.
-- 2026-04-08: `shuho-website/supabase/schema.sql` を追加し、問い合わせテーブルの制約・インデックス・更新トリガー・RLS基本ポリシーを定義した。
 - 2026-04-08: Started BLG-003 by implementing live enquiry admin list/filter/status-memo update flow in `shuho-website/admin/enquiries.html` and `shuho-website/assets/js/admin.js`.
 - 2026-04-08: `shuho-website/admin/enquiries.html` と `shuho-website/assets/js/admin.js` に、問い合わせ管理の実データ読込・絞り込み・状態/メモ更新フローを実装し、BLG-003に着手。
 - 2026-04-08: Updated `shuho-website/supabase/schema.sql` with explicit prototype anon select/update policies for static admin mode and documented pre-production hardening requirement.
@@ -90,9 +89,16 @@
 - 2026-04-08: Extended admin integration to works management (`shuho-website/admin/works.html` + `shuho-website/assets/js/admin.js`) with live list/filter/status update.
 - 2026-04-08: 作品管理画面（`shuho-website/admin/works.html` + `shuho-website/assets/js/admin.js`）を実データ連携へ拡張し、一覧・絞り込み・公開状態更新を実装。
 - 2026-04-08: Extended `shuho-website/supabase/schema.sql` to include `works` table/indexes/trigger and prototype static-admin policies.
-- 2026-04-08: `shuho-website/supabase/schema.sql` を `works` テーブル（インデックス/トリガー/静的管理画面向け暫定ポリシー）まで拡張。
 - 2026-04-08: Added deploy-safe Supabase config fallback (`config.public.js`) and async config loading to resolve GitHub Pages module-load failure.
 - 2026-04-08: GitHub Pages でのモジュール読込失敗に対応するため、`config.public.js` フォールバックと非同期設定読込へ改修。
 - 2026-04-08: Opened ISSUE-005 (critical): admin pages stuck on loading/fallback in local and GitHub Pages. Added explicit module-import error surfacing and continued fix investigation.
 - 2026-04-08: ISSUE-005 diagnosis completed: local failure is due to file:// module import block; GitHub Pages failure is due to empty/missing supabase/config.public.js values. Added PowerShell local server script and updated troubleshooting guidance.
 - 2026-04-08: ISSUE-005 action: synced supabase/config.public.js from config.js to remove GitHub Pages config mismatch; awaiting redeploy and verification.
+- 2026-04-08: Closed ISSUE-005. Verified `admin/enquiries.html` and `admin/works.html` on GitHub Pages; both connect to Supabase and render empty state correctly (`件数:0件`).
+
+
+- 2026-04-08: Completed admin news management (`shuho-website/admin/news.html` + `shuho-website/assets/js/admin.js` + `shuho-website/assets/js/supabase-client.js`) with live list/create/update via Supabase.
+- 2026-04-08: お知らせ管理（`shuho-website/admin/news.html` + `shuho-website/assets/js/admin.js` + `shuho-website/assets/js/supabase-client.js`）を Supabase 実データの一覧/新規登録/更新に対応させた。
+- 2026-04-08: Expanded `shuho-website/supabase/schema.sql` to include `news_items` table/indexes/trigger/RLS policies for admin + public-read model.
+- 2026-04-08: `shuho-website/supabase/schema.sql` を `news_items` テーブル（インデックス/トリガー/RLS）まで拡張し、管理画面と公開参照モデルに対応。
+

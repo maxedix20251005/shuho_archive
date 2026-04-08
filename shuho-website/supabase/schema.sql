@@ -1,4 +1,4 @@
-﻿-- Shuho website: minimal schema for enquiry + works flow
+﻿-- Shuho website: minimal schema for enquiry + works + news flow
 -- Apply in Supabase SQL editor (staging/prod per environment)
 
 create extension if not exists pgcrypto;
@@ -153,6 +153,88 @@ using (true);
 drop policy if exists works_authenticated_update on public.works;
 create policy works_authenticated_update
 on public.works
+for update
+to authenticated
+using (true)
+with check (true);
+
+-- =========================================================
+-- news_items
+-- =========================================================
+create table if not exists public.news_items (
+  id uuid primary key default gen_random_uuid(),
+  title varchar(120) not null check (char_length(title) >= 1),
+  body text,
+  news_date date not null default current_date,
+  publish_status varchar(20) not null default 'draft' check (publish_status in ('draft','published')),
+  published_at timestamptz,
+  display_order int not null default 100 check (display_order >= 0),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  deleted_at timestamptz
+);
+
+create index if not exists idx_news_public on public.news_items (publish_status, news_date desc, display_order);
+create index if not exists idx_news_updated_at on public.news_items (updated_at desc);
+
+drop trigger if exists trg_news_items_updated_at on public.news_items;
+create trigger trg_news_items_updated_at
+before update on public.news_items
+for each row
+execute function public.set_updated_at();
+
+alter table public.news_items enable row level security;
+
+-- Public read for published news
+drop policy if exists news_items_anon_select_public on public.news_items;
+create policy news_items_anon_select_public
+on public.news_items
+for select
+to anon
+using (publish_status = 'published' and deleted_at is null);
+
+-- Prototype admin access for static-admin mode (anon key).
+-- IMPORTANT: replace with authenticated-role policies before production.
+drop policy if exists news_items_anon_select_admin on public.news_items;
+create policy news_items_anon_select_admin
+on public.news_items
+for select
+to anon
+using (true);
+
+drop policy if exists news_items_anon_insert_admin on public.news_items;
+create policy news_items_anon_insert_admin
+on public.news_items
+for insert
+to anon
+with check (true);
+
+drop policy if exists news_items_anon_update_admin on public.news_items;
+create policy news_items_anon_update_admin
+on public.news_items
+for update
+to anon
+using (true)
+with check (true);
+
+-- Future production model: use authenticated/admin role policies (kept as reference)
+drop policy if exists news_items_authenticated_select on public.news_items;
+create policy news_items_authenticated_select
+on public.news_items
+for select
+to authenticated
+using (true);
+
+drop policy if exists news_items_authenticated_insert on public.news_items;
+create policy news_items_authenticated_insert
+on public.news_items
+for insert
+to authenticated
+with check (true);
+
+drop policy if exists news_items_authenticated_update on public.news_items;
+create policy news_items_authenticated_update
+on public.news_items
 for update
 to authenticated
 using (true)

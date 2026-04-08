@@ -13,7 +13,8 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 2. Enquiry form validation and Supabase submission path implemented.
 3. Enquiries admin page loads/filters/updates real data via Supabase (prototype policy mode).
 4. Works admin page loads/filters/updates publish status via Supabase (prototype policy mode).
-5. `supabase/schema.sql` prepared for `enquiries` + `works`.
+5. News admin page loads/filters/creates/updates real data via Supabase (prototype policy mode).
+6. `supabase/schema.sql` prepared for `enquiries` + `works` + `news_items`.
 
 ## Supabase Config Modes
 1. Local/private mode: `supabase/config.js` (git-ignored)
@@ -31,12 +32,12 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 3. Validate:
    - `admin/enquiries.html` list/filter/save
    - `admin/works.html` list/filter/status save
+   - `admin/news.html` list/filter/create/update
 
 ## Next
-1. Connect admin news screen to live CRUD.
-2. Add anti-spam control to enquiry submission flow.
-3. Replace prototype anon admin policies with authenticated admin role model before production.
-4. Add canonical/`og:url` after production domain hold is lifted.
+1. Add anti-spam control to enquiry submission flow.
+2. Replace prototype anon admin policies with authenticated admin role model before production.
+3. Add canonical/`og:url` after production domain hold is lifted.
 
 ## Local Preview (PowerShell)
 If Python/Node is not available, run the included script:

@@ -7,8 +7,8 @@
 ## 2. Current Phase / 現在フェーズ
 - EN: Implementation in progress with static HTML/CSS/JS architecture.
 - JA: 静的 HTML/CSS/JS 構成で実装進行中。
-- EN: Supabase integration is partially implemented and pending production configuration.
-- JA: Supabase 連携は一部実装済みで、本番設定投入待ち。
+- EN: Supabase integration is implemented for enquiries/works/news and pending production hardening.
+- JA: Supabase 連携は enquiries/works/news で実装済みで、本番向けの権限制御強化が残課題。
 
 ## 3. Delivery Scope / 対象範囲
 - EN: Public website under `shuho-website/*.html`.
@@ -35,8 +35,8 @@
 - JA: `supabase/config.js` 未設定時はローカル成功フォールバックで動作。
 - EN: Live DB insertion requires configured `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
 - JA: DB実登録には `SUPABASE_URL` と `SUPABASE_ANON_KEY` の設定が必要。
-- EN: Base table DDL for enquiry flow is maintained in `shuho-website/supabase/schema.sql`.
-- JA: 問い合わせ導線の基準DDLは `shuho-website/supabase/schema.sql` で管理する。
+- EN: Base table DDL for enquiries/works/news flow is maintained in `shuho-website/supabase/schema.sql`.
+- JA: enquiries/works/news 導線の基準DDLは `shuho-website/supabase/schema.sql` で管理する。
 
 ## 6. Non-functional Baseline / 非機能基準
 - EN: Encoding: UTF-8 mandatory across project docs.
@@ -53,8 +53,8 @@
 - JA: canonical/`og:url` 用の本番ドメイン。
 - EN: Supabase production config and secret handling workflow.
 - JA: Supabase 本番設定と秘密情報運用フロー。
-- EN: Admin live CRUD completion schedule.
-- JA: 管理画面実CRUD連携の完了スケジュール。
+- EN: Decision on anti-spam controls (honeypot/rate limit/CAPTCHA).
+- JA: スパム対策（honeypot/レート制限/CAPTCHA）の方針決定。
 
 ## 8. Related Documents / 関連文書
 - `project-docs/10_PROJECT/PROJECT_STATUS.md`
@@ -71,4 +71,9 @@
 - 2026-04-08: Added enquiries schema reference and aligned DB naming to enquiries across design docs.
 - 2026-04-08: 問い合わせDB名を enquiries へ統一し、スキーマ参照を追記。
 
+
+
+
+- 2026-04-08: Added news CRUD integration status and schema coverage (`news_items`) for admin/public use.
+- 2026-04-08: お知らせCRUD連携状況と `news_items` スキーマ適用範囲（管理/公開）を追記。
 
