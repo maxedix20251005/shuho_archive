@@ -11,7 +11,7 @@
 | `ISSUE-002` | `2026-04-06` | `Documentation` | Template sections lacked project-specific detail | Several sections remained generic placeholders. | `Closed` | Filled `docs/02`, `docs/03`, `docs/06` and aligned with `docs/01`/`docs/07`. | `2026-04-07` | `Doc Owner` |
 | `ISSUE-003` | `2026-04-07` | `Website UI` | Header/footer did not render in local preview | Shared layout depended on module execution in the local environment. | `Closed` | Switched public-page script loading to `defer` and revalidated layout render. | `2026-04-07` | `Frontend Engineer` |
 | `ISSUE-004` | `2026-04-07` | `Documentation` | Mojibake and control characters in project tracking docs | `PROJECT_STATUS.md` contained garbled Japanese and invalid control bytes. | `Closed` | Rebuilt affected tracking docs in clean UTF-8 bilingual format. | `2026-04-07` | `PM` |
-| `ISSUE-005` | `2026-04-08` | `Admin UI (Local/GitHub Pages)` | Admin screens stuck in loading/fallback message | Root causes split: (1) local opened via `file://` so dynamic module import is blocked, (2) GitHub Pages had empty/missing `supabase/config.public.js` values. | `Fixing` | Added explicit root-cause diagnostics, PS-compatible local server script, and config fallback hardening. Pending user-side config value set and deploy. | `-` | `Frontend Engineer` |
+| `ISSUE-005` | `2026-04-08` | `Admin UI (Local/GitHub Pages)` | Admin screens stuck in loading/fallback message | Root causes split: (1) local opened via `file://` so dynamic module import is blocked, (2) GitHub Pages had empty/missing `supabase/config.public.js` values. | `Monitoring` | Synced `supabase/config.public.js` with actual credentials from `config.js`; awaiting GitHub Pages redeploy and verification for both admin pages. | `-` | `Frontend Engineer` |
 
 ## 3. Status Flow / 状態遷移
 - `Open -> Investigating -> Fixing -> Monitoring -> Closed`
@@ -25,6 +25,7 @@
 - JA: 日本語編集時は UTF-8 を確認する。
 
 ## 5. Update Log / 更新履歴
+- 2026-04-08: Synced `supabase/config.public.js` with `config.js`; moved ISSUE-005 to Monitoring pending GitHub Pages cache-clear/redeploy verification.
 - 2026-04-08: Identified dual root causes for ISSUE-005 (`file://` module block and missing deployed Supabase config values); added local PowerShell server script and clearer diagnostics.
 - 2026-04-08: Added `ISSUE-005` (critical, in progress) for admin loading failure across local and GitHub Pages.
 - 2026-04-07: Added `ISSUE-003` and `ISSUE-004`; marked `ISSUE-002` as closed.

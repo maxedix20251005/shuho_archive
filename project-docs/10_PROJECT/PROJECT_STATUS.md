@@ -95,3 +95,4 @@
 - 2026-04-08: GitHub Pages でのモジュール読込失敗に対応するため、`config.public.js` フォールバックと非同期設定読込へ改修。
 - 2026-04-08: Opened ISSUE-005 (critical): admin pages stuck on loading/fallback in local and GitHub Pages. Added explicit module-import error surfacing and continued fix investigation.
 - 2026-04-08: ISSUE-005 diagnosis completed: local failure is due to file:// module import block; GitHub Pages failure is due to empty/missing supabase/config.public.js values. Added PowerShell local server script and updated troubleshooting guidance.
+- 2026-04-08: ISSUE-005 action: synced supabase/config.public.js from config.js to remove GitHub Pages config mismatch; awaiting redeploy and verification.
