@@ -6,7 +6,7 @@
   <title>管理画面: 問い合わせ管理 | 秀峰書道サロン</title>
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body class="admin-body">
+<body class="admin-body" data-admin-page="enquiries">
   <div class="admin-layout">
     <aside class="admin-side">
       <h1>秀峰管理</h1>
@@ -24,37 +24,42 @@
 
       <section class="admin-panel">
         <div class="admin-filters">
-          <input type="search" placeholder="氏名・メールで検索">
-          <select>
-            <option>状態: すべて</option>
-            <option>new</option><option>processing</option><option>closed</option><option>spam</option>
+          <input id="enquiry-search" type="search" placeholder="氏名・メールで検索">
+          <select id="enquiry-status-filter">
+            <option value="">状態: すべて</option>
+            <option value="new">new</option>
+            <option value="processing">processing</option>
+            <option value="closed">closed</option>
+            <option value="spam">spam</option>
           </select>
-          <select>
-            <option>種別: すべて</option>
-            <option>course</option><option>fee</option><option>attendance</option><option>other</option>
+          <select id="enquiry-type-filter">
+            <option value="">種別: すべて</option>
+            <option value="course">course</option>
+            <option value="fee">fee</option>
+            <option value="attendance">attendance</option>
+            <option value="other">other</option>
           </select>
+          <button id="enquiry-filter-btn" class="btn-mini" type="button">検索</button>
         </div>
+
+        <p id="admin-message" class="form-note" aria-live="polite"></p>
 
         <div class="table-wrap">
           <table class="admin-table">
             <thead>
-              <tr><th>ID</th><th>受付日時</th><th>氏名</th><th>種別</th><th>状態</th><th>操作</th></tr>
+              <tr>
+                <th>ID</th>
+                <th>受付日時</th>
+                <th>氏名 / メール</th>
+                <th>種別</th>
+                <th>状態</th>
+                <th>管理メモ</th>
+                <th>操作</th>
+              </tr>
             </thead>
-            <tbody>
+            <tbody id="enquiry-tbody">
               <tr>
-                <td>E-001</td><td>2026.04.07 10:12</td><td>田中 美咲</td><td>course</td>
-                <td><select class="status-select"><option selected>new</option><option>processing</option><option>closed</option><option>spam</option></select></td>
-                <td><button class="btn-mini">詳細</button></td>
-              </tr>
-              <tr>
-                <td>E-002</td><td>2026.04.06 19:20</td><td>鈴木 恒一</td><td>fee</td>
-                <td><select class="status-select"><option>new</option><option selected>processing</option><option>closed</option><option>spam</option></select></td>
-                <td><button class="btn-mini">詳細</button></td>
-              </tr>
-              <tr>
-                <td>E-003</td><td>2026.04.05 09:08</td><td>佐々木 和子</td><td>attendance</td>
-                <td><select class="status-select"><option>new</option><option>processing</option><option selected>closed</option><option>spam</option></select></td>
-                <td><button class="btn-mini">詳細</button></td>
+                <td colspan="7">読み込み中...</td>
               </tr>
             </tbody>
           </table>
@@ -63,6 +68,21 @@
     </main>
   </div>
 
-  <script type="module" src="../assets/js/admin.js"></script>
+  <script>
+    window.__adminBooted = false;
+    setTimeout(function () {
+      if (window.__adminBooted) return;
+      var msg = document.querySelector('#admin-message');
+      if (msg) {
+        msg.textContent = '管理画面スクリプトを読み込めません。file:// ではなくローカルサーバー（http://localhost など）で開いてください。';
+        msg.style.color = '#8c2a1e';
+      }
+      var tbody = document.querySelector('#works-tbody, #enquiry-tbody');
+      if (tbody) {
+        tbody.innerHTML = '<tr><td colspan="7">スクリプト読込に失敗しました。ブラウザのコンソールを確認してください。</td></tr>';
+      }
+    }, 2000);
+  </script>  <script type="module" src="../assets/js/admin.js"></script>
 </body>
 </html>
+
