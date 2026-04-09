@@ -21,6 +21,7 @@
 | `BLG-004` | `P2` | Add anti-spam controls for enquiry form (honeypot/rate limit/CAPTCHA decision) | 問い合わせフォームのスパム対策（honeypot/レート制限/CAPTCHA）を決定・実装 | `Completed` | `Frontend Engineer` | `2026-04-09` |
 | `BLG-005` | `P3` | Define analytics event mapping and KPI dashboard | 計測イベント設計とKPIダッシュボード定義を作成 | `Completed` | `Marketing` | `2026-04-09` |
 | `BLG-006` | `P2` | Establish encoding check in documentation workflow to prevent mojibake recurrence | 文字化け再発防止のため文書更新フローに文字コード確認手順を組み込む | `Completed` | `PM` | `2026-04-09` |
+| `BLG-007` | `P1` | Harden admin auth/RLS model and remove prototype anon-admin access | 管理画面の認証/RLSを本番向けに強化し、暫定 anon-admin アクセスを廃止 | `Open` | `Tech Lead` | `Before production` |
 
 ## 4. Update Log / 更新履歴
 - 2026-04-07: Initial backlog created.
@@ -42,3 +43,8 @@
 
 - 2026-04-09: BLG-002 completed: established safe config workflow (config.js ignored, config.public.js anon-only, check-supabase-config.ps1 guard script).
 - 2026-04-09: BLG-005 completed: added analytics event mapping, KPI dashboard definition, and admin-public flow rules in `project-docs/30_TECH/TECH_SPEC.md`.
+
+- 2026-04-09: Added BLG-007 for production hardening of admin authentication/RLS model.
+- 2026-04-09: 管理画面の本番認証/RLS強化タスクとして BLG-007 を追加。
+
+

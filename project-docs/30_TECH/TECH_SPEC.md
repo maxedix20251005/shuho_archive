@@ -160,6 +160,59 @@
 - EN: If quality fails, keep `draft` and update `admin_memo` with corrective note.
 - JA: 品質未達の場合は `draft` 維持とし、`admin_memo` に修正指示を残す。
 
+
+## 9.8 BLG-007 Admin Auth/RLS Hardening / BLG-007 管理認証・RLS強化
+- EN: BLG-007 is the production-security task to stop anonymous admin access and enforce authenticated access only.
+- JA: BLG-007 は、匿名での管理画面アクセスを終了し、認証済みユーザーのみへ制限する本番セキュリティ強化タスクである。
+- EN: Current state is "prototype mode" (anon select/update allowed for admin tables). BLG-007 removes this mode.
+- JA: 現在は「暫定運用」（管理テーブルに anon select/update を許可）であり、BLG-007 でこの暫定モードを廃止する。
+
+### Objective / 目的
+- EN: Restrict `enquiries`, `works`, and `news_items` admin operations to authenticated staff only.
+- JA: `enquiries`、`works`、`news_items` の管理操作を認証済みスタッフのみに限定する。
+- EN: Keep public behaviour unchanged (public pages still read published content and submit enquiries).
+- JA: 公開側の挙動は維持する（公開ページは公開済みコンテンツ参照・問い合わせ送信を継続）。
+
+### Scope of Change / 変更範囲
+- EN: Supabase policies in `shuho-website/supabase/schema.sql` (remove anon admin policies).
+- JA: `shuho-website/supabase/schema.sql` の Supabase ポリシー（anon 管理ポリシー削除）。
+- EN: Admin frontend auth/session guard (`admin/*.html`, `assets/js/admin.js`, `assets/js/dashboard.js`).
+- JA: 管理画面フロントの認証/セッションガード（`admin/*.html`、`assets/js/admin.js`、`assets/js/dashboard.js`）。
+- EN: Admin login flow (Supabase Auth email/password or magic link).
+- JA: 管理ログインフロー（Supabase Auth のメール/パスワードまたはマジックリンク）。
+
+### Target Access Model / 目標アクセスモデル
+| Role | Permission |
+|---|---|
+| `anon` | Public insert to `enquiries` only, read-only published content only |
+| `authenticated` | Admin read/update for `enquiries`, `works`, `news_items` |
+| `service_role` | Server-side maintenance only (never exposed to browser) |
+
+### Implementation Phases / 実装フェーズ
+1. EN: Add admin login page and session check middleware-like guard in JS.
+   JA: 管理ログインページを追加し、JSでセッションチェックのガードを実装。
+2. EN: Replace `anon` select/update policies with `authenticated` policies for admin tables.
+   JA: 管理テーブルの `anon` select/update ポリシーを `authenticated` ポリシーへ置換。
+3. EN: Verify no regression on public pages (contact submit + published content rendering).
+   JA: 公開ページの非退行確認（問い合わせ送信・公開コンテンツ表示）。
+4. EN: Remove prototype policy comments and mark production baseline completed.
+   JA: 暫定ポリシー注記を削除し、本番基準完了として記録。
+
+### Acceptance Criteria / 完了条件
+- EN: Unauthenticated user cannot access admin data or perform admin write operations.
+- JA: 未認証ユーザーが管理データ参照・更新できないこと。
+- EN: Authenticated admin can use works/enquiries/news/dashboard normally.
+- JA: 認証済み管理者が works/enquiries/news/dashboard を通常利用できること。
+- EN: Public enquiry submission remains available with anon key.
+- JA: 公開問い合わせ送信は anon key で継続利用できること。
+
+### What You Need to Prepare / あなたに準備いただくもの
+- EN: 1+ admin account(s) in Supabase Auth.
+- JA: Supabase Auth 上の管理者アカウント（1件以上）。
+- EN: Decision on login method (password vs magic link).
+- JA: ログイン方式の決定（パスワード or マジックリンク）。
+- EN: Confirmation of allowed admin email domains (optional, recommended).
+- JA: 管理者メールドメイン制限の可否（任意だが推奨）。
 ## 10. Related Documents / 関連文書
 - `project-docs/10_PROJECT/PROJECT_STATUS.md`
 - `project-docs/10_PROJECT/BACKLOG.md`
@@ -210,4 +263,5 @@
 
 - 2026-04-09: Built admin dashboard page (shuho-website/admin/dashboard.html) and data script (shuho-website/assets/js/dashboard.js) with KPI cards + weekly trend table/chart.
 - 2026-04-09: 管理ダッシュボード（shuho-website/admin/dashboard.html）とデータスクリプト（shuho-website/assets/js/dashboard.js）を実装し、KPIカードと週次推移テーブル/チャートを追加。
+
 

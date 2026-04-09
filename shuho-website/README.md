@@ -15,6 +15,7 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 4. Works admin page loads/filters/updates publish status via Supabase (prototype policy mode).
 5. News admin page loads/filters/creates/updates real data via Supabase (prototype policy mode).
 6. `supabase/schema.sql` prepared for `enquiries` + `works` + `news_items`.
+7. Admin dashboard implemented (`admin/dashboard.html`) with KPI cards and weekly trend view.
 
 ## Supabase Config Modes
 1. Local/private mode: `supabase/config.js` (git-ignored)
@@ -41,12 +42,16 @@ Run before commit/deploy:
 ## Next
 1. Replace prototype anon admin policies with authenticated admin role model before production.
 2. Add canonical/`og:url` after production domain hold is lifted.
-3. Build KPI dashboard/reporting queries on top of implemented BLG-005 tracking hooks.
+3. Build out dashboard reporting cadence and SQL view strategy (`supabase/kpi-queries.sql`) for weekly operations.
 
 ## Local Preview (PowerShell)
 If Python/Node is not available, run the included script:
 1. `powershell -ExecutionPolicy Bypass -File .\scripts\start-local-server.ps1 -Port 5500`
 2. Open `http://localhost:5500/admin/enquiries.html`
 3. Do not open admin pages with `file://`.
+
+
+
+
 
 

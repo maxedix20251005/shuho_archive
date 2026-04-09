@@ -41,8 +41,8 @@
    JA: 本番ドメイン確定および canonical/`og:url` 反映は、別途指示があるまで保留。
 2. EN: Implement production-grade admin auth/RLS model (replace prototype anon-admin policies).
    JA: 管理画面の本番認可モデル（暫定 anon-admin ポリシーの置換）を実装する。
-3. EN: Build KPI dashboard and reporting queries based on implemented BLG-005 events.
-   JA: BLG-005で定義したイベント/KPIに基づき、計測実装とダッシュボード構築を実施する。
+3. EN: Harden admin authentication/RLS and replace prototype anon-admin policy before production.
+   JA: 本番前に管理画面の認証/RLSを強化し、暫定 anon-admin ポリシーを置換する。
 
 ## 6. Risks / リスク
 - EN: Encoding inconsistency can reintroduce mojibake in bilingual docs.
@@ -118,4 +118,12 @@
 
 - 2026-04-09: Implemented BLG-005 instrumentation hooks in shuho-website/assets/js/site.js (public events) and shuho-website/assets/js/admin.js (admin operation events).
 - 2026-04-09: shuho-website/assets/js/site.js（公開イベント）と shuho-website/assets/js/admin.js（管理運用イベント）にBLG-005計測フックを実装。
+
+
+- 2026-04-09: Implemented admin dashboard (dmin/dashboard.html) with KPI cards, weekly trend chart/table, and dashboard navigation from all admin pages.
+- 2026-04-09: 管理ダッシュボード（dmin/dashboard.html）を実装し、KPIカード・週次推移チャート/テーブル・全管理画面からの導線を追加。
+
+
+
+
 
