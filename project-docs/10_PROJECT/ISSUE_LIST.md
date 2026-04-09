@@ -27,6 +27,7 @@
 - JA: 日本語編集時は UTF-8 を確認する。
 
 ## 5. Update Log / 更新履歴
+- 2026-04-09: Added explicit `[hidden] { display:none !important; }` in `assets/css/site.css` to ensure enquiry form/success visibility toggling works reliably.
 - 2026-04-09: Added `ISSUE-007` for contact submit-stuck symptom; applied resilience and timeout fix in `assets/js/site.js` and config load-order adjustment in `assets/js/supabase-client.js`.
 - 2026-04-08: Closed `ISSUE-006` after confirming `admin/news.html` loads successfully on GitHub Pages.
 - 2026-04-08: Added `ISSUE-006` for news admin module export mismatch and started compatibility fix.
@@ -35,3 +36,5 @@
 - 2026-04-08: Identified dual root causes for ISSUE-005 (`file://` module block and missing deployed Supabase config values); added local PowerShell server script and clearer diagnostics.
 - 2026-04-08: Added `ISSUE-005` (critical, in progress) for admin loading failure across local and GitHub Pages.
 - 2026-04-07: Added `ISSUE-003` and `ISSUE-004`; marked `ISSUE-002` as closed.
+
+
