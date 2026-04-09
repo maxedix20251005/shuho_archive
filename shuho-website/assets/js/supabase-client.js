@@ -1,7 +1,20 @@
-﻿const CONFIG_RELATIVE_PATHS = [
-  "../../supabase/config.js",
-  "../../supabase/config.public.js",
-];
+﻿function getConfigRelativePaths() {
+  const win = typeof window !== "undefined" ? window : null;
+  const host = win && win.location ? String(win.location.hostname || "") : "";
+  const isLocal = host === "localhost" || host === "127.0.0.1";
+
+  if (isLocal) {
+    return [
+      "../../supabase/config.js",
+      "../../supabase/config.public.js",
+    ];
+  }
+
+  return [
+    "../../supabase/config.public.js",
+    "../../supabase/config.js",
+  ];
+}
 
 let cachedConfig = null;
 let configLoadAttempted = false;
@@ -15,7 +28,8 @@ async function loadConfig() {
   }
   configLoadAttempted = true;
 
-  for (const path of CONFIG_RELATIVE_PATHS) {
+  const configPaths = getConfigRelativePaths();
+  for (const path of configPaths) {
     try {
       const mod = await import(path);
       const url = (mod.SUPABASE_URL || "").trim();
@@ -243,3 +257,6 @@ export async function updateNewsItem(client, id, payload) {
     body: JSON.stringify(payload),
   });
 }
+
+
+

@@ -13,6 +13,7 @@
 | `ISSUE-004` | `2026-04-07` | `Documentation` | Mojibake and control characters in project tracking docs | `PROJECT_STATUS.md` contained garbled Japanese and invalid control bytes. | `Closed` | Rebuilt affected tracking docs in clean UTF-8 bilingual format. | `2026-04-07` | `PM` |
 | `ISSUE-005` | `2026-04-08` | `Admin UI (Local/GitHub Pages)` | Admin screens stuck in loading/fallback message | Root causes split: (1) local opened via `file://` so dynamic module import is blocked, (2) GitHub Pages had empty/missing `supabase/config.public.js` values. | `Closed` | Synced `supabase/config.public.js` with actual credentials, validated local via HTTP server, and verified both admin pages on GitHub Pages (`件数:0件` with no config error). | `2026-04-08` | `Frontend Engineer` |
 | `ISSUE-006` | `2026-04-08` | `Admin News (GitHub Pages)` | News admin boot failure due module export mismatch | `admin.js` imported named `createNewsItem`, but loaded `supabase-client.js` variant did not export that symbol, causing module boot to fail. | `Closed` | Switched `admin.js` to namespace import with backward-compatible fallback symbols and explicit capability guard message, then verified `admin/news.html` renders correctly. | `2026-04-08` | `Frontend Engineer` |
+| `ISSUE-007` | `2026-04-09` | `Contact Form (Public)` | Submit button stuck on `送信中...` | Form submit could remain in loading state due unhandled submit-path errors and module/config load-order mismatch. | `Fixing` | Added `try/catch/finally` recovery in submit flow, submit timeout guard (15s), and non-local config load order (`config.public.js` first) in Supabase loader. Awaiting browser verification. | `-` | `Frontend Engineer` |
 
 ## 3. Status Flow / 状態遷移
 - `Open -> Investigating -> Fixing -> Monitoring -> Closed`
@@ -26,6 +27,7 @@
 - JA: 日本語編集時は UTF-8 を確認する。
 
 ## 5. Update Log / 更新履歴
+- 2026-04-09: Added `ISSUE-007` for contact submit-stuck symptom; applied resilience and timeout fix in `assets/js/site.js` and config load-order adjustment in `assets/js/supabase-client.js`.
 - 2026-04-08: Closed `ISSUE-006` after confirming `admin/news.html` loads successfully on GitHub Pages.
 - 2026-04-08: Added `ISSUE-006` for news admin module export mismatch and started compatibility fix.
 - 2026-04-08: Closed `ISSUE-005` after confirming both admin pages load correctly on GitHub Pages with Supabase config applied.

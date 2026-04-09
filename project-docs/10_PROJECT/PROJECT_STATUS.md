@@ -108,3 +108,4 @@
 - 2026-04-09: BLG-004（第1段階スパム対策）を完了。問い合わせフォームに honeypot、最短送信時間チェック、クライアント側レート制限（10分で3回）を実装（`contact.html` + `assets/js/site.js` + `assets/css/site.css`）。
 - 2026-04-09: Completed BLG-006. Added project-docs/00_GOVERNANCE/check-doc-encoding.ps1, integrated mandatory run rules into governance docs, and confirmed pass ([OK] on 15 project-doc files).
 - 2026-04-09: BLG-006を完了。project-docs/00_GOVERNANCE/check-doc-encoding.ps1 を追加し、ガバナンス文書へ実行必須ルールを組み込み、15ファイルでチェック成功（[OK]）を確認。
+- 2026-04-09: Opened ISSUE-007 for contact form submit-stuck symptom (送信中... persisted). Added submit recovery (try/catch/finally), 15s timeout guard, and non-local config load-order optimisation.
