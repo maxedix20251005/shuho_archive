@@ -38,6 +38,7 @@ function renderFooter() {
         <a href="./contact.html">お問い合わせ</a>
         <a href="tel:0000000000">電話</a>
         <a href="./privacy.html">プライバシーポリシー</a>
+        <a href="./admin/enquiries.html">管理画面</a>
       </nav>
       <p>&copy; Shuho Calligraphy Salon</p>
     </div>
@@ -69,4 +70,6 @@ if (ctaRoot) {
   ctaRoot.setAttribute('aria-label', 'スマホ固定CTA');
   ctaRoot.innerHTML = renderSpCta();
 }
+
+
 

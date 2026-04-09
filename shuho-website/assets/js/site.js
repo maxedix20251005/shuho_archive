@@ -71,11 +71,21 @@ document.addEventListener('click', (event) => {
   if (!anchor) return;
 
   const href = anchor.getAttribute('href') || '';
-  if (!/contact\.html(?:$|[#?])/.test(href)) return;
+  const ctaPosition = detectCtaPosition(anchor);
 
-  trackEvent('cta_click_contact', {
-    cta_position: detectCtaPosition(anchor),
-  });
+  if (/contact\.html(?:$|[#?])/.test(href)) {
+    trackEvent('cta_click_contact', {
+      cta_position: ctaPosition,
+    });
+    return;
+  }
+
+  if (/\/admin\/enquiries\.html(?:$|[#?])/.test(href) || /^\.\/admin\/enquiries\.html(?:$|[#?])/.test(href)) {
+    trackEvent('public_to_admin_click', {
+      cta_position: ctaPosition,
+      target_page: 'admin_enquiries',
+    });
+  }
 });
 
 const enquiryForm = document.querySelector('#enquiry-form');
@@ -356,3 +366,4 @@ if (faqItems.length > 0) {
     });
   });
 }
+

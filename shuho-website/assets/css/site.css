@@ -742,6 +742,17 @@ p {
   border-color: var(--ink);
 }
 
+.admin-side-links {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.admin-side-links .btn-mini {
+  text-align: center;
+  background: #fff;
+}
+
 .admin-main {
   padding: 24px;
 }
@@ -863,6 +874,7 @@ p {
   height: 1px !important;
   overflow: hidden !important;
 }
+
 
 
 

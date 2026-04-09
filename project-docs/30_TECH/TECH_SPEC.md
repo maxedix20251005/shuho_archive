@@ -95,6 +95,7 @@
 | `contact_form_submit_error` | Contact submit failed | `page_id`, `error_type`, `device_type` | Failure diagnosis and UX fix priority |
 | `portfolio_filter_use` | Portfolio category filter change | `page_id`, `category`, `device_type` | Understand demand by category |
 | `faq_expand` | FAQ item expanded | `page_id`, `faq_id`, `device_type` | Discover user concern themes |
+| `public_to_admin_click` | Click on admin entry link from public site | `page_id`, `cta_position`, `target_page`, `device_type` | Measure public-to-admin navigation usage |
 
 ### 9.2 Event Mapping (Admin) / イベント設計（管理側）
 | Event Name | Trigger | Parameters | Purpose |
@@ -104,6 +105,7 @@
 | `admin_news_create` | News item created | `news_id`, `publish_status` | Content supply monitoring |
 | `admin_news_status_update` | News publish status changed | `news_id`, `from_status`, `to_status` | Freshness and publish governance |
 | `admin_enquiry_status_update` | Enquiry status changed | `enquiry_id`, `from_status`, `to_status` | Response operations tracking |
+| `admin_to_public_click` | Click on public-site shortcut in admin sidebar | `admin_page`, `target_page`, `device_type` | Measure admin-to-public validation flow |
 
 ### 9.3 KPI Dashboard (Weekly + Monthly) / KPIダッシュボード（週次・月次）
 | KPI ID | KPI | Formula | Target (Initial) | Owner |
@@ -135,6 +137,28 @@
 - JA: `shuho-website/assets/js/site.js` と `shuho-website/assets/js/admin.js` に計測フック実装済み。ダッシュボード構築とレポート用クエリ自動化を次工程とする。
 - EN: Event names and parameter keys in this section are the canonical source for frontend instrumentation.
 - JA: 本節のイベント名・パラメータキーをフロント実装時の正本定義とする。
+
+### 9.6 Admin <-> Public Site Flow / CTA Map / 管理画面と公開画面のフロー・CTA対応表
+- EN: The table below defines the exact pathway from public CTA action to admin operation and back to public visibility.
+- JA: 以下の表は、公開側CTA起点の行動が管理画面運用を経て公開反映されるまでの導線を定義する。
+
+| Flow ID | Public Entry / CTA (公開入口・CTA) | System/Data Action (システム・データ処理) | Admin Action (管理画面オペレーション) | Public Outcome (公開側の結果) | SLA / Ops Rule (運用ルール) |
+|---|---|---|---|---|---|
+| `F-CTA-01` | Header/Footer/SP固定CTAの「お問い合わせ」クリック | `cta_click_contact` event recorded | N/A | Contact page reached | Track CTR weekly (`KPI-02`) |
+| `F-CTA-02` | Contact form submit | Insert row into `enquiries` (`status='new'`) + `contact_form_submit_success` | In `admin/enquiries.html`, update status `new -> processing -> closed/spam`, add `admin_memo` | User receives completion view immediately; operational response handled offline | Check twice daily (AM/PM), first response target: 1 business day |
+| `F-CTA-03` | Portfolio page category chips | Filter intent event `portfolio_filter_use` | Review category demand trend monthly | Future content prioritisation reflected in newly published works | Use top categories to guide next 4-week publishing plan |
+| `F-CTA-04` | FAQ expansion and unresolved user intent -> contact CTA | `faq_expand` + possible `cta_click_contact` chain | Review top FAQ themes, update FAQ copy and enquiry templates | Improved self-resolution and higher qualified enquiries | Review FAQ top themes monthly |
+| `F-CTA-05` | Public "works/news" visibility | Query only `publish_status='published'` and `deleted_at is null` | In `admin/works.html` and `admin/news.html`, toggle `draft/published` and maintain titles/dates | Published items appear on public pages; draft items remain hidden | Content check at least 2 times/week |
+| `F-CTA-06` | Public footer "管理画面" link | `public_to_admin_click` event recorded | Admin enters operations screen and performs updates | Faster operator transition from public review to admin operation | Monitor weekly trend and keep misuse low |
+| `F-CTA-07` | Admin sidebar "公開サイトを見る / 公開お問い合わせを見る" | `admin_to_public_click` event recorded | Admin verifies public-facing output after update | Reduces publish mismatch by immediate visual verification | Use after each publish-related change |
+
+### 9.7 Admin-Publish Gate Criteria / 管理側公開判定基準
+- EN: Works/news must satisfy minimum quality checks before `draft -> published`.
+- JA: 作品/お知らせは `draft -> published` 変更前に最低品質チェックを満たすこと。
+- EN: Gate checklist: title filled, typo check, date check, status check, and (works) image/alt consistency.
+- JA: 公開ゲート: タイトル入力、誤字確認、日付確認、公開状態確認、（作品）画像とalt整合確認。
+- EN: If quality fails, keep `draft` and update `admin_memo` with corrective note.
+- JA: 品質未達の場合は `draft` 維持とし、`admin_memo` に修正指示を残す。
 
 ## 10. Related Documents / 関連文書
 - `project-docs/10_PROJECT/PROJECT_STATUS.md`
@@ -172,4 +196,6 @@
 
 - 2026-04-09: Implemented BLG-005 instrumentation hooks in public/admin scripts (shuho-website/assets/js/site.js, shuho-website/assets/js/admin.js).
 - 2026-04-09: BLG-005の計測フックを公開/管理スクリプトへ実装（shuho-website/assets/js/site.js、shuho-website/assets/js/admin.js）。
+
+
 

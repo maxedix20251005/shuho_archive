@@ -611,8 +611,25 @@ function bindNewsEvents() {
   }
 }
 
+function bindAdminPublicLinks() {
+  const links = document.querySelectorAll(".admin-side-links a[href]");
+  if (!links || links.length === 0) {
+    return;
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href") || "";
+      const targetPage = /contact\.html(?:$|[#?])/.test(href) ? "public_contact" : "public_index";
+      trackAdminEvent("admin_to_public_click", {
+        target_page: targetPage,
+      });
+    });
+  });
+}
 async function boot() {
   trackAdminEvent("admin_login_view");
+  bindAdminPublicLinks();
   client = await initSupabase();
 
   if (page === "enquiries") {
@@ -632,6 +649,10 @@ async function boot() {
 }
 
 boot();
+
+
+
+
 
 
 
