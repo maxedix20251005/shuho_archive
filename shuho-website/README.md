@@ -18,11 +18,11 @@ Initial implementation scaffold for the new Shuho calligraphy website.
 
 ## Supabase Config Modes
 1. Local/private mode: `supabase/config.js` (git-ignored)
-2. Deployed/static mode (e.g. GitHub Pages): `supabase/config.public.js` (tracked)
-3. Fallback order in runtime:
-   - `supabase/config.js`
-   - `supabase/config.public.js`
-   - `window.__SUPABASE_CONFIG`
+2. Deployed/static mode: `supabase/config.public.js` (tracked, ANON key only)
+3. Never store service-role keys in this repository.
+4. Runtime fallback order:
+   - local (`localhost`): `config.js` -> `config.public.js`
+   - deployed: `config.public.js` -> `config.js`
 
 ## Setup
 1. Apply `supabase/schema.sql` in Supabase SQL Editor.
@@ -34,13 +34,19 @@ Initial implementation scaffold for the new Shuho calligraphy website.
    - `admin/works.html` list/filter/status save
    - `admin/news.html` list/filter/create/update
 
+## Config Guard
+Run before commit/deploy:
+- `powershell -ExecutionPolicy Bypass -File .\scripts\check-supabase-config.ps1`
+
 ## Next
-1. Add anti-spam control to enquiry submission flow.
-2. Replace prototype anon admin policies with authenticated admin role model before production.
-3. Add canonical/`og:url` after production domain hold is lifted.
+1. Replace prototype anon admin policies with authenticated admin role model before production.
+2. Add canonical/`og:url` after production domain hold is lifted.
+3. Build KPI dashboard/reporting queries on top of implemented BLG-005 tracking hooks.
 
 ## Local Preview (PowerShell)
 If Python/Node is not available, run the included script:
 1. `powershell -ExecutionPolicy Bypass -File .\scripts\start-local-server.ps1 -Port 5500`
 2. Open `http://localhost:5500/admin/enquiries.html`
 3. Do not open admin pages with `file://`.
+
+

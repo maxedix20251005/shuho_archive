@@ -14,6 +14,33 @@ window.__adminBooted = true;
 let client = null;
 const page = document.body.dataset.adminPage || "";
 
+function getDeviceType() {
+  const width = window.innerWidth || 0;
+  if (width <= 768) return "mobile";
+  if (width <= 1024) return "tablet";
+  return "desktop";
+}
+
+function trackAdminEvent(eventName, params = {}) {
+  const payload = {
+    admin_page: page || "unknown",
+    page_path: window.location.pathname || "",
+    device_type: getDeviceType(),
+    ...params,
+  };
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, payload);
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    ...payload,
+  });
+}
+
 function setMessage(text, isError = false) {
   const el = document.querySelector("#admin-message");
   if (!el) {
@@ -127,6 +154,7 @@ function renderEnquiryRows(items) {
       saveButton.disabled = true;
       saveButton.textContent = "保存中...";
 
+      const previousStatus = item.status || "unknown";
       const payload = {
         status: statusSelect.value,
         admin_memo: memoInput.value || null,
@@ -141,6 +169,12 @@ function renderEnquiryRows(items) {
         return;
       }
 
+      item.status = statusSelect.value;
+      trackAdminEvent("admin_enquiry_status_update", {
+        enquiry_id: item.id,
+        from_status: previousStatus,
+        to_status: statusSelect.value,
+      });
       setMessage(`保存しました: ${item.id}`);
       saveButton.disabled = false;
       saveButton.textContent = "保存";
@@ -235,6 +269,7 @@ function renderWorkRows(items) {
       saveButton.disabled = true;
       saveButton.textContent = "保存中...";
 
+      const previousStatus = item.publish_status || "draft";
       const payload = {
         publish_status: statusSelect.value,
       };
@@ -248,6 +283,12 @@ function renderWorkRows(items) {
         return;
       }
 
+      item.publish_status = statusSelect.value;
+      trackAdminEvent("admin_work_status_update", {
+        work_id: item.id,
+        from_status: previousStatus,
+        to_status: statusSelect.value,
+      });
       setMessage(`保存しました: ${item.id}`);
       saveButton.disabled = false;
       saveButton.textContent = "保存";
@@ -351,6 +392,7 @@ function renderNewsRows(items) {
       saveButton.disabled = true;
       saveButton.textContent = "保存中...";
 
+      const previousStatus = item.publish_status || "draft";
       const payload = {
         title: titleInput.value.trim(),
         publish_status: statusSelect.value,
@@ -368,6 +410,12 @@ function renderNewsRows(items) {
         return;
       }
 
+      item.publish_status = statusSelect.value;
+      trackAdminEvent("admin_news_status_update", {
+        news_id: item.id,
+        from_status: previousStatus,
+        to_status: statusSelect.value,
+      });
       setMessage(`保存しました: ${item.id}`);
       saveButton.disabled = false;
       saveButton.textContent = "保存";
@@ -477,6 +525,12 @@ async function createNewsFromForm() {
   if (dateInput) dateInput.value = "";
   if (statusSelect) statusSelect.value = "draft";
 
+  const createdId = Array.isArray(result.data) && result.data[0] && result.data[0].id ? result.data[0].id : "unknown";
+  trackAdminEvent("admin_news_create", {
+    news_id: createdId,
+    publish_status: status,
+  });
+
   setMessage("お知らせを新規登録しました。");
   if (createButton) {
     createButton.disabled = false;
@@ -558,6 +612,7 @@ function bindNewsEvents() {
 }
 
 async function boot() {
+  trackAdminEvent("admin_login_view");
   client = await initSupabase();
 
   if (page === "enquiries") {
@@ -577,6 +632,8 @@ async function boot() {
 }
 
 boot();
+
+
 
 
 

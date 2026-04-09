@@ -1,5 +1,63 @@
 ﻿const menuButton = document.querySelector('.menu-button');
 const globalNav = document.querySelector('#global-nav');
+const pageId = document.body.dataset.page || 'unknown';
+
+function getDeviceType() {
+  const width = window.innerWidth || 0;
+  if (width <= 768) return 'mobile';
+  if (width <= 1024) return 'tablet';
+  return 'desktop';
+}
+
+function getReferrerType() {
+  const ref = document.referrer || '';
+  if (!ref) return 'direct';
+
+  try {
+    const refUrl = new URL(ref);
+    const currentHost = window.location.hostname || '';
+    if (refUrl.hostname === currentHost) return 'internal';
+
+    const host = refUrl.hostname.toLowerCase();
+    if (/google|yahoo|bing|duckduckgo/.test(host)) return 'search';
+    if (/facebook|instagram|x\.com|twitter|line|youtube/.test(host)) return 'social';
+    return 'external';
+  } catch (error) {
+    return 'external';
+  }
+}
+
+function trackEvent(eventName, params = {}) {
+  const payload = {
+    page_id: pageId,
+    page_path: window.location.pathname || '',
+    device_type: getDeviceType(),
+    ...params,
+  };
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, payload);
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    ...payload,
+  });
+}
+
+function detectCtaPosition(anchor) {
+  if (!anchor) return 'unknown';
+  if (anchor.closest('#sp-fixed-cta')) return 'sp_fixed';
+  if (anchor.closest('#global-nav')) return anchor.classList.contains('nav-contact') ? 'header_nav_contact' : 'header_nav';
+  if (anchor.closest('#site-footer')) return 'footer';
+  if (anchor.closest('.cta-panel')) return 'section_cta_panel';
+  if (anchor.closest('.home-contact')) return 'home_contact_section';
+  return 'content';
+}
+
+trackEvent('page_view_public', { referrer_type: getReferrerType() });
 
 if (menuButton && globalNav) {
   menuButton.addEventListener('click', () => {
@@ -7,6 +65,18 @@ if (menuButton && globalNav) {
     menuButton.setAttribute('aria-expanded', String(isOpen));
   });
 }
+
+document.addEventListener('click', (event) => {
+  const anchor = event.target.closest('a[href]');
+  if (!anchor) return;
+
+  const href = anchor.getAttribute('href') || '';
+  if (!/contact\.html(?:$|[#?])/.test(href)) return;
+
+  trackEvent('cta_click_contact', {
+    cta_position: detectCtaPosition(anchor),
+  });
+});
 
 const enquiryForm = document.querySelector('#enquiry-form');
 const formError = document.querySelector('#form-error');
@@ -104,6 +174,19 @@ async function submitEnquiry(payload) {
 }
 
 if (enquiryForm) {
+  let formStarted = false;
+  enquiryForm.addEventListener('focusin', () => {
+    if (formStarted) return;
+    formStarted = true;
+    trackEvent('contact_form_start');
+  });
+
+  const trackFormError = (errorType) => {
+    trackEvent('contact_form_submit_error', {
+      error_type: errorType,
+    });
+  };
+
   enquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -118,12 +201,14 @@ if (enquiryForm) {
       const honeypotNode = enquiryForm.querySelector('#website');
       const honeypotValue = honeypotNode && honeypotNode.value ? honeypotNode.value.trim() : '';
       if (honeypotValue) {
+        trackFormError('honeypot_blocked');
         showSuccessState();
         return;
       }
 
       const elapsedSeconds = (Date.now() - formLoadedAt) / 1000;
       if (elapsedSeconds < MIN_SUBMIT_SECONDS) {
+        trackFormError('submit_too_fast');
         if (formError) {
           formError.textContent = '短時間での送信はできません。数秒後に再度お試しください。';
         }
@@ -131,6 +216,7 @@ if (enquiryForm) {
       }
 
       if (checkRateLimit()) {
+        trackFormError('rate_limited');
         if (formError) {
           formError.textContent = '短時間での送信回数が上限に達しました。時間をおいて再度お試しください。';
         }
@@ -138,6 +224,7 @@ if (enquiryForm) {
       }
 
       if (!enquiryForm.checkValidity()) {
+        trackFormError('client_validation_failed');
         if (formError) {
           formError.textContent = '未入力または入力形式に誤りがあります。必須項目をご確認ください。';
         }
@@ -148,6 +235,7 @@ if (enquiryForm) {
       const privacyNode = enquiryForm.querySelector('#privacy_agreed');
       const privacyChecked = !!(privacyNode && privacyNode.checked);
       if (!privacyChecked) {
+        trackFormError('privacy_not_agreed');
         if (formError) {
           formError.textContent = 'プライバシーポリシーへの同意が必要です。';
         }
@@ -162,6 +250,7 @@ if (enquiryForm) {
             submitButton.disabled = false;
             submitButton.textContent = '送信する';
             if (formError && !formError.textContent) {
+              trackFormError('submit_watchdog_timeout');
               formError.textContent = '送信がタイムアウトしました。時間をおいて再度お試しください。';
             }
           }
@@ -187,6 +276,10 @@ if (enquiryForm) {
 
       const submitResult = await submitEnquiry(payload);
       if (!submitResult.ok) {
+        const errorType = submitResult.error && String(submitResult.error).includes('timeout')
+          ? 'submit_api_timeout'
+          : 'submit_api_failed';
+        trackFormError(errorType);
         if (formError) {
           formError.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
         }
@@ -194,8 +287,12 @@ if (enquiryForm) {
       }
 
       markSubmitted();
+      trackEvent('contact_form_submit_success', {
+        enquiry_type: payload.enquiry_type || 'unknown',
+      });
       showSuccessState();
     } catch (error) {
+      trackFormError('submit_handler_exception');
       if (formError) {
         formError.textContent = '送信処理でエラーが発生しました。時間をおいて再度お試しください。';
       }
@@ -237,9 +334,25 @@ if (filterButtons.length > 0 && portfolioItems.length > 0) {
     button.addEventListener('click', () => {
       filterButtons.forEach((btn) => btn.classList.remove('is-active'));
       button.classList.add('is-active');
-      updatePortfolio(button.dataset.filter || 'all');
+      const filter = button.dataset.filter || 'all';
+      updatePortfolio(filter);
+      trackEvent('portfolio_filter_use', {
+        category: filter,
+      });
     });
   });
 
   updatePortfolio('all');
+}
+
+const faqItems = document.querySelectorAll('.faq-list details');
+if (faqItems.length > 0) {
+  faqItems.forEach((node, index) => {
+    node.addEventListener('toggle', () => {
+      if (!node.open) return;
+      trackEvent('faq_expand', {
+        faq_id: node.id || `faq_${index + 1}`,
+      });
+    });
+  });
 }

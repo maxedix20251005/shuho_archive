@@ -37,20 +37,20 @@
 - JA: 履歴保持分割による移行手順書を整備済み。
 
 ## 5. Current Priorities / 現在の優先事項
-1. EN: Create `supabase/config.js` and validate end-to-end enquiry insertion.
-   JA: `supabase/config.js` を作成し、問い合わせ登録のE2E動作を確認する。
-2. EN: Connect admin screens to live Supabase CRUD.
-   JA: 管理画面を Supabase 実CRUDに接続する。
-3. EN: Production domain + canonical/`og:url` work is on hold until further notice.
+1. EN: Keep production domain + canonical/`og:url` work on hold until further notice.
    JA: 本番ドメイン確定および canonical/`og:url` 反映は、別途指示があるまで保留。
+2. EN: Implement production-grade admin auth/RLS model (replace prototype anon-admin policies).
+   JA: 管理画面の本番認可モデル（暫定 anon-admin ポリシーの置換）を実装する。
+3. EN: Build KPI dashboard and reporting queries based on implemented BLG-005 events.
+   JA: BLG-005で定義したイベント/KPIに基づき、計測実装とダッシュボード構築を実施する。
 
 ## 6. Risks / リスク
 - EN: Encoding inconsistency can reintroduce mojibake in bilingual docs.
 - JA: 文字コード不整合により日英併記文書で再度文字化けが発生する可能性。
 - EN: Without domain finalisation, SEO metadata (`canonical`, `og:url`) remains incomplete.
 - JA: ドメイン未確定の間は SEO メタデータ（`canonical`、`og:url`）が未完了。
-- EN: Admin remains non-operational until live CRUD wiring is completed.
-- JA: 管理画面の実CRUD接続完了まで運用利用ができない。
+- EN: Current admin access policy is prototype-grade (`anon` policy model) and must be hardened before production.
+- JA: 管理画面のアクセス制御は暫定（`anon` ポリシーモデル）であり、本番前に強化が必要。
 
 ## 7. Quality Rule / 品質ルール
 - EN: All project docs must be UTF-8 and reviewed for mojibake before closing each task.
@@ -109,3 +109,13 @@
 - 2026-04-09: Completed BLG-006. Added project-docs/00_GOVERNANCE/check-doc-encoding.ps1, integrated mandatory run rules into governance docs, and confirmed pass ([OK] on 15 project-doc files).
 - 2026-04-09: BLG-006を完了。project-docs/00_GOVERNANCE/check-doc-encoding.ps1 を追加し、ガバナンス文書へ実行必須ルールを組み込み、15ファイルでチェック成功（[OK]）を確認。
 - 2026-04-09: Opened ISSUE-007 for contact form submit-stuck symptom (送信中... persisted). Added submit recovery (try/catch/finally), 15s timeout guard, and non-local config load-order optimisation.
+- 2026-04-09: Closed ISSUE-007. Verified contact form on GitHub Pages: submit no longer stays on 送信中..., and success transition toggles correctly.
+- 2026-04-09: ISSUE-007をクローズ。GitHub Pages上で問い合わせフォームを確認し、送信中... 固定が解消され、送信後の表示切替が正常動作することを確認。
+- 2026-04-09: Completed BLG-002. Finalised Supabase key-management workflow (local ignored config.js, deployed anon-only config.public.js, and pre-deploy guard script scripts/check-supabase-config.ps1).
+- 2026-04-09: BLG-002を完了。Supabase鍵運用を確立（ローカルのみ config.js、デプロイは anon 限定 config.public.js、事前検査 scripts/check-supabase-config.ps1）。
+- 2026-04-09: Completed BLG-005 documentation definition in `project-docs/30_TECH/TECH_SPEC.md` (analytics event map, KPI dashboard, admin-public flow).
+- 2026-04-09: `project-docs/30_TECH/TECH_SPEC.md` に BLG-005（イベント定義、KPIダッシュボード、管理画面と公開画面の連携フロー）を反映。
+
+- 2026-04-09: Implemented BLG-005 instrumentation hooks in shuho-website/assets/js/site.js (public events) and shuho-website/assets/js/admin.js (admin operation events).
+- 2026-04-09: shuho-website/assets/js/site.js（公開イベント）と shuho-website/assets/js/admin.js（管理運用イベント）にBLG-005計測フックを実装。
+
