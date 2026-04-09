@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>管理画面: 作品管理 | 秀峰書道サロン</title>
+  <title>管理画面: ダッシュボード | 秀峰書道サロン</title>
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="shortcut icon" href="../assets/images/logo/favicon-shuho.png" type="image/png">
 </head>
 
-<body class="admin-body" data-admin-page="works">
+<body class="admin-body" data-admin-page="dashboard">
   <div class="admin-layout">
     <aside class="admin-side">
       <h1>秀峰管理</h1>
       <nav class="admin-nav" aria-label="Admin Navigation">
-        <a href="./dashboard.html">ダッシュボード</a>
-        <a class="is-active" href="./works.html">作品管理</a>
+        <a class="is-active" href="./dashboard.html">ダッシュボード</a>
+        <a href="./works.html">作品管理</a>
         <a href="./enquiries.html">問い合わせ管理</a>
         <a href="./news.html">お知らせ管理</a>
       </nav>
@@ -26,43 +26,46 @@
 
     <main class="admin-main">
       <header class="admin-header">
-        <h2>作品管理</h2>
+        <h2>ダッシュボード</h2>
       </header>
 
       <section class="admin-panel">
-        <div class="admin-filters">
-          <input id="works-search" type="search" placeholder="タイトルで検索">
-          <select id="works-category-filter">
-            <option value="">カテゴリ: すべて</option>
-            <option value="master1">師範1</option>
-            <option value="master2">師範2</option>
-            <option value="master3">師範3</option>
-            <option value="general">一般</option>
-            <option value="kids">こども</option>
-          </select>
-          <select id="works-status-filter">
-            <option value="">公開状態: すべて</option>
-            <option value="published">公開</option>
-            <option value="draft">下書き</option>
-          </select>
-          <button id="works-filter-btn" class="btn-mini" type="button">検索</button>
+        <div class="dashboard-cards">
+          <div class="dashboard-card">
+            <p class="dashboard-label">KPI-07 問い合わせバックログ</p>
+            <p id="kpi-backlog" class="dashboard-value">-</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">KPI-06 初回対応時間（中央値）</p>
+            <p id="kpi-first-action" class="dashboard-value">-</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">KPI-08 作品鮮度（90日）</p>
+            <p id="kpi-works-fresh" class="dashboard-value">-</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">KPI-09 お知らせ鮮度（30日）</p>
+            <p id="kpi-news-fresh" class="dashboard-value">-</p>
+          </div>
         </div>
 
-        <p id="admin-message" class="form-note" aria-live="polite"></p>
+        <p id="dashboard-message" class="form-note" aria-live="polite"></p>
 
+        <h3 class="dashboard-subtitle">週次問い合わせ推移（直近12週）</h3>
+        <div id="dashboard-weekly-chart" class="dashboard-chart" aria-label="週次問い合わせチャート"></div>
         <div class="table-wrap">
           <table class="admin-table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>タイトル</th>
-                <th>カテゴリ</th>
-                <th>状態</th>
-                <th>更新日</th>
-                <th>操作</th>
+                <th>週開始</th>
+                <th>合計</th>
+                <th>new</th>
+                <th>processing</th>
+                <th>closed</th>
+                <th>spam</th>
               </tr>
             </thead>
-            <tbody id="works-tbody">
+            <tbody id="dashboard-weekly-tbody">
               <tr>
                 <td colspan="6">読み込み中...</td>
               </tr>
@@ -77,12 +80,12 @@
     window.__adminBooted = false;
     window.__adminBootError = '';
     function showAdminBootError(message) {
-      var msg = document.querySelector('#admin-message');
+      var msg = document.querySelector('#dashboard-message');
       if (msg) {
         msg.textContent = message;
         msg.style.color = '#8c2a1e';
       }
-      var tbody = document.querySelector('#works-tbody, #enquiry-tbody');
+      var tbody = document.querySelector('#dashboard-weekly-tbody');
       if (tbody) {
         tbody.innerHTML = '<tr><td colspan="6">スクリプト読込に失敗しました。ブラウザのコンソールを確認してください。</td></tr>';
       }
@@ -97,21 +100,17 @@
     }, 2200);
   </script>
   <script type="module">
-    import('../assets/js/admin.js').catch(function (error) {
+    import('../assets/js/dashboard.js').then(function () {
+      window.__adminBooted = true;
+    }).catch(function (error) {
       window.__adminBootError = error && error.message ? String(error.message) : String(error);
       if (window.console && window.console.error) {
-        window.console.error('Admin boot failed:', error);
+        window.console.error('Dashboard boot failed:', error);
       }
     });
   </script>
 </body>
 
 </html>
-
-
-
-
-
-
 
 

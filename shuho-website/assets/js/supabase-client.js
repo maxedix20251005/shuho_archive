@@ -127,7 +127,7 @@ export async function listEnquiries(client, filters = {}) {
   }
 
   const params = new URLSearchParams();
-  params.set("select", "id,created_at,name,email,enquiry_type,status,admin_memo");
+  params.set("select", "id,created_at,updated_at,name,email,enquiry_type,status,admin_memo");
   params.set("order", "created_at.desc");
 
   if (filters.status) {
@@ -257,6 +257,7 @@ export async function updateNewsItem(client, id, payload) {
     body: JSON.stringify(payload),
   });
 }
+
 
 
 

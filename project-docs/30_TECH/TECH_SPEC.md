@@ -150,7 +150,7 @@
 | `F-CTA-04` | FAQ expansion and unresolved user intent -> contact CTA | `faq_expand` + possible `cta_click_contact` chain | Review top FAQ themes, update FAQ copy and enquiry templates | Improved self-resolution and higher qualified enquiries | Review FAQ top themes monthly |
 | `F-CTA-05` | Public "works/news" visibility | Query only `publish_status='published'` and `deleted_at is null` | In `admin/works.html` and `admin/news.html`, toggle `draft/published` and maintain titles/dates | Published items appear on public pages; draft items remain hidden | Content check at least 2 times/week |
 | `F-CTA-06` | Public footer "管理画面" link | `public_to_admin_click` event recorded | Admin enters operations screen and performs updates | Faster operator transition from public review to admin operation | Monitor weekly trend and keep misuse low |
-| `F-CTA-07` | Admin sidebar "公開サイトを見る / 公開お問い合わせを見る" | `admin_to_public_click` event recorded | Admin verifies public-facing output after update | Reduces publish mismatch by immediate visual verification | Use after each publish-related change |
+| `F-CTA-07` | Admin sidebar "公開サイトを見る" | `admin_to_public_click` event recorded | Admin verifies public-facing output after update | Reduces publish mismatch by immediate visual verification | Use after each publish-related change |
 
 ### 9.7 Admin-Publish Gate Criteria / 管理側公開判定基準
 - EN: Works/news must satisfy minimum quality checks before `draft -> published`.
@@ -168,6 +168,9 @@
 - `docs/04-sitemap.html`
 - `shuho-website/supabase/schema.sql`
 - `shuho-website/assets/js/layout.js`
+- `shuho-website/admin/dashboard.html`
+- `shuho-website/assets/js/dashboard.js`
+- `shuho-website/supabase/kpi-queries.sql`
 
 ## 11. Update Log / 更新履歴
 - 2026-04-06: Initial technical baseline for planning phase.
@@ -198,4 +201,13 @@
 - 2026-04-09: BLG-005の計測フックを公開/管理スクリプトへ実装（shuho-website/assets/js/site.js、shuho-website/assets/js/admin.js）。
 
 
+
+
+
+- 2026-04-09: Added KPI SQL pack (shuho-website/supabase/kpi-queries.sql) for operations/content dashboard build (KPI-06 to KPI-09).
+- 2026-04-09: ダッシュボード構築用に KPI SQL パック（shuho-website/supabase/kpi-queries.sql、KPI-06〜KPI-09）を追加。
+
+
+- 2026-04-09: Built admin dashboard page (shuho-website/admin/dashboard.html) and data script (shuho-website/assets/js/dashboard.js) with KPI cards + weekly trend table/chart.
+- 2026-04-09: 管理ダッシュボード（shuho-website/admin/dashboard.html）とデータスクリプト（shuho-website/assets/js/dashboard.js）を実装し、KPIカードと週次推移テーブル/チャートを追加。
 
