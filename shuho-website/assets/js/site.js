@@ -12,14 +12,74 @@ const enquiryForm = document.querySelector('#enquiry-form');
 const formError = document.querySelector('#form-error');
 const formSuccess = document.querySelector('#form-success');
 
+const ENQUIRY_RATE_KEY = 'shuho_enquiry_rate_v1';
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_COUNT = 3;
+const MIN_SUBMIT_SECONDS = 3;
+const formLoadedAt = Date.now();
+
+function getRateState() {
+  try {
+    const raw = localStorage.getItem(ENQUIRY_RATE_KEY);
+    if (!raw) {
+      return [];
+    }
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.filter((ts) => Number.isFinite(ts));
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveRateState(entries) {
+  try {
+    localStorage.setItem(ENQUIRY_RATE_KEY, JSON.stringify(entries));
+  } catch (error) {
+    // Ignore storage errors.
+  }
+}
+
+function checkRateLimit() {
+  const now = Date.now();
+  const recent = getRateState().filter((ts) => now - ts <= RATE_LIMIT_WINDOW_MS);
+  saveRateState(recent);
+  return recent.length >= RATE_LIMIT_MAX_COUNT;
+}
+
+function markSubmitted() {
+  const now = Date.now();
+  const recent = getRateState().filter((ts) => now - ts <= RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  saveRateState(recent);
+}
+
+function showSuccessState() {
+  if (enquiryForm) {
+    enquiryForm.hidden = true;
+  }
+  if (formSuccess) {
+    formSuccess.hidden = false;
+  }
+}
+
 async function submitEnquiry(payload) {
   try {
     const supabaseModule = await import('./supabase-client.js');
-    const client = supabaseModule.initSupabase?.();
+    const initFn = typeof supabaseModule.initSupabase === 'function' ? supabaseModule.initSupabase : null;
+    const client = initFn ? await initFn() : null;
     if (!client) {
       return { ok: true, mode: 'local-fallback' };
     }
-    const result = await supabaseModule.createEnquiry(client, payload);
+
+    const submitFn = typeof supabaseModule.createEnquiry === 'function' ? supabaseModule.createEnquiry : null;
+    if (!submitFn) {
+      return { ok: false, error: 'Enquiry API is not available.' };
+    }
+
+    const result = await submitFn(client, payload);
     if (!result.ok) {
       return { ok: false, error: result.error || 'Unknown API error' };
     }
@@ -36,6 +96,27 @@ if (enquiryForm) {
 
     if (formError) {
       formError.textContent = '';
+    }
+
+    const honeypotValue = enquiryForm.querySelector('#website')?.value?.trim() || '';
+    if (honeypotValue) {
+      showSuccessState();
+      return;
+    }
+
+    const elapsedSeconds = (Date.now() - formLoadedAt) / 1000;
+    if (elapsedSeconds < MIN_SUBMIT_SECONDS) {
+      if (formError) {
+        formError.textContent = '短時間での送信はできません。数秒後に再度お試しください。';
+      }
+      return;
+    }
+
+    if (checkRateLimit()) {
+      if (formError) {
+        formError.textContent = '短時間での送信回数が上限に達しました。時間をおいて再度お試しください。';
+      }
+      return;
     }
 
     if (!enquiryForm.checkValidity()) {
@@ -83,10 +164,8 @@ if (enquiryForm) {
       return;
     }
 
-    enquiryForm.hidden = true;
-    if (formSuccess) {
-      formSuccess.hidden = false;
-    }
+    markSubmitted();
+    showSuccessState();
   });
 }
 

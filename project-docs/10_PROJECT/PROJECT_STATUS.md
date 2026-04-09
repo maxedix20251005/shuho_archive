@@ -104,3 +104,7 @@
 
 - 2026-04-08: Opened ISSUE-006 for admin/news.html boot failure (createNewsItem export mismatch). Applied namespace-import compatibility fix in assets/js/admin.js and started verification.
 - 2026-04-08: Closed ISSUE-006. Verified admin/news.html now boots and displays normal empty-state (件数:0件) on GitHub Pages.
+- 2026-04-09: Completed BLG-004 (Phase 1 anti-spam): added honeypot field, minimum submit-time check, and client-side rate limit (3 submissions / 10 minutes) in contact form (`contact.html` + `assets/js/site.js` + `assets/css/site.css`).
+- 2026-04-09: BLG-004（第1段階スパム対策）を完了。問い合わせフォームに honeypot、最短送信時間チェック、クライアント側レート制限（10分で3回）を実装（`contact.html` + `assets/js/site.js` + `assets/css/site.css`）。
+- 2026-04-09: Completed BLG-006. Added project-docs/00_GOVERNANCE/check-doc-encoding.ps1, integrated mandatory run rules into governance docs, and confirmed pass ([OK] on 15 project-doc files).
+- 2026-04-09: BLG-006を完了。project-docs/00_GOVERNANCE/check-doc-encoding.ps1 を追加し、ガバナンス文書へ実行必須ルールを組み込み、15ファイルでチェック成功（[OK]）を確認。

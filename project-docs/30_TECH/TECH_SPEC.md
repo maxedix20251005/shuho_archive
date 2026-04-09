@@ -53,8 +53,8 @@
 - JA: canonical/`og:url` 用の本番ドメイン。
 - EN: Supabase production config and secret handling workflow.
 - JA: Supabase 本番設定と秘密情報運用フロー。
-- EN: Decision on anti-spam controls (honeypot/rate limit/CAPTCHA).
-- JA: スパム対策（honeypot/レート制限/CAPTCHA）の方針決定。
+- EN: CAPTCHA introduction timing (post-launch monitoring threshold).
+- JA: CAPTCHA導入タイミング（リリース後の監視しきい値に応じて判断）。
 
 ## 8. Related Documents / 関連文書
 - `project-docs/10_PROJECT/PROJECT_STATUS.md`
@@ -77,3 +77,6 @@
 - 2026-04-08: Added news CRUD integration status and schema coverage (`news_items`) for admin/public use.
 - 2026-04-08: お知らせCRUD連携状況と `news_items` スキーマ適用範囲（管理/公開）を追記。
 
+
+- 2026-04-09: Added anti-spam baseline for enquiry form (honeypot + submit-speed check + client-side rate limit).
+- 2026-04-09: 問い合わせフォームにスパム対策の基礎実装（honeypot + 送信速度チェック + クライアント側レート制限）を追加。

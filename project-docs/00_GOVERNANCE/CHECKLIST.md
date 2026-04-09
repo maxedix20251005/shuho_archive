@@ -31,6 +31,8 @@
 - 文書が開けること、構造が壊れていないことを確認する。
 - Confirm UTF-8 and no mojibake when Japanese text is present.
 - 日本語がある場合は UTF-8 と文字化けなしを確認する。
+- Run `project-docs/00_GOVERNANCE/check-doc-encoding.ps1` and confirm pass before task closure.
+- タスク完了前に `project-docs/00_GOVERNANCE/check-doc-encoding.ps1` を実行し、成功を確認する。
 - Confirm bilingual sections still read naturally.
 - bilingual 部分が自然に読めることを確認する。
 - Confirm the change log or related governance record is updated when required.
@@ -56,4 +58,5 @@
 - `project-docs/20_DESIGN/DESIGN_GUIDELINE.md`
 - `project-docs/30_TECH/TECH_SPEC.md`
 - `project-docs/90_WIP/WIP.md`
+
 

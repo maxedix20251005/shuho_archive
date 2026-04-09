@@ -18,9 +18,9 @@
 | `BLG-001` | `P1` | Finalise production domain and add canonical/`og:url` on all public pages | 本番ドメイン確定後、全公開ページへ canonical/`og:url` を追加 | `On-Hold` | `Web Director` | `Until further notice` |
 | `BLG-002` | `P1` | Create and apply `supabase/config.js` with operation-safe key management | 運用上安全な鍵管理方針で `supabase/config.js` を作成・適用 | `In Progress` | `Tech Lead` | `Before staging integration` |
 | `BLG-003` | `P2` | Connect admin pages to live Supabase CRUD (works/enquiries/news) | 管理画面（作品/問い合わせ/お知らせ）を Supabase 実CRUDへ接続 | `Completed` | `Frontend Engineer` | `2026-04-08` |
-| `BLG-004` | `P2` | Add anti-spam controls for enquiry form (honeypot/rate limit/CAPTCHA decision) | 問い合わせフォームのスパム対策（honeypot/レート制限/CAPTCHA）を決定・実装 | `Open` | `Web Director` | `Before production release` |
+| `BLG-004` | `P2` | Add anti-spam controls for enquiry form (honeypot/rate limit/CAPTCHA decision) | 問い合わせフォームのスパム対策（honeypot/レート制限/CAPTCHA）を決定・実装 | `Completed` | `Frontend Engineer` | `2026-04-09` |
 | `BLG-005` | `P3` | Define analytics event mapping and KPI dashboard | 計測イベント設計とKPIダッシュボード定義を作成 | `Open` | `Marketing` | `After launch prep` |
-| `BLG-006` | `P2` | Establish encoding check in documentation workflow to prevent mojibake recurrence | 文字化け再発防止のため文書更新フローに文字コード確認手順を組み込む | `Open` | `PM` | `This sprint` |
+| `BLG-006` | `P2` | Establish encoding check in documentation workflow to prevent mojibake recurrence | 文字化け再発防止のため文書更新フローに文字コード確認手順を組み込む | `Completed` | `PM` | `2026-04-09` |
 
 ## 4. Update Log / 更新履歴
 - 2026-04-07: Initial backlog created.
@@ -35,3 +35,7 @@
 
 
 - 2026-04-08: BLG-003 completed: works/enquiries/news admin connected to Supabase live CRUD (prototype policy mode).
+
+- 2026-04-09: BLG-004 completed (Phase 1): implemented honeypot + client-side submit speed check + client-side rate limit (3 submissions / 10 minutes). CAPTCHA deferred.
+
+- 2026-04-09: BLG-006 completed: added executable UTF-8 check script (check-doc-encoding.ps1) and integrated rule into governance/checklist docs.

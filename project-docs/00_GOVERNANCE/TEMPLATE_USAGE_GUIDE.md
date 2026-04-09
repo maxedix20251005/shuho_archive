@@ -28,3 +28,8 @@
 - JA: テンプレートは初期値であり、導入後の更新が前提です。
 - EN: Each project must keep its own documents updated continuously.
 - JA: 各プロジェクトで継続的に更新してください。
+
+## Encoding Check Command / 文字コード確認コマンド
+- EN: Run this command after updating any `project-docs/*` file.
+- JA: `project-docs/*` を更新した後は次のコマンドを実行する。
+- `powershell -ExecutionPolicy Bypass -File .\project-docs\00_GOVERNANCE\check-doc-encoding.ps1`

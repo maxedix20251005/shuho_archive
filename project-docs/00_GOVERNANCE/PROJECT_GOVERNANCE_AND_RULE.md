@@ -64,6 +64,8 @@
    JA: 追加・削除・移動・改名時は同一タスクで `DOCUMENT_CATALOG.md` を更新する。
 7. EN: Verify `CHECKLIST.md` before closing the task.
    JA: タスク完了前に `CHECKLIST.md` を確認する。
+8. EN: Run `project-docs/00_GOVERNANCE/check-doc-encoding.ps1` for any `project-docs/*` update and fix all reported issues before completion.
+   JA: `project-docs/*` 更新時は `project-docs/00_GOVERNANCE/check-doc-encoding.ps1` を実行し、検出事項を解消してから完了とする。
 
 ## 6. Change Control / 変更管理
 - EN: Prior approval is required for high-impact changes (navigation, legal content, personal-data policy).
@@ -84,3 +86,6 @@
 ## 8. Update Log / 更新履歴
 - 2026-04-06: Re-baselined governance content for Shuho project.
 - 2026-04-07: Rebuilt document in clean UTF-8 bilingual format.
+
+- 2026-04-09: Added executable encoding check rule and check-doc-encoding.ps1.
+- 2026-04-09: 実行可能な文字コードチェック手順と check-doc-encoding.ps1 を追加。
