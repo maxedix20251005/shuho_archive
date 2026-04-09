@@ -17,6 +17,7 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_COUNT = 3;
 const MIN_SUBMIT_SECONDS = 3;
 const SUBMIT_TIMEOUT_MS = 15000;
+const SUBMIT_WATCHDOG_MS = 20000;
 const formLoadedAt = Date.now();
 
 function getRateState() {
@@ -111,6 +112,7 @@ if (enquiryForm) {
     }
 
     const submitButton = enquiryForm.querySelector('button[type="submit"]');
+    let submitWatchdogId = null;
 
     try {
       const honeypotNode = enquiryForm.querySelector('#website');
@@ -155,6 +157,15 @@ if (enquiryForm) {
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = '送信中...';
+        submitWatchdogId = setTimeout(() => {
+          if (!enquiryForm.hidden) {
+            submitButton.disabled = false;
+            submitButton.textContent = '送信する';
+            if (formError && !formError.textContent) {
+              formError.textContent = '送信がタイムアウトしました。時間をおいて再度お試しください。';
+            }
+          }
+        }, SUBMIT_WATCHDOG_MS);
       }
 
       const nameNode = enquiryForm.querySelector('#name');
@@ -190,6 +201,9 @@ if (enquiryForm) {
       }
       console.error('Enquiry submit handler error:', error);
     } finally {
+      if (submitWatchdogId) {
+        clearTimeout(submitWatchdogId);
+      }
       if (submitButton && !enquiryForm.hidden) {
         submitButton.disabled = false;
         submitButton.textContent = '送信する';
