@@ -57,6 +57,8 @@
 - JA: 各タスク完了前に、project-docs は UTF-8 および文字化け有無を確認する。
 
 ## 8. Update Log / 更新履歴
+- 2026-04-15: Updated top-page hero background to `assets/images/slides/shin-kun.jpg` in `shuho-website/assets/css/site.css` and kept dark overlay for headline readability.
+- 2026-04-15: Topページのヒーロー背景を `shuho-website/assets/css/site.css` で `assets/images/slides/shin-kun.jpg` に更新し、見出し可読性のため暗めオーバーレイを維持。
 - 2026-04-06: Filled `docs/01-proposal.html`, `docs/04-sitemap.html`, `docs/05-wireframe.html`, and `docs/07-specification.html` with project-specific content.
 - 2026-04-06: `docs/02-market-research.html` と `docs/03-persona.html` を具体化し、競合傾向・ペルソナ・ジャーニーを反映。
 - 2026-04-06: Created wireframe SVG set and aligned top page direction to `https://maruoka-castle.jp/`.
@@ -120,8 +122,8 @@
 - 2026-04-09: shuho-website/assets/js/site.js（公開イベント）と shuho-website/assets/js/admin.js（管理運用イベント）にBLG-005計測フックを実装。
 
 
-- 2026-04-09: Implemented admin dashboard (dmin/dashboard.html) with KPI cards, weekly trend chart/table, and dashboard navigation from all admin pages.
-- 2026-04-09: 管理ダッシュボード（dmin/dashboard.html）を実装し、KPIカード・週次推移チャート/テーブル・全管理画面からの導線を追加。
+- 2026-04-09: Implemented admin dashboard (`admin/dashboard.html`) with KPI cards, weekly trend chart/table, and dashboard navigation from all admin pages.
+- 2026-04-09: 管理ダッシュボード（`admin/dashboard.html`）を実装し、KPIカード・週次推移チャート/テーブル・全管理画面からの導線を追加。
 
 
 

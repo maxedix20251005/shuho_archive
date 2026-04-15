@@ -62,6 +62,8 @@
 - JA: 大きな写真面を確保し、文言は低密度（見出し1行＋補助1行）に限定。
 - EN: No trial CTA in hero (current business scope).
 - JA: ヒーロー内に体験申込CTAは設置しない（現スコープ）。
+- EN: Current top-page hero visual uses `assets/images/slides/shin-kun.jpg` with a dark overlay to secure text contrast.
+- JA: Topページの現行ヒーロービジュアルは `assets/images/slides/shin-kun.jpg` を使用し、文字コントラスト確保のため暗めオーバーレイを重ねる。
 
 ### 5.2 Cards / カード
 - EN: Masters and portfolio cards share spacing, radius, and metadata hierarchy.
@@ -118,5 +120,5 @@
 - JA: お問い合わせ：低負荷で完了できるCV設計。
 
 ---
-Last Updated / 最終更新: 2026-04-07
+Last Updated / 最終更新: 2026-04-15
 Reference / 参照: https://maruoka-castle.jp/

@@ -116,15 +116,17 @@ p {
 }
 
 .hero {
-  min-height: 74vh;
+  min-height: clamp(320px, 49vw, 74vh);
   display: grid;
   place-items: center;
   position: relative;
-  background:
-    linear-gradient(rgba(28, 27, 26, 0.44), rgba(28, 27, 26, 0.3)),
-    radial-gradient(circle at 15% 20%, rgba(237, 231, 218, 0.35) 0%, transparent 46%),
-    radial-gradient(circle at 85% 60%, rgba(140, 42, 30, 0.2) 0%, transparent 44%),
-    linear-gradient(130deg, #2b2a28 0%, #575042 50%, #77715f 100%);
+  background-color: #77715f;
+  background-image:
+    linear-gradient(rgba(28, 27, 26, 0.5), rgba(28, 27, 26, 0.34)),
+    url("../images/slides/shin-kun.jpg");
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, contain;
   color: #fff;
 }
 
