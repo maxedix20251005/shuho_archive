@@ -57,6 +57,22 @@
 - JA: 各タスク完了前に、project-docs は UTF-8 および文字化け有無を確認する。
 
 ## 8. Update Log / 更新履歴
+- 2026-04-16: Added second top-page portfolio artwork (`assets/images/portfolios/shukei-03.jpg`) and aligned top portfolio tile heights to fixed values (desktop `220px`, mobile `200px`) with height-fit rendering.
+- 2026-04-16: Topページ作品ポートフォリオに2点目（`assets/images/portfolios/shukei-03.jpg`）を追加し、タイル高さを固定値（PC `220px`、SP `200px`）で統一、画像は高さ基準表示へ調整。
+- 2026-04-16: Placed `assets/images/logo/shuho-salon-plate.jpg` in `about.html` philosophy section as a symbolic vertical plate visual (side-by-side on desktop, stacked on mobile).
+- 2026-04-16: `about.html` の理念セクションに `assets/images/logo/shuho-salon-plate.jpg` を象徴ビジュアルとして配置（PC横並び、SP縦積み）。
+- 2026-04-16: Updated `masters.html` to place plate + profile image pairs for all three masters in a side-by-side equal-height layout with optimized plate ratio.
+- 2026-04-16: `masters.html` で師範3名すべてを「標札＋プロフィール写真」の横並び同高レイアウトへ更新し、標札側の比率を最適化。
+- 2026-04-16: Removed portrait image borders and unified portrait background to card color (`#fff`) for both top and masters pages.
+- 2026-04-16: Top/師範ページの人物画像ボーダーを廃止し、人物画像背景をカード同色（`#fff`）へ統一。
+- 2026-04-16: Added hover/focus overlay interaction on top-page master images; master details now appear as translucent in-image overlays instead of speech bubbles.
+- 2026-04-16: Topページ師範画像にホバー/フォーカス時の透過オーバーレイ表示を追加し、説明表示を吹き出しから画像内オーバーレイへ変更。
+- 2026-04-16: Updated top-page hero sizing to better fit `shin-kun.jpg` (`contain`) and applied side-fill base color `#77715f` for non-image area consistency.
+- 2026-04-16: Topページヒーローの表示比率を `shin-kun.jpg` に合わせて調整（`contain`）し、非画像領域は基調色 `#77715f` で補完する運用に変更。
+- 2026-04-16: Replaced all three top-page master placeholders with real profile photos (`shuho-profile-01.jpg`, `shukei-profile-01.jpg`, `shusui-profile-01.jpg`) in 300x400 display format.
+- 2026-04-16: Topページ師範カード3件のプレースホルダを実画像（`shuho-profile-01.jpg`、`shukei-profile-01.jpg`、`shusui-profile-01.jpg`）へ置換し、300x400表示フォーマットで統一。
+- 2026-04-16: Added `assets/images/portfolios/shukei-01.png` to top portfolio grid and standardised portfolio tile sizing to a uniform 3:4 ratio with tuned spacing.
+- 2026-04-16: Topページ作品ポートフォリオへ `assets/images/portfolios/shukei-01.png` を配置し、タイル比率を3:4で統一、グリッド余白を調整。
 - 2026-04-15: Updated top-page hero background to `assets/images/slides/shin-kun.jpg` in `shuho-website/assets/css/site.css` and kept dark overlay for headline readability.
 - 2026-04-15: Topページのヒーロー背景を `shuho-website/assets/css/site.css` で `assets/images/slides/shin-kun.jpg` に更新し、見出し可読性のため暗めオーバーレイを維持。
 - 2026-04-06: Filled `docs/01-proposal.html`, `docs/04-sitemap.html`, `docs/05-wireframe.html`, and `docs/07-specification.html` with project-specific content.

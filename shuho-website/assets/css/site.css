@@ -202,6 +202,7 @@ p {
 
 .grid-four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .panel,
@@ -226,6 +227,80 @@ p {
   margin-bottom: 14px;
 }
 
+.avatar-photo {
+  display: block;
+  width: min(100%, 300px);
+  aspect-ratio: 3 / 4;
+  height: auto;
+  object-fit: cover;
+  border: 0;
+  margin: 0 auto 14px;
+  background: #fff;
+}
+
+.master-image-wrap {
+  position: relative;
+  width: min(100%, 300px);
+  margin: 0 auto 14px;
+  outline: none;
+  overflow: hidden;
+}
+
+.master-image-wrap .avatar-photo {
+  margin: 0;
+  width: 100%;
+}
+
+.master-popup {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: translateY(8px);
+  width: 100%;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(28, 27, 26, 0.06) 28%, rgba(28, 27, 26, 0.72) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  z-index: 5;
+}
+
+.master-popup p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.master-popup p + p {
+  margin-top: 4px;
+}
+
+.master-image-wrap:hover .master-popup,
+.master-image-wrap:focus-within .master-popup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.master-photo-pair {
+  --master-photo-h: 220px;
+  display: grid;
+  grid-template-columns: calc(var(--master-photo-h) * 11 / 40) minmax(0, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.master-photo-pair img {
+  width: 100%;
+  height: var(--master-photo-h);
+  object-fit: contain;
+  border: 0;
+  background: #fff;
+}
+
 .chips {
   display: flex;
   gap: 10px;
@@ -246,9 +321,19 @@ p {
 }
 
 .work-thumb {
+  height: 220px;
   min-height: 220px;
-  border: 1px dashed var(--line);
+  border: 1px solid var(--line);
   background: linear-gradient(180deg, #f4eee1 0%, #ddd2bf 100%);
+}
+
+.work-thumb-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-style: solid;
+  background: #fff;
 }
 
 .news-list {
@@ -495,6 +580,16 @@ p {
 
   .grid-four {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .work-thumb {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .master-photo-pair {
+    --master-photo-h: 180px;
   }
 
   .access-wrap,
@@ -549,6 +644,21 @@ p {
   color: #5e564b;
   margin-bottom: 10px;
   font-size: 0.95rem;
+}
+
+.about-philosophy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-plate {
+  width: 72px;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  background: #fff;
 }
 
 .master-meta {
@@ -680,6 +790,17 @@ p {
 
   .grid-two {
     grid-template-columns: 1fr;
+  }
+
+  .about-philosophy {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: left;
+  }
+
+  .about-plate {
+    width: 60px;
+    max-height: 200px;
   }
 }
 

@@ -70,6 +70,18 @@
 - JA: 師範カードと作品カードは余白・角丸・メタ情報階層を共通化する。
 - EN: Masters page assumes 3 instructors (single row), not two rows.
 - JA: 師範ページは師範3名を前提に1段構成とする。
+- EN: Top-page master cards use profile images in 300x400 format and align image block spacing consistently.
+- JA: Topページ師範カードは 300x400 フォーマットのプロフィール画像を使用し、画像ブロックの余白を統一する。
+- EN: Top-page portfolio tiles use fixed uniform heights (desktop `220px`, tablet/mobile `200px`) with height-fit image rendering; desktop grid gap is 20px and tablet/mobile gap is 12px.
+- JA: Topページ作品ポートフォリオのタイルは固定高さ（PC `220px`、タブレット/モバイル `200px`）で統一し、画像は高さ基準で表示する。グリッド余白は PC 20px、タブレット/モバイル 12px を基準とする。
+- EN: Masters page cards present plate and portrait images side-by-side with equal height; plate-side width should be ratio-optimized to avoid excess blank area.
+- JA: 師範ページのカードは標札画像と人物画像を同じ高さで横並び表示し、標札側の幅は余白過多を防ぐ比率で最適化する。
+- EN: On top-page master cards, detail text appears as a translucent in-image overlay on hover/focus (not a detached tooltip balloon).
+- JA: Topページ師範カードの詳細は hover/focus 時に画像内の透過オーバーレイで表示し、独立した吹き出し表示は使用しない。
+- EN: Portrait image framing should not use visible borders; image background tone should match card background (`#fff`).
+- JA: 人物画像のフレーミングは可視ボーダーを設けず、画像背景色はカード背景（`#fff`）に合わせる。
+- EN: About-page philosophy section may include a vertical plate visual (`shuho-salon-plate.jpg`) as a brand cue; use side-by-side composition on desktop and stacked composition on mobile.
+- JA: Aboutページ理念セクションではブランド想起のため縦型標札ビジュアル（`shuho-salon-plate.jpg`）を配置可とし、PCは横並び、SPは縦積み構成とする。
 
 ### 5.3 Forms / フォーム
 - EN: Required marker, error message, and response-time note are mandatory.
@@ -120,5 +132,5 @@
 - JA: お問い合わせ：低負荷で完了できるCV設計。
 
 ---
-Last Updated / 最終更新: 2026-04-15
+Last Updated / 最終更新: 2026-04-16
 Reference / 参照: https://maruoka-castle.jp/
